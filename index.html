@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gloomhaven Mapa de Discípules de Mikaela</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blackboard-container">
+        
+        <div class="resumen-columna">
+            <div class="header">
+                <h1 id="nombre-grupo">Cargando...</h1>
+                <p>Campaña de Gloomhaven</p>
+            </div>
+            
+            <div class="data-card data-grid">
+                
+                <div class="data-item" style="border-left: 5px solid #2ecc71;">
+                    <small><i class="fas fa-chart-line"></i> Prosperidad</small>
+                    <strong id="prosperidad">0</strong>
+                </div>
+
+                <div class="data-item" style="border-left: 5px solid #3498db;">
+                    <small><i class="fas fa-star"></i> Reputación</small>
+                    <strong id="reputacion-val">+0</strong>
+                    <small id="reputacion-mod" class="modificador">Modificador: 0</small>
+                </div>
+
+                <div class="data-item" style="border-left: 5px solid #f1c40f;">
+                    <small><i class="fas fa-boxes"></i> Objetos Disponibles</small>
+                    <strong id="objetos-disponibles">Cargando...</strong>
+                </div>
+            </div>
+
+            <div class="logro-section">
+                <h2><i class="fas fa-users"></i> Logros Grupales</h2>
+                <div id="logros-grupales" class="logros-container"></div>
+            </div>
+
+            <div class="logro-section">
+                <h2><i class="fas fa-globe"></i> Logros Globales</h2>
+                <div id="logros-globales" class="logros-container"></div>
+            </div>
+            
+            <div class="logro-section" style="display:none;">
+                 <h3>Aventureros:</h3>
+                 <select id="jugador-select">
+                     <option value="">-- Cargando --</option>
+                 </select>
+            </div>
+        </div>
+
+        <div class="mapa-columna">
+            <h2><i class="fas fa-map-marked-alt"></i> Mapa de Escenarios</h2>
+            <div id="mapa-escenarios">
+                </div>
+        </div>
+    </div>
+    
+    <div id="modal-detalle" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h2 id="modal-titulo">Detalles del Escenario</h2>
+            <div id="modal-cuerpo">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
