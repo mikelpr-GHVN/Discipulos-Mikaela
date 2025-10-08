@@ -348,3 +348,63 @@ body {
 .enlace-escenario-btn.anterior:hover {
     background-color: #f39c12; 
 }
+/* Archivo: style.css (AÑADIR AL FINAL) */
+
+/* ----------------------------------------------------
+   ADAPTACIÓN A MÓVILES (MEDIA QUERIES)
+   ---------------------------------------------------- */
+
+@media (max-width: 768px) {
+    /* 1. LAYOUT PRINCIPAL: DE COLUMNAS A FILAS */
+    .blackboard-container {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        gap: 20px;
+    }
+
+    /* 2. REESTRUCTURACIÓN DE COLUMNAS */
+    .resumen-columna {
+        width: 100%; /* Ocupa todo el ancho */
+        order: 2; /* Mueve la columna de resumen *debajo* del mapa */
+    }
+
+    .mapa-columna {
+        order: 1; /* Coloca la columna del mapa *encima* */
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    /* 3. MAPA: HACERLO FLEXIBLE Y ESCALABLE */
+    #mapa-escenarios {
+        /* Eliminamos el tamaño fijo y usamos porcentajes */
+        width: 100%; 
+        height: 500px; /* Reducimos la altura para móviles */
+        overflow-x: scroll; /* Si el contenido no cabe, permite scroll horizontal */
+        overflow-y: hidden;
+    }
+    
+    /* 4. TÍTULOS Y FUENTES */
+    h2 {
+        font-size: 1.3em;
+    }
+    
+    /* 5. DATOS GRID: Apilar los datos en una sola columna */
+    .data-grid {
+        grid-template-columns: 1fr; /* Una sola columna para los datos */
+    }
+
+    /* 6. CORRECCIÓN DE POSICIONAMIENTO DEL MAPA */
+    /* Dado que el mapa original es de 900px, si lo queremos ver completo 
+       en una pantalla más pequeña, debemos escalar los nodos. 
+       Alternativamente, y lo más simple por ahora, es hacer que el contenedor
+       tenga el ancho necesario para que el contenido de la cuadrícula
+       (que sigue posicionado en '900px' de ancho) sea navegable. */
+    
+    #mapa-escenarios {
+        width: 900px; /* Mantenemos el ancho original para que la cuadrícula se vea sin que se rompan las coordenadas... */
+        max-width: none;
+        margin-left: -15px; /* Ajuste visual para el scroll */
+    }
+    
+    /* Nota: El scroll horizontal en #mapa-escenarios (punto 3) ahora permite ver 
+       los nodos que están en left: 700px. */
+}
