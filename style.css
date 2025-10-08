@@ -351,11 +351,11 @@ h2 {
     /* 2. REESTRUCTURACIÓN DE COLUMNAS */
     .resumen-columna {
         width: 100%; /* Ocupa todo el ancho */
-        order: 2; /* Mueve la columna de resumen *debajo* del mapa */
+        order: 1; /* Mueve la columna de resumen *debajo* del mapa */
     }
 
     .mapa-columna {
-        order: 1; /* Coloca la columna del mapa *encima* */
+        order: 2; /* Coloca la columna del mapa *encima* */
         width: 100%;
         padding-top: 10px;
     }
@@ -388,3 +388,4 @@ h2 {
         padding: 15px;
     }
 }
+
