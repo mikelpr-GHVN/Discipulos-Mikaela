@@ -1,392 +1,279 @@
-/* Archivo: style.css - Nuevo Estilo Base44 (COMPLETO con ajuste de cuadrícula y móvil) */
-
-/* ----------------------------------------------------
-  VARIABLES Y FUENTES
-  ---------------------------------------------------- */
-:root {
---color-bg-dark: #1e212b;
---color-bg-card: #2c313d;
---color-accent-orange: #ff9800;
---color-accent-blue: #3498db;
---color-text-light: #e0e6f0;
---color-text-faded: #aeb4be;
---color-logro-bg: #404550;
---color-logro-text: #fff;
---color-esc-completado: #2ecc71; /* Verde */
---color-esc-pendiente: #f1c40f; /* Amarillo */
-}
+/* styles.css: Estilo principal para Discípulos de Mikaela */
 
 body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-margin: 0;
-padding: 0;
-background-color: var(--color-bg-dark);
-color: var(--color-text-light);
-display: flex;
-justify-content: center;
-align-items: flex-start;
-min-height: 100vh;
-padding: 30px;
-font-size: 0.9em; /* Fuente base reducida */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #222;
+    color: #eee;
 }
-
-/* ----------------------------------------------------
-  LAYOUT GENERAL
-  ---------------------------------------------------- */
-
-.blackboard-container {
-display: flex;
-gap: 30px;
-max-width: 1400px;
-width: 100%;
-}
-
-.resumen-columna {
-width: 300px;
-flex-shrink: 0;
-}
-
-.mapa-columna {
-flex-grow: 1;
-}
-
-h2 {
-color: var(--color-accent-orange);
-border-bottom: 2px solid var(--color-logro-bg);
-padding-bottom: 5px;
-font-size: 1.5em;
-margin-top: 0;
-}
-
-/* ----------------------------------------------------
-  DATOS Y RESUMEN
-  ---------------------------------------------------- */
-
-.header {
-margin-bottom: 20px;
-}
-
-.header h1 {
-color: var(--color-text-light);
-font-size: 2em;
-margin-bottom: 0;
-}
-
-.header p {
-color: var(--color-text-faded);
-margin-top: 5px;
-font-size: 1.1em;
-}
-
-.data-card {
-background-color: var(--color-bg-card);
-padding: 15px;
-border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-margin-bottom: 20px;
-}
-
-.data-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 15px;
-}
-
-.data-item {
-background-color: #242730;
-padding: 10px;
-border-radius: 4px;
-position: relative;
-overflow: hidden;
-}
-
-.data-item strong {
-display: block;
-font-size: 1.5em;
-margin-top: 5px;
-}
-
-.data-item small {
-display: block;
-color: var(--color-text-faded);
-font-size: 0.8em;
-}
-
-.data-item .modificador {
-position: absolute;
-top: 5px;
-right: 5px;
-font-size: 0.7em;
-color: var(--color-text-faded);
-}
-
-#reputacion-val.positivo {
-color: var(--color-esc-completado);
-}
-#reputacion-val.negativo {
-color: #e74c3c; /* Rojo */
-}
-
-/* ----------------------------------------------------
-  LOGROS
-  ---------------------------------------------------- */
-
-.logro-section h2 {
-margin-top: 25px;
-}
-
-.logros-container {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-}
-
-.logro-item {
-background-color: var(--color-logro-bg);
-color: var(--color-logro-text);
-padding: 5px 10px;
-border-radius: 20px;
-font-size: 0.8em;
-font-weight: 500;
-}
-
-.logro-item i {
-color: var(--color-accent-orange);
-margin-right: 5px;
-}
-
-/* ----------------------------------------------------
-  ESTILOS DE MAPA Y ESCENARIOS (CUADRÍCULA)
-  ---------------------------------------------------- */
 
 #mapa-escenarios {
-/* ESTILOS DE CUADRÍCULA SOLICITADOS */
-width: 900px; 
-height: 600px; 
-position: relative; 
-background-color: #3b404d; 
-border: 3px solid var(--color-logro-bg);
-border-radius: 8px;
-margin-top: 15px;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-/* FIN ESTILOS DE CUADRÍCULA */
+    position: relative;
+    width: 900px;
+    height: 400px;
+    margin: 40px auto;
+    background: #222 url('mapa-bg.jpg') no-repeat center center;
+    border-radius: 20px;
+    box-shadow: 0 0 24px #111;
+    border: 2px solid #444;
 }
 
 .escenario {
-cursor: default; /* Eliminamos el cursor de puntero */
-padding: 8px 12px;
-border-radius: 4px;
-font-weight: bold;
-font-size: 0.9em;
-white-space: nowrap;
-position: absolute; 
-transform: translate(-50%, -50%); 
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-z-index: 10; 
+    position: absolute;
+    width: 200px;
+    min-height: 60px;
+    background: #333;
+    color: #fff;
+    border-radius: 12px;
+    border: 2px solid #13d413;
+    box-shadow: 0 3px 16px #0009;
+    padding: 10px 16px;
+    cursor: pointer;
+    z-index: 5;
+    transition: 0.2s;
+    font-size: 1.08em;
 }
 
-.escenario strong {
-color: var(--color-text-light);
-font-size: 1.1em;
-margin-right: 5px;
-}
-
-/* Colores de estado del nodo */
 .escenario.completado {
-background-color: var(--color-esc-completado);
-color: #1e212b;
+    border-color: #13d413;
+    background: linear-gradient(95deg,#13d41333 0%, #333 60%, #333 100%);
 }
 
 .escenario.pendiente {
-background-color: var(--color-esc-pendiente);
-color: #1e212b;
+    border-color: #ffda36;
+    background: linear-gradient(95deg,#ffdf3633 0%, #333 60%, #333 100%);
 }
 
-/* Estilos de las líneas de conexión (SVG) */
-.conexion {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-overflow: visible;
-z-index: 1; /* Detrás de los nodos */
+.escenario.bloqueado {
+    border-color: #ac2222;
+    background: linear-gradient(95deg,#ac222233 0%, #333 60%, #333 100%);
+    color: #aaa;
 }
 
-.conexion line {
-stroke-width: 3;
-fill: none;
+/* LÍNEAS DE CONEXIÓN ENTRE ESCENARIOS (SVG) */
+.arrow {
+    position: absolute;
+    height: 0;
+    border-top: 3px solid #fff;
+    z-index: 10;
+    pointer-events: none;
 }
 
-.conexion.alternativa line,
-.conexion.alternativa marker polygon {
-stroke: var(--color-esc-pendiente);
-fill: var(--color-esc-pendiente);
+.arrow.alternativa {
+    border-top: 4px solid #13d413; /* verde intenso */
+    box-shadow: 0 0 8px #13d413;
 }
 
-/* ----------------------------------------------------
-  MODAL (Pop-up de Detalle de Escenario)
-  ---------------------------------------------------- */
+.arrow.bloqueada {
+    border-top: 4px dashed #ac2222;
+}
 
+.arrow.pendiente {
+    border-top: 4px solid #ffda36;
+}
+
+/* CABECERA Y DATOS DE GRUPO */
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #eee;
+    font-size: 2em;
+    margin-bottom: 0;
+}
+
+.header p {
+    color: #bbb;
+    margin-top: 5px;
+    font-size: 1.1em;
+}
+
+.data-card {
+    background-color: #242730;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.data-item {
+    background-color: #242730;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.data-item strong {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 5px;
+}
+
+.data-item small {
+    display: block;
+    color: #aeb4be;
+    font-size: 0.8em;
+}
+
+.data-item .modificador {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.7em;
+    color: #aeb4be;
+}
+
+/* LOGROS */
+.logro-section h2 {
+    margin-top: 25px;
+}
+
+.logros-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.logro-item {
+    background-color: #404550;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.logro-item i {
+    color: #a7c3c7;
+    margin-right: 5px;
+}
+
+/* MAPA Y ESCENARIOS (CUADRICULA SOLICITADA) */
+#mapa-escenarios {
+    /* ESTILOS DE CUADRÍCULA SOLICITADOS */
+    width: 900px; 
+    height: 600px; 
+    position: relative; 
+    background-color: #3b404d; 
+    border: 3px solid #13d413;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.escenario {
+    cursor: default; /* Eliminamos el cursor de puntero */
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1em;
+    background: #333;
+    color: #fff;
+    border: 2px solid #13d413;
+    box-shadow: 0 3px 16px #0009;
+    z-index: 5;
+    position: absolute;
+    min-width: 180px;
+    min-height: 44px;
+    transition: 0.2s;
+}
+
+.escenario strong {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 3px;
+}
+
+/* MODAL */
 .modal {
-display: none; /* Oculto por defecto */
-position: fixed; 
-z-index: 20; 
-left: 0;
-top: 0;
-width: 100%; 
-height: 100%; 
-overflow: auto; 
-background-color: rgba(0,0,0,0.7); 
+    display: none; 
+    position: fixed; 
+    z-index: 20; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); 
 }
 
 .modal-contenido {
-background-color: var(--color-bg-card);
-margin: 10% auto; 
-padding: 30px;
-border: 1px solid var(--color-logro-bg);
-width: 80%; 
-max-width: 700px;
-border-radius: 10px;
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-animation: fadeIn 0.3s;
+    background-color: #242730;
+    margin: 10% auto; 
+    padding: 30px;
+    border: 1px solid #13d413;
+    width: 80%; 
+    max-width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s;
 }
 
 @keyframes fadeIn {
-from {opacity: 0;}
-to {opacity: 1;}
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 .modal-contenido h2 {
-color: var(--color-accent-orange);
-border-bottom: 2px solid var(--color-logro-bg);
-padding-bottom: 10px;
-margin-top: 0;
+    color: #13d413;
+    border-bottom: 2px solid #13d413;
+    padding-bottom: 10px;
+    margin-top: 0;
 }
 
 .modal-contenido h3 {
-color: var(--color-text-light);
-margin-top: 20px;
-font-size: 1.2em;
+    color: #eee;
+    margin-top: 20px;
+    font-size: 1.2em;
 }
 
 .modal-contenido p, .modal-contenido ul li {
-font-size: 0.95em;
-line-height: 1.6;
+    font-size: 0.95em;
+    line-height: 1.6;
 }
 
 .modal-contenido hr {
-border: 0;
-height: 1px;
-background-color: var(--color-logro-bg);
-margin: 15px 0;
+    border: 0;
+    height: 1px;
+    background-color: #13d413;
+    margin: 15px 0;
 }
 
 .cerrar-modal {
-color: #aaa;
-float: right;
-font-size: 32px;
-font-weight: bold;
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
 }
 
 .cerrar-modal:hover,
 .cerrar-modal:focus {
-color: var(--color-text-light);
-text-decoration: none;
-cursor: pointer;
+    color: #eee;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.atencion-pendiente {
-color: var(--color-esc-pendiente);
-font-style: italic;
-}
-
-/* ESTILOS DE BOTONES DE NAVEGACIÓN EN MODAL */
-
+/* BOTONES DE NAVEGACIÓN EN MODAL */
 .enlace-escenario-btn {
-background-color: #3498db; 
-color: white;
-padding: 10px 15px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-font-weight: bold;
-margin-right: 10px;
-margin-top: 10px;
-transition: background-color 0.2s;
+    background-color: #3498db; 
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
 }
 
 .enlace-escenario-btn:hover {
-background-color: #2980b9;
-}
-
-.logros-modal-container {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-margin-top: 10px;
-}
-
-.logro-modal {
-background-color: var(--color-logro-bg);
-color: var(--color-logro-text);
-padding: 4px 8px;
-border-radius: 4px;
-font-size: 0.8em;
-font-weight: 500;
-}
-
-/* ----------------------------------------------------
-  ADAPTACIÓN A MÓVILES (MEDIA QUERIES)
-  ---------------------------------------------------- */
-
-@media (max-width: 768px) {
-/* 1. LAYOUT PRINCIPAL: DE COLUMNAS A FILAS */
-.blackboard-container {
-flex-direction: column; /* Apila las columnas verticalmente */
-gap: 20px;
-padding-top: 0;
-}
-
-/* 2. REESTRUCTURACIÓN DE COLUMNAS */
-.resumen-columna {
-width: 100%; /* Ocupa todo el ancho */
-        order: 2; /* Mueve la columna de resumen *debajo* del mapa */
-        order: 1; /* Mueve la columna de resumen *debajo* del mapa */
-}
-
-.mapa-columna {
-        order: 1; /* Coloca la columna del mapa *encima* */
-        order: 2; /* Coloca la columna del mapa *encima* */
-width: 100%;
-padding-top: 10px;
-}
-
-/* 3. MAPA: HACERLO FLEXIBLE Y ESCALABLE (MANTENIENDO EL ANCHO DE 900PX PARA SCROLL) */
-#mapa-escenarios {
-width: 900px; /* Mantiene el ancho necesario para la cuadrícula */
-max-width: none;
-height: 500px; /* Altura reducida */
-/* Estas dos reglas fuerzan el scroll horizontal en pantallas pequeñas */
-overflow-x: scroll; 
-overflow-y: hidden;
-margin-left: 0; 
-}
-
-/* 4. DATOS GRID: Apilar los datos en una sola columna */
-.data-grid {
-grid-template-columns: 1fr; /* Una sola columna para los datos */
-}
-
-/* 5. Ajuste general del padding del body */
-body {
-padding: 15px;
-}
-
-/* 6. Ajuste del modal para pantallas pequeñas */
-.modal-contenido {
-margin: 5% auto;
-width: 95%;
-padding: 15px;
-}
+    background-color: #2980b9;
 }
