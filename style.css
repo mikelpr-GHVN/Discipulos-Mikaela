@@ -1,4 +1,4 @@
-/* Archivo: style.css - Nuevo Estilo Base44 (COMPLETO) */
+/* Archivo: style.css - NUEVA ESTRUCTURA DE MAPA CENTRAL */
 
 /* ----------------------------------------------------
    VARIABLES Y FUENTES
@@ -12,6 +12,8 @@
     --color-text-faded: #aeb4be;
     --color-logro-bg: #404550;
     --color-logro-text: #fff;
+    --color-esc-completado: #2ecc71; /* Verde */
+    --color-esc-pendiente: #f1c40f; /* Amarillo */
 }
 
 body {
@@ -25,99 +27,120 @@ body {
     align-items: flex-start;
     min-height: 100vh;
     padding: 30px;
-    font-size: 0.9em; /* Fuente base reducida */
+    font-size: 0.9em; 
 }
 
 /* ----------------------------------------------------
-   LAYOUT GENERAL
+   LAYOUT GENERAL (Ahora centrado en el mapa)
    ---------------------------------------------------- */
 
 .blackboard-container {
-    display: flex;
+    /* Eliminamos display: flex; y definimos un ancho máximo para el mapa */
+    max-width: 900px;
     width: 100%;
-    max-width: 1500px;
-    gap: 30px;
 }
 
-/* Título de la Campaña */
+.mapa-columna {
+    flex-grow: 1;
+    width: 100%; /* Ocupa todo el contenedor */
+}
+
+h2 {
+    color: var(--color-accent-orange);
+    border-bottom: 2px solid var(--color-logro-bg);
+    padding-bottom: 5px;
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+/* Estilo para el botón de abrir el Blackboard */
+.btn-primary {
+    background-color: var(--color-accent-orange);
+    color: var(--color-bg-dark); /* Texto oscuro en el botón */
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #e68a00; /* Naranja ligeramente más oscuro */
+}
+
+/* ----------------------------------------------------
+   ESTILOS DE CONTENIDO DENTRO DEL MODAL (Blackboard)
+   ---------------------------------------------------- */
+
 .header {
     margin-bottom: 20px;
 }
 
 .header h1 {
-    font-size: 2.5em;
-    color: var(--color-accent-orange);
-    margin-bottom: 5px;
+    color: var(--color-text-light);
+    font-size: 2em;
+    margin-bottom: 0;
 }
 
 .header p {
     color: var(--color-text-faded);
-    margin-top: 0;
+    margin-top: 5px;
     font-size: 1.1em;
 }
 
-/* ----------------------------------------------------
-   COLUMNA IZQUIERDA (RESUMEN)
-   ---------------------------------------------------- */
-
-.resumen-columna {
-    flex: 0 0 450px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Estilo para todas las tarjetas (tarjetas de datos, logros, etc.) */
-.data-card, .logro-section {
+.data-card {
     background-color: var(--color-bg-card);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
 }
 
-/* Tarjeta de Datos (Prosperidad, Reputación, Objetos) */
 .data-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
 .data-item {
-    padding: 15px;
-    border-radius: 8px;
-    background-color: var(--color-logro-bg);
-}
-
-.data-item i {
-    font-size: 1.2em;
-    margin-right: 5px;
+    background-color: #242730;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
 }
 
 .data-item strong {
     display: block;
-    font-size: 1.4em; /* Reducido */
+    font-size: 1.5em;
     margin-top: 5px;
-    line-height: 1.1;
 }
 
 .data-item small {
     display: block;
     color: var(--color-text-faded);
-    font-size: 0.75em; /* Reducido */
-    margin-top: 3px;
+    font-size: 0.8em;
 }
 
-.data-item small.modificador {
-    font-weight: bold;
+.data-item .modificador {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.7em;
+    color: var(--color-text-faded);
 }
 
-/* Tarjetas de Logros */
+#reputacion-val.positivo {
+    color: var(--color-esc-completado);
+}
+#reputacion-val.negativo {
+    color: #e74c3c; /* Rojo */
+}
+
 .logro-section h2 {
-    font-size: 1.4em;
-    color: var(--color-accent-orange);
-    border-bottom: 2px solid var(--color-logro-bg);
-    padding-bottom: 10px;
-    margin: 0 0 15px 0;
+    margin-top: 25px;
 }
 
 .logros-container {
@@ -126,152 +149,122 @@ body {
     gap: 8px;
 }
 
-.logro-tag {
-    padding: 5px 12px;
+.logro-item {
+    background-color: var(--color-logro-bg);
+    color: var(--color-logro-text);
+    padding: 5px 10px;
     border-radius: 20px;
-    font-size: 0.8em; /* Reducido */
+    font-size: 0.8em;
     font-weight: 500;
-    white-space: nowrap;
-    cursor: default;
 }
 
-.logro-tag.grupal {
-    background-color: #f1c40f; /* Amarillo */
-    color: #333;
-}
-
-.logro-tag.global {
-    background-color: #3498db; /* Azul */
-    color: white;
+.logro-item i {
+    color: var(--color-accent-orange);
+    margin-right: 5px;
 }
 
 /* ----------------------------------------------------
-   COLUMNA DERECHA (MAPA)
+   ESTILOS DE MAPA Y ESCENARIOS (CUADRÍCULA)
    ---------------------------------------------------- */
-
-.mapa-columna {
-    flex-grow: 1;
-    position: relative;
-    background-color: var(--color-bg-card);
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    padding: 25px;
-    min-height: 1000px; 
-    overflow: hidden; 
-}
-
-.mapa-columna h2 {
-    font-size: 1.8em;
-    color: var(--color-accent-orange);
-    margin: 0 0 20px 0;
-}
 
 #mapa-escenarios {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    width: 900px; 
+    height: 600px; 
+    position: relative; 
+    background-color: #3b404d; 
+    border: 3px solid var(--color-logro-bg);
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
-
-/* ----------------------------------------------------
-   ESTILOS DE LOS NODOS (Escenarios)
-   ---------------------------------------------------- */
 
 .escenario {
-    position: absolute;
-    width: 200px;
-    padding: 10px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 0.9em;
-    color: #1c2833;
+    cursor: default; 
+    padding: 8px 12px;
+    border-radius: 4px;
     font-weight: bold;
-}
-
-.escenario:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    font-size: 0.9em;
+    white-space: nowrap;
+    position: absolute; 
+    transform: translate(-50%, -50%); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 10; 
 }
 
 .escenario strong {
-    display: block;
-    font-size: 1.2em;
-    margin-bottom: 3px;
+    color: var(--color-text-light);
+    font-size: 1.1em;
+    margin-right: 5px;
 }
 
-/* Estados */
+/* Colores de estado del nodo */
 .escenario.completado {
-    background-color: #2ecc71; /* Verde */
-    border: 2px solid #27ae60;
+    background-color: var(--color-esc-completado);
+    color: #1e212b;
 }
 
 .escenario.pendiente {
-    background-color: #f39c12; /* Naranja */
-    border: 2px solid #e67e22;
+    background-color: var(--color-esc-pendiente);
+    color: #1e212b;
 }
 
-.escenario.bloqueado {
-    background-color: #7f8c8d; /* Gris */
-    border: 2px solid #95a5a6;
-    cursor: not-allowed;
-    color: var(--color-text-light);
-}
-
-/* ----------------------------------------------------
-   ESTILOS DE LAS CONEXIONES (LÍNEAS SIMPLES)
-   ---------------------------------------------------- */
-
-.arrow {
+/* Estilos de las líneas de conexión (SVG) */
+.conexion {
     position: absolute;
-    height: 3px;
-    border-radius: 5px;
-    transform-origin: 0 50%;
-    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    z-index: 1; 
 }
 
-/* Tipo principal (Azul) */
-.arrow.principal {
-    background-color: var(--color-accent-blue);
+.conexion line {
+    stroke-width: 3;
+    fill: none;
 }
 
-/* Tipo alternativa (Verde - Conexión de inicio) */
-.arrow.alternativa {
-    background-color: #2ecc71;
-}
-
-/* Tipo bloqueada (Rojo) */
-.arrow.bloqueada {
-    background-color: #e74c3c;
-    border-style: dashed;
+.conexion.alternativa line,
+.conexion.alternativa marker polygon {
+    stroke: var(--color-esc-pendiente);
+    fill: var(--color-esc-pendiente);
 }
 
 /* ----------------------------------------------------
-   ESTILOS DEL MODAL (POP-UP)
+   MODAL (Estilos generales para ambos modales)
    ---------------------------------------------------- */
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
+    display: none; 
+    position: fixed; 
+    z-index: 20; 
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.8);
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); 
 }
 
 .modal-contenido {
     background-color: var(--color-bg-card);
-    margin: 5% auto;
+    margin: 10% auto; 
     padding: 30px;
-    border: 1px solid #4a6480;
-    width: 90%;
-    max-width: 800px;
+    border: 1px solid var(--color-logro-bg);
+    width: 80%; 
+    max-width: 700px;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s;
+}
+
+.modal-contenido.blackboard-contenido {
+    max-width: 500px; /* Hacemos el modal de datos un poco más pequeño */
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 .modal-contenido h2 {
@@ -281,70 +274,37 @@ body {
     margin-top: 0;
 }
 
-.modal-contenido h3 {
-    color: var(--color-text-light);
-    margin-top: 20px;
-    font-size: 1.2em;
-}
+/* ... (Otros estilos del modal detalle, como h3, p, hr, etc.) ... */
 
-.modal-contenido p {
-    font-size: 0.95em;
-    line-height: 1.6;
-}
+/* ----------------------------------------------------
+   ADAPTACIÓN A MÓVILES (MEDIA QUERIES) - SIMPLIFICADO
+   ---------------------------------------------------- */
 
-.modal-contenido hr {
-    border: 0;
-    height: 1px;
-    background-color: var(--color-logro-bg);
-    margin: 15px 0;
-}
-
-.cerrar-modal {
-    color: #aaa;
-    float: right;
-    font-size: 32px;
-    font-weight: bold;
-}
-
-.cerrar-modal:hover,
-.cerrar-modal:focus {
-    color: var(--color-text-light);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* ESTILOS DE BOTONES DE NAVEGACIÓN EN MODAL */
-
-.enlace-escenario-btn {
-    background-color: #3498db; /* Azul de acento */
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    transition: background-color 0.2s;
-    display: block; 
-    width: 100%;
-    text-align: center;
-    margin-top: 5px; 
-}
-
-.enlace-escenario-btn:hover {
-    background-color: #2980b9; 
-}
-
-/* ESTILO ESPECÍFICO PARA EL BOTÓN DE ESCENARIO ANTERIOR */
-.enlace-escenario-btn.anterior {
-    background-color: #f1c40f; /* Amarillo/Oro */
-    color: #333; /* Texto oscuro */
-    display: inline-block; 
-    width: auto;
-    padding: 5px 10px;
-    font-size: 0.9em;
-}
-
-.enlace-escenario-btn.anterior:hover {
-    background-color: #f39c12; 
+@media (max-width: 768px) {
+    
+    /* El mapa se hace navegable con scroll horizontal */
+    #mapa-escenarios {
+        width: 900px; 
+        max-width: none;
+        height: 500px; 
+        overflow-x: scroll; 
+        overflow-y: hidden;
+        margin-left: 0; 
+    }
+    
+    /* El grid de datos dentro del modal pasa a una columna */
+    .data-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    body {
+        padding: 15px;
+    }
+    
+    /* El modal se ajusta mejor al ancho del móvil */
+    .modal-contenido {
+        margin: 5% auto;
+        width: 95%;
+        padding: 15px;
+    }
 }
