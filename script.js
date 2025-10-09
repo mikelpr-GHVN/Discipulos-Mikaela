@@ -110,7 +110,7 @@ function actualizarBlackboard() {
 
     // 2. Reputación y modificador
     reputacionValEl.textContent = dataGloomhaven.reputacion > 0 ? `+${dataGloomhaven.reputacion}` : dataGloomhaven.reputacion;
-    reputacionModEl.textContent = `Mod: ${calcularModificador(dataGloomhaven.reputacion)}`;
+    reputacionModEl.textContent = `Modificador de precios: ${calcularModificador(dataGloomhaven.reputacion)}`;
     reputacionValEl.className = dataGloomhaven.reputacion > 0 ? 'positivo' : (dataGloomhaven.reputacion < 0 ? 'negativo' : '');
     
     // 3. Prosperidad y Objetos
@@ -189,3 +189,4 @@ window.addEventListener('click', (event) => {
 // Inicialización
 
 actualizarBlackboard();
+
