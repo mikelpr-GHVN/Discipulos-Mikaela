@@ -83,11 +83,17 @@ let escenarioSeleccionado = null;
 // ----------------------------------------------------
 
 function calcularModificador(reputacion) {
-    if (reputacion >= 15) return "+2";
-    if (reputacion >= 7) return "+1";
-    if (reputacion >= -6) return "+0";
-    if (reputacion >= -14) return "-1";
-    return "-2";
+    if (reputacion >= 19) return "-5";
+    if (reputacion >= 15) return "-4";
+    if (reputacion >= 11) return "-3";
+    if (reputacion >= 7) return "-2";
+    if (reputacion >= 3) return "-1";
+    if (reputacion >= -2) return "+0";
+    if (reputacion >= -6) return "+1";
+    if (reputacion >= -10) return "+2";
+    if (reputacion >= -14) return "+3";
+    if (reputacion >= -18) return "+4";
+    return "+5";
 }
 
 // ... (Aquí irían las funciones de drawArrow, mostrarDetalleEscenario, toggleEstadoEscenario) ...
@@ -181,4 +187,5 @@ window.addEventListener('click', (event) => {
 });
 
 // Inicialización
+
 actualizarBlackboard();
