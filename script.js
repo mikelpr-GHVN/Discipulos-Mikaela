@@ -46,7 +46,7 @@ const dataGloomhaven = {
             conclusion: "Éxito. Se ha recuperado el botín para Jekserah.",
             recompensas: ["10 monedas de oro (inicial)"],
             logros: ["Gobierno de la ciudad: Militarista (Global)"], 
-            nuevasUbicaciones: ["Túmulo Negro (1) (G-10)"] 
+            nuevasUbicaciones: ["Túmulo Negro (1)"] 
         }, 
         
         
@@ -67,7 +67,7 @@ const dataGloomhaven = {
             ], // <<-- CIERRE DEL ARRAY
             recompensas: [], 
             logros: ["Primeros pasos (Grupo)"], 
-            nuevasUbicaciones: ["Túmulo Negro (2) (G-11)"] 
+            nuevasUbicaciones: ["Guarida del túmulo (2)"] 
         },
 
         // ID 2: GUARIDA DEL TÚMULO (NUEVO)
@@ -95,7 +95,7 @@ const dataGloomhaven = {
             recompensas: ["10 de oro para cada personaje", "+1 de prosperidad"], 
 // ...
             logros: [], // No se especifican logros en la imagen, así que lo dejamos vacío
-            nuevasUbicaciones: ["Campamento inx (3) (G-3)", "Cripta de los Malditos (4) (E-II)"] 
+            nuevasUbicaciones: ["Campamento inx (3)", "Cripta de los Malditos (4)"] 
         },
     ],
     // Conexiones: Verde (tipo 'alternativa') de Inicio a Túmulo Negro (1) y de 1 a 2
