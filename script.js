@@ -1,12 +1,9 @@
-// Archivo: script.js - VERSIÓN CON LÓGICA DE MODAL BLACKBOARD
-
-// ----------------------------------------------------
-// OBJETO CENTRAL DE DATOS: ¡MODIFICA ESTOS VALORES!
-// ----------------------------------------------------
+// Archivo: script.js - VERSIÓN COMPLETA Y ESTABLE (CON DATOS DE CAMPAÑA Y TODAS LAS FUNCIONES)
+// ... (Todo el objeto dataGloomhaven SIN CAMBIOS) ...
 
 const dataGloomhaven = {
     // Datos Principales
-    grupo: "Discípulos de Mikaela",
+    grupo: "Discípules de Mikaela",
     reputacion: 6, 
     prosperidadNivel: 2,
     prosperidadProgreso: 4, 
@@ -31,105 +28,337 @@ const dataGloomhaven = {
     objetosDisponibles: "1-21, 92, 101, 107, 123, 124 y 132", 
     personajes: [], 
 
-    // Lista de Escenarios (Corta para el ejemplo)
+    // Lista de Escenarios 
     escenarios: [
-        { id: 0, nombre: 'Gloomhaven', estado: 'pendiente', map_pos: { top: '30%', left: '50%' }, requisitos: [], desbloquea: [1, 2] },
-        { id: 1, nombre: 'Guarida de la Niebla', estado: 'completado', map_pos: { top: '20%', left: '30%' }, requisitos: [], desbloquea: [3, 4] },
-        { id: 2, nombre: 'Cámara Antigua', estado: 'pendiente', map_pos: { top: '45%', left: '70%' }, requisitos: ['Gobierno de la Ciudad Militarista'], desbloquea: [5] },
-        { id: 3, nombre: 'Bosque Negro', estado: 'pendiente', map_pos: { top: '10%', left: '15%' }, requisitos: ['Primeros pasos'], desbloquea: [] },
-        { id: 4, nombre: 'Cueva del Dragón', estado: 'bloqueado', map_pos: { top: '35%', left: '40%' }, requisitos: ['El recado de un demonio'], desbloquea: [6] },
-        { id: 5, nombre: 'Templo de las Llaves', estado: 'bloqueado', map_pos: { top: '60%', left: '85%' }, requisitos: ['Tecnología antigua'], desbloquea: [] },
-        { id: 6, nombre: 'Torre del Tiempo', estado: 'completado', map_pos: { top: '5%', left: '50%' }, requisitos: [], desbloquea: [7, 8] },
-        { id: 7, nombre: 'Pico de la Montaña', estado: 'pendiente', map_pos: { top: '15%', left: '65%' }, requisitos: ['El poder de la mejora'], desbloquea: [] },
-        { id: 8, nombre: 'Lago Escondido', estado: 'bloqueado', map_pos: { top: '55%', left: '60%' }, requisitos: ['La grieta neutralizada'], desbloquea: [] },
-    ],
+        // ID 0: GLOOMHAVEN (Inicio de Campaña)
+        { 
+            id: 0, 
+            nombre: "GLOOMHAVEN: Inicio de campaña", 
+            estado: "completado", 
+            map_pos: { top: '50px', left: '400px' },
+            vieneDe: "Ninguno (Inicio de Campaña)",
+            requisitos: "Ninguno",
+            objetivos: "Localizar a un ladrón y recuperar unos documentos robados por encargo de Jekserah.",
+            textoEscenario: [
+                "Todos necesitamos comer. Sea cual sea el motivo por el que habéis venido a Gloomhaven, por el que habéis llegado a los confines del mundo, este hecho no cambia. Un mercenario no puede luchar con el estómago vacío. Así que, cuando Jekserah, una Valrath ataviada con una capa roja y suficientes joyas de oro como para pagar la comida de una década, se acerca a vosotros en el León Durmiente y se ofrece a pagaros diez monedas de oro por localizar a un ladrón y recuperar algunas pertenencias robadas... Bueno, parece una excusa tan buena como cualquier otra para quitarse la borrachera de encima y empezar a saldar deudas. —Ese ladrón me ha robado unos documentos importantes —dice la comerciante de piel roja mientras mueve la cola con agitación—. No me importa lo que le hagáis, sólo que me traigáis lo que es mío.",
+                "Con la descripción de Jekserah, no resultó difícil sacudir a algunos matones callejeros y sonsacarles la localización del escondite de los ladrones. En Gloomhaven, todo mercenario que se precie debe saber cómo romper unos cuantos cráneos. **Vuestro objetivo es el Túmulo Negro. Suena a lugar encantador.**"
+            ], 
+            conclusion: "Éxito. Se ha recuperado el botín para Jekserah.",
+            recompensas: ["10 monedas de oro (inicial)"],
+            logros: ["Gobierno de la ciudad: Militarista (Global)"], 
+            nuevasUbicaciones: ["Túmulo Negro (1) (G-10)"] 
+        }, 
+        
+        
+// ID 1: TÚMULO NEGRO (Tu escenario actual)
+        {
+            id: 1, 
+            nombre: "Túmulo Negro", 
+            estado: "completado", 
+            map_pos: { top: '150px', left: '400px' }, 
+            vieneDe: "GLOOMHAVEN: Inicio de campaña (0)",
+            requisitos: "Ninguno", 
+            objetivos: "Matar a todos los enemigos.", 
+            textoEscenario: [
+                "Resulta bastante sencillo encontrar la colina. A solo un paseo de la Puerta del Mercado Nuevo ya puede verse sobresaliendo de las lindes del Soto Cadáver, como si de una rata bajo una alfombra se tratase. Cuando os acercáis, os percatáis de que el montículo está formado por tierra negra. La pequeña puerta cubierta de maleza da paso a unas desgastadas escaleras de piedra que llevan a la oscuridad. A medida que descendéis por las escaleras, percibís agradecidos una luz que emana desde abajo. Por desgracia, esa luz viene acompañada del inconfundible hedor a muerte. Cuando llegáis a los últimos escalones, os preguntáis qué clase de ladrones levantarían su campamento en tan horrible lugar. Y no tardáis en encontrar la respuesta: un rudo grupo de asesinos que no parecen haberse tomado bien vuestra repentina aparición. Uno de los ladrones que se encuentra en la parte trasera coincide con la descripción del que buscáis. —Encargaos de estos desgraciados —dice mientras retrocede hasta una salida de la cámara—. Apenas conseguís distinguir su silueta mientras se dirige hacia un pasillo y sale por una puerta a su izquierda. —Bien, no todos los días te encuentras con gente tan estúpida como para darte personalmente sus objetos de valor —sonríe uno de los más grandes mientras desenvaina una espada oxidada—. Ahora, os mataremos. Vaya sorpresa se van a llevar. Si tuvierais algo de valor, posiblemente no estaríais aquí abajo."
+            ], 
+            conclusion: [ // <<-- ¡AHORA ES UN ARRAY!
+                "Con el último de los bandidos muerto, os tomáis un momento para recuperar el aliento y quitaos de la cabeza la visión de los cadáveres vivientes desgarrándoos la piel. Vuestra presa no se encuentra entre los muertos. Os estremecéis solo con pensar en los horrores que os esperan abajo en las catacumbas."
+            ], // <<-- CIERRE DEL ARRAY
+            recompensas: [], 
+            logros: ["Primeros pasos (Grupo)"], 
+            nuevasUbicaciones: ["Túmulo Negro (2) (G-11)"] 
+        },
 
-    // Lista de Conexiones
+        // ID 2: GUARIDA DEL TÚMULO (NUEVO)
+        {
+            id: 2, 
+            nombre: "Guarida del Túmulo", 
+            estado: "completado", // O 'completado' si ya lo has jugado
+            map_pos: { top: '150px', left: '650px' }, // A la derecha del escenario 1
+            vieneDe: "Túmulo Negro (1)", // Esto se autogenerará con el enlace anterior, pero es útil tenerlo
+            requisitos: "Primeros pasos (Grupo) COMPLETO", 
+            objetivos: "Matar al Capitán bandido y a todos los enemigos revelados.", 
+            textoEscenario: [
+                "El hedor a muerte y carne podrida se vuelve más denso mientras os abrís paso entre los cadáveres de vuestros enemigos y os adentráis cada vez más en este cementerio subterráneo. Guiados por los susurros apagados de una conversación, avanzáis por el laberinto de criptas y entráis en una pequeña cámara llena de ladrones con cara de pocos amigos y preparados para atacar.",
+                "Sin duda custodian algo, así que debéis estar en el lugar correcto."
+            ], 
+           
+            conclusion: [ 
+                "Escudriñando la carnicería que queda tras la batalla, encontráis un alijo al fondo de la sala que contiene los pergaminos por los que os contrataron. No podéis evitar echarles un vistazo, pero lo que haya escrito en ellos está en un antiguo lenguaje que desconocéis. No obstante, os llama la atención un mapa de la zona rural norte. Una curva del río Aguasmanas está claramente marcada como punto importante. Mientras os planteáis buscar más información sobre la llamada \"Penumbra\", decidís que ese lugar también podría ser un punto de interés para vosotros.",
+                "Pero, de momento, podéis dejarlo a un lado. Guardáis los pergaminos y regresáis a Gloomhaven para obtener vuestra recompensa.",
+                "Os reunís con Jekserah de nuevo en el León Durmiente, le entregáis los papeles y os paga la cantidad acordada.",
+                "—¿Sabéis qué? —os susurra ella entre el bullicio de la taberna—. Si estáis interesados, puede que tenga otro trabajo para vosotros. Una tribu de inox ha saqueado algunas de mis caravanas en el Bosque de las Dagas cuando se dirigían a la capital. He informado a la milicia, pero no han hecho nada —dice con desprecio—. Os puedo indicar la dirección de su campamento. Si les dais una lección, os pagaré aún más.",
+                "Pone un tosco mapa del bosque sobre la mesa y se levanta, con las joyas tintineando a cada uno de sus movimientos.",
+                "—Venid a verme cuando hayáis terminado."
+            ], // <<<< ESTE CIERRE DE ARRAY ES AHORA CORRECTO
+            recompensas: ["10 de oro para cada personaje", "+1 de prosperidad"], 
+// ...
+            logros: [], // No se especifican logros en la imagen, así que lo dejamos vacío
+            nuevasUbicaciones: ["Campamento inx (3) (G-3)", "Cripta de los Malditos (4) (E-II)"] 
+        },
+    ],
+    // Conexiones: Verde (tipo 'alternativa') de Inicio a Túmulo Negro (1) y de 1 a 2
     conexiones: [
-        { origen: 0, destino: 1, tipo: 'normal' },
-        { origen: 0, destino: 2, tipo: 'alternativa' },
-        { origen: 1, destino: 3, tipo: 'normal' },
-        { origen: 1, destino: 4, tipo: 'normal' },
-        { origen: 2, destino: 5, tipo: 'normal' },
-        { origen: 4, destino: 6, tipo: 'normal' },
-        { origen: 6, destino: 7, tipo: 'normal' },
-        { origen: 6, destino: 8, tipo: 'normal' },
+        { origen: 0, destino: 1, tipo: 'alternativa', offset: 10 }, 
+        { origen: 1, destino: 2, tipo: 'alternativa', offset: 0 }, // Nueva conexión: 1 a 2, flecha verde. Offset 0 por ahora.
     ]
 };
 
 // ----------------------------------------------------
-// VARIABLES GLOBALES (Añadimos las del nuevo modal)
-// ----------------------------------------------------
-const contMapa = document.getElementById('mapa-escenarios');
-const nombreGrupoEl = document.getElementById('nombre-grupo');
-const reputacionValEl = document.getElementById('reputacion-val');
-const reputacionModEl = document.getElementById('reputacion-mod');
-const prosperidadEl = document.getElementById('prosperidad');
-const logrosGrupalesEl = document.getElementById('logros-grupales');
-const logrosGlobalesEl = document.getElementById('logros-globales');
-const completadosEl = document.getElementById('escenarios-completados');
-const objetosEl = document.getElementById('objetos-disponibles');
-
-// Nuevos elementos del modal Blackboard
-const modalBlackboard = document.getElementById('modal-blackboard');
-const btnAbrirBlackboard = document.getElementById('abrir-blackboard');
-const btnCerrarBlackboard = document.getElementById('cerrar-blackboard');
-const modalDetalle = document.getElementById('modal-detalle'); // El modal anterior
-
-let escenarioSeleccionado = null;
-
-// ----------------------------------------------------
-// FUNCIONES DE UTILIDAD Y CÁLCULO
+// FUNCIONES DE PLANTILLA Y CÁLCULO (SIN CAMBIOS)
 // ----------------------------------------------------
 
+/** Calcula el modificador de precios de la tienda basado en la reputación. */
 function calcularModificador(reputacion) {
-    if (reputacion >= 19) return "-5";
-    if (reputacion >= 15) return "-4";
-    if (reputacion >= 11) return "-3";
-    if (reputacion >= 7) return "-2";
-    if (reputacion >= 3) return "-1";
-    if (reputacion >= -2) return "+0";
-    if (reputacion >= -6) return "+1";
-    if (reputacion >= -10) return "+2";
-    if (reputacion >= -14) return "+3";
-    if (reputacion >= -18) return "+4";
-    return "+5";
+    if (reputacion >= 18) return -5;
+    if (reputacion >= 14) return -4;
+    if (reputacion >= 10) return -3;
+    if (reputacion >= 7) return -2; 
+    if (reputacion >= 2) return -1; 
+    if (reputacion >= -1) return 0; 
+    if (reputacion >= -5) return +1;
+    if (reputacion >= -9) return +2;
+    if (reputacion >= -13) return +3;
+    if (reputacion >= -17) return +4;
+    return +5; 
 }
 
-// ... (Aquí irían las funciones de drawArrow, mostrarDetalleEscenario, toggleEstadoEscenario) ...
-// **NOTA: No he incluido las funciones completas para no duplicar un código muy largo, pero asume que están aquí.**
-// Asegúrate de que las tienes en tu script.js
+/** * Cierra el modal actual y abre el modal del escenario de destino.
+ * @param {number} idDestino El ID del escenario que se quiere mostrar.
+ */
+function simularClickEscenario(idDestino) {
+    document.getElementById('modal-detalle').style.display = 'none';
 
-// ----------------------------------------------------
-// FUNCIÓN PRINCIPAL DE RENDERIZADO Y LÓGICA
-// ----------------------------------------------------
-
-function actualizarBlackboard() {
-    // 1. Datos del grupo
-    nombreGrupoEl.textContent = dataGloomhaven.grupo;
-
-    // 2. Reputación y modificador
-    reputacionValEl.textContent = dataGloomhaven.reputacion > 0 ? `+${dataGloomhaven.reputacion}` : dataGloomhaven.reputacion;
-    reputacionModEl.textContent = `Modificador de precios: ${calcularModificador(dataGloomhaven.reputacion)}`;
-    reputacionValEl.className = dataGloomhaven.reputacion > 0 ? 'positivo' : (dataGloomhaven.reputacion < 0 ? 'negativo' : '');
+    const escenarioDestino = dataGloomhaven.escenarios.find(e => e.id === idDestino);
     
-    // 3. Prosperidad y Objetos
-    prosperidadEl.textContent = dataGloomhaven.prosperidadNivel;
-    objetosEl.textContent = dataGloomhaven.objetosDisponibles;
+    if (escenarioDestino) {
+        mostrarDetalleEscenario(escenarioDestino);
+    }
+}
 
-    // 4. Conteo de Escenarios Completados
-    const completados = dataGloomhaven.escenarios.filter(e => e.estado === 'completado').length;
-    completadosEl.textContent = completados;
 
-    // 5. Logros
-    logrosGrupalesEl.innerHTML = dataGloomhaven.logrosGrupales.map(l => `<span class="logro-item"><i class="fas fa-certificate"></i> ${l}</span>`).join('');
-    logrosGlobalesEl.innerHTML = dataGloomhaven.logrosGlobales.map(l => `<span class="logro-item"><i class="fas fa-globe"></i> ${l}</span>`).join('');
+/** Genera el contenido HTML del modal (Lógica con botones de navegación y estructura reordenada) */
+function crearDetalleEscenario(esc) {
+    const toUnorderedList = (items) => items && items.length > 0 ? items.map(item => `<li>${item}</li>`).join('') : "<li>Ninguno / No aplica</li>";
+    const toParagraphs = (textArray) => textArray && textArray.length > 0 ? textArray.map(p => `<p>${p}</p>`).join('') : "<p>No hay texto de historia para este escenario.</p>";
+    
+    // --- LÓGICA DE CONEXIONES ---
+    const nuevaUbicacionConexion = dataGloomhaven.conexiones.find(c => c.origen === esc.id);
+    const destinoId = nuevaUbicacionConexion?.destino;
+    
+    let nuevasUbicacionesTexto = esc.nuevasUbicaciones.length > 0 ? esc.nuevasUbicaciones.join(', ') : "Ninguna";
+    
+    // 1. Botón al escenario siguiente (Nuevas Ubicaciones)
+    if (destinoId !== undefined) {
+        const destinoEsc = dataGloomhaven.escenarios.find(e => e.id === destinoId);
+        if (destinoEsc) {
+            nuevasUbicacionesTexto = `
+                <button class="enlace-escenario-btn siguiente" onclick="simularClickEscenario(${destinoId})">
+                    ${nuevasUbicacionesTexto}
+                </button>
+            `;
+        }
+    }
+    
+    // 2. Enlace al escenario anterior
+    let enlaceAnteriorHtml = '';
+    const conexionAnterior = dataGloomhaven.conexiones.find(c => c.destino === esc.id);
+    if (conexionAnterior) {
+        const origenEsc = dataGloomhaven.escenarios.find(e => e.id === conexionAnterior.origen);
+        if (origenEsc) {
+            enlaceAnteriorHtml = `
+                <p><strong>Viene de:</strong>
+                    <button class="enlace-escenario-btn anterior" onclick="simularClickEscenario(${conexionAnterior.origen})">
+                        ${origenEsc.id === 0 ? origenEsc.nombre : `${String(origenEsc.id).padStart(3, '0')}: ${origenEsc.nombre}`}
+                    </button>
+                </p>
+            `;
+        }
+    }
+    
+    // --- LÓGICA CONDICIONAL PARA ESCENARIO 0 (INICIO DE CAMPAÑA - Conexiones/Recompensas simplificadas) ---
+    if (esc.id === 0) {
+        return `
+            ${toParagraphs(esc.textoEscenario)}
+            <hr>
+            <h3>CONEXIONES Y RECOMPENSAS:</h3>
+            <p><strong>Nuevas ubicaciones:</strong></p>
+            ${nuevasUbicacionesTexto} 
+            <p><strong>LOGROS:</strong></p>
+            <ul>${toUnorderedList(esc.logros)}</ul>
+        `;
+    }
+    // --- LÓGICA ESTÁNDAR PARA EL RESTO DE ESCENARIOS (ID > 0) ---
+    else {
+        // Generación del HTML de recompensas solo si hay recompensas definidas.
+        let recompensasHtml = '';
+        if (esc.recompensas && esc.recompensas.length > 0) {
+            recompensasHtml = `
+                <p><strong>RECOMPENSAS:</strong></p>
+                <ul>${toUnorderedList(esc.recompensas)}</ul>
+            `;
+        }
 
-    // 6. Mapa de Escenarios (Borrar y Redibujar)
+        return `
+            <p><strong>REQUISITOS:</strong> ${esc.requisitos}</p>
+            <p><strong>OBJETIVOS:</strong> ${esc.objetivos}</p>
+            <hr>
+            ${toParagraphs(esc.textoEscenario)}
+            <hr>
+            <h3>CONCLUSIÓN:</h3>
+            ${toParagraphs(esc.conclusion)}
+            <p><strong>LOGROS:</strong></p>
+            <ul>${toUnorderedList(esc.logros)}</ul>
+            
+            ${recompensasHtml} 
+
+            <hr>
+            <h3>CONEXIONES:</h3>
+            ${enlaceAnteriorHtml} 
+            <p><strong>Nuevas ubicaciones:</strong></p>
+            ${nuevasUbicacionesTexto}
+        `;
+    }
+}
+
+// ----------------------------------------------------
+// FUNCIONES DE RENDERIZADO (MAPA Y MODAL)
+// ----------------------------------------------------
+
+// ... (Todo el código de drawArrow SIN CAMBIOS) ...
+
+/** * Dibuja una línea simple entre los bordes de los elementos, aplicando un offset manual si es necesario.
+ * Evita el solapamiento de nodos y de líneas paralelas.
+ */
+function drawArrow(source, target, tipo, container, customOffset = 0) {
+    // 1. Obtener coordenadas y dimensiones
+    const sourceRect = source.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    // Coordenadas de los CENTROS (punto de referencia)
+    let cx1 = sourceRect.left + sourceRect.width / 2 - containerRect.left;
+    let cy1 = sourceRect.top + sourceRect.height / 2 - containerRect.top;
+    let cx2 = targetRect.left + targetRect.width / 2 - containerRect.left;
+    let cy2 = targetRect.top + targetRect.height / 2 - containerRect.top;
+
+    // Dimensiones de medio nodo para calcular el borde. (Nodos son 200px de ancho y ~60px de alto)
+    const HALF_WIDTH = 100;
+    const HALF_HEIGHT_ESTIMATE = 30; 
+    const ALIGNMENT_THRESHOLD = 5;
+
+    // 2. Aplicar el offset manual (para separar líneas paralelas)
+    let x1_offset = cx1;
+    let y1_offset = cy1;
+    let x2_offset = cx2;
+    let y2_offset = cy2;
+    
+    if (customOffset !== 0) {
+        const dx_abs = Math.abs(cx2 - cx1);
+
+        // Si la línea es casi vertical (mueve la línea horizontalmente)
+        if (dx_abs < ALIGNMENT_THRESHOLD) { 
+            x1_offset += customOffset;
+            x2_offset += customOffset;
+        } 
+        // Si es horizontal o diagonal (mueve la línea verticalmente)
+        else { 
+            y1_offset += customOffset;
+            y2_offset += customOffset;
+        }
+    }
+    
+    // 3. Recalcular la geometría de la línea (basada en el offset aplicado)
+    const dx = x2_offset - x1_offset;
+    const dy = y2_offset - y1_offset;
+    let centerDistance = Math.sqrt(dx * dx + dy * dy);
+    const angle = Math.atan2(dy, dx); // Ángulo en radianes
+
+    // 4. Calcular la distancia de INTERSECCIÓN con el borde del nodo
+    let intersectionDistance = 0;
+    
+    if (Math.abs(dx) < ALIGNMENT_THRESHOLD) { 
+        intersectionDistance = HALF_HEIGHT_ESTIMATE; // Vertical: Usa media altura
+    } 
+    else if (Math.abs(dy) < ALIGNMENT_THRESHOLD) {
+        intersectionDistance = HALF_WIDTH; // Horizontal: Usa medio ancho
+    }
+    else {
+        // En diagonales, usamos un promedio para reducir el solapamiento.
+        intersectionDistance = (HALF_WIDTH + HALF_HEIGHT_ESTIMATE) / 2;
+    }
+    
+    // 5. Ajustar la distancia y las coordenadas de inicio
+    
+    // La distancia total se reduce dos veces (origen y destino)
+    const reduction = intersectionDistance * 2;
+    const finalDistance = Math.max(0, centerDistance - reduction); 
+
+    // Mover el punto de inicio (x1, y1) desde el centro al borde del nodo
+    let x1 = x1_offset + Math.cos(angle) * intersectionDistance;
+    let y1 = y1_offset + Math.sin(angle) * intersectionDistance;
+    
+    // 6. Crear y dibujar la flecha
+    const arrow = document.createElement('div');
+    arrow.className = `arrow ${tipo}`;
+    
+    arrow.style.width = `${finalDistance}px`; 
+    arrow.style.left = `${x1}px`;
+    arrow.style.top = `${y1}px`;
+    arrow.style.transformOrigin = '0 0';
+    // Convertir a grados para CSS
+    arrow.style.transform = `rotate(${angle * 180 / Math.PI}deg)`; 
+    
+    container.appendChild(arrow);
+}
+
+
+function mostrarDetalleEscenario(escenario) {
+    const modal = document.getElementById('modal-detalle');
+    const titulo = document.getElementById('modal-titulo');
+    const cuerpo = document.getElementById('modal-cuerpo');
+
+    titulo.textContent = escenario.id === 0 ? escenario.nombre : `Escenario ${String(escenario.id).padStart(3, '0')}: ${escenario.nombre}`;
+    cuerpo.innerHTML = crearDetalleEscenario(escenario);
+    
+    modal.style.display = "block";
+}
+
+/** * NUEVA FUNCIÓN: Muestra el modal de datos de grupo.
+ */
+function mostrarDatosGrupoModal() {
+    document.getElementById('modal-datos-grupo').style.display = "block";
+}
+
+
+/** Actualiza el panel de resumen con el formato Base44 y renderiza el mapa. */
+function actualizarBlackboard() {
+    // 1. Actualiza Cabecera (AHORA EN EL MODAL DE DATOS)
+    document.getElementById('nombre-grupo').textContent = dataGloomhaven.grupo;
+    
+    // 2. Actualiza Tarjetas de Datos (AHORA EN EL MODAL DE DATOS)
+    const modPrecios = calcularModificador(dataGloomhaven.reputacion);
+    const colorMod = modPrecios < 0 ? 'green' : (modPrecios > 0 ? 'red' : 'white');
+
+    document.getElementById('prosperidad').textContent = `${dataGloomhaven.prosperidadNivel} + ${dataGloomhaven.prosperidadProgreso} / 5`;
+    
+    document.getElementById('reputacion-val').textContent = (dataGloomhaven.reputacion >= 0 ? '+' : '') + dataGloomhaven.reputacion;
+    document.getElementById('reputacion-mod').innerHTML = `Modificador de precios: <span style="color: ${colorMod};">${modPrecios}</span>`;
+    
+    document.getElementById('objetos-disponibles').textContent = dataGloomhaven.objetosDisponibles;
+
+    // 3. Actualiza Logros (AHORA EN EL MODAL DE DATOS)
+    const createLogroTags = (items, tipo) => items.map(item => `<span class="logro-tag ${tipo}">${item}</span>`).join('');
+    
+    document.getElementById('logros-grupales').innerHTML = createLogroTags(dataGloomhaven.logrosGrupales, 'grupal');
+    document.getElementById('logros-globales').innerHTML = createLogroTags(dataGloomhaven.logrosGlobales, 'global');
+
+    // 4. Renderiza el Mapa de Escenarios (SIN CAMBIOS)
+    const contMapa = document.getElementById('mapa-escenarios');
     contMapa.innerHTML = ''; 
     
     dataGloomhaven.escenarios.forEach(esc => {
-        // ... (Aquí va la creación de los nodos div) ...
         const div = document.createElement('div');
         div.className = `escenario ${esc.estado}`;
         div.id = `escenario-${esc.id}`; 
@@ -143,50 +372,39 @@ function actualizarBlackboard() {
         contMapa.appendChild(div);
     });
     
-    // 7. Renderiza las Líneas de Conexión
+    // 5. Renderiza las Líneas de Conexión (SIN CAMBIOS)
     dataGloomhaven.conexiones.forEach(conn => {
         const sourceDiv = document.getElementById(`escenario-${conn.origen}`);
         const targetDiv = document.getElementById(`escenario-${conn.destino}`);
         
         if (sourceDiv && targetDiv) {
+            // Pasamos conn.offset o 0 por defecto
             drawArrow(sourceDiv, targetDiv, conn.tipo, contMapa, conn.offset || 0);
         }
     });
 
-    // 8. Configurar el cierre del modal de detalle (EXISTENTE)
-    const spanCloseDetalle = document.querySelector('#modal-detalle .cerrar-modal');
-    if (spanCloseDetalle) {
-        spanCloseDetalle.onclick = () => { modalDetalle.style.display = 'none'; };
+    // 6. Configurar el cierre del modal de DETALLE (Original)
+    const modalDetalle = document.getElementById('modal-detalle');
+    const spanCloseDetalle = modalDetalle.querySelector('.cerrar-modal');
+    spanCloseDetalle.onclick = () => modalDetalle.style.display = "none";
+    
+    // 7. Configurar la LÓGICA del nuevo modal de DATOS DE GRUPO
+    const modalDatos = document.getElementById('modal-datos-grupo');
+    const btnAbrirDatos = document.getElementById('btn-abrir-datos');
+    const spanCloseDatos = modalDatos.querySelector('.cerrar-modal');
+    
+    btnAbrirDatos.addEventListener('click', mostrarDatosGrupoModal);
+    spanCloseDatos.onclick = () => modalDatos.style.display = "none";
+    
+    // 8. Configurar el cierre global al hacer click fuera
+    window.onclick = (event) => { 
+        if (event.target === modalDetalle) {
+            modalDetalle.style.display = "none";
+        }
+        if (event.target === modalDatos) {
+            modalDatos.style.display = "none";
+        }
     }
 }
 
-// ----------------------------------------------------
-// LÓGICA DE APERTURA/CIERRE DEL NUEVO MODAL BLACKBOARD
-// ----------------------------------------------------
-
-if (btnAbrirBlackboard) {
-    btnAbrirBlackboard.addEventListener('click', () => {
-        modalBlackboard.style.display = 'block';
-    });
-}
-
-if (btnCerrarBlackboard) {
-    btnCerrarBlackboard.addEventListener('click', () => {
-        modalBlackboard.style.display = 'none';
-    });
-}
-
-// Cierra cualquier modal si se hace clic fuera de él
-window.addEventListener('click', (event) => {
-    if (event.target === modalBlackboard) {
-        modalBlackboard.style.display = 'none';
-    }
-    if (event.target === modalDetalle) {
-        modalDetalle.style.display = 'none';
-    }
-});
-
-// Inicialización
-
-actualizarBlackboard();
-
+document.addEventListener('DOMContentLoaded', actualizarBlackboard);
