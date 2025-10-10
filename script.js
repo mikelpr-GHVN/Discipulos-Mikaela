@@ -319,7 +319,7 @@ function mostrarDetalleEscenario(escenario) {
     const titulo = document.getElementById('modal-titulo');
     const cuerpo = document.getElementById('modal-cuerpo');
 
-    titulo.textContent = escenario.id === 0 ? escenario.nombre : `Escenario ${String(escenario.id).padStart(3, '0')}: ${escenario.nombre}`;
+    titulo.textContent = escenario.id === 0 ? escenario.nombre : ` ${String(escenario.id).padStart(0, '0')}: ${escenario.nombre}`;
     cuerpo.innerHTML = crearDetalleEscenario(escenario);
     
     modal.style.display = "block";
@@ -365,7 +365,7 @@ function actualizarBlackboard() {
         div.dataset.mision = esc.id;
         
         // Muestra el ID para los escenarios > 0
-        div.innerHTML = esc.id === 0 ? esc.nombre : `<strong>${String(esc.id).padStart(3, '0')}</strong>${esc.nombre}`;
+        div.innerHTML = esc.id === 0 ? esc.nombre : `<strong>${String(esc.id).padStart(0, '0')}</strong>${esc.nombre}`;
         div.style.top = esc.map_pos.top;
         div.style.left = esc.map_pos.left;
         div.addEventListener('click', () => mostrarDetalleEscenario(esc));
