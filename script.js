@@ -73,13 +73,13 @@ const dataGloomhaven = {
             nuevasUbicaciones: ["Guarida del túmulo (2)"] 
         },
 
-        // ID 2: GUARIDA DEL TÚMULO (NUEVO)
+        // ID 2: GUARIDA DEL TÚMULO (EXISTENTE)
         {
             id: 2, 
             nombre: "Guarida del Túmulo", 
             estado: "completado", 
-            map_pos: { top: '150px', left: '680px' }, // A la derecha del escenario 1
-            vieneDe: "Túmulo Negro (1)", // Esto se autogenerará con el enlace anterior, pero es útil tenerlo
+            map_pos: { top: '150px', left: '700px' }, // A la derecha del escenario 1
+            vieneDe: "Túmulo Negro (1)", 
             requisitos: "Primeros pasos (Grupo) COMPLETO", 
             objetivos: "Matar al Capitán bandido y a todos los enemigos revelados.", 
             textoEscenario: [
@@ -97,14 +97,16 @@ const dataGloomhaven = {
             ], 
             recompensas: ["10 de oro para cada personaje", "+1 de prosperidad"], 
             logros: [], 
+            // ¡IMPORTANTE! Se mantiene la lista de ubicaciones de texto, ahora con dos salidas
             nuevasUbicaciones: ["Campamento inx (3)", "Cripta de los Malditos (4)"] 
         },
-        // ID 3: CAMPAMENTO INOX (NUEVO)
+
+        // ID 3: CAMPAMENTO INOX (EXISTENTE)
         {
             id: 3, 
             nombre: "Campamento Inox", 
             estado: "completado", 
-            map_pos: { top: '150px', left: '1000px' }, // A la derecha del escenario 2
+            map_pos: { top: '150px', left: '1000px' }, 
             vieneDe: "Guarida del Túmulo (2)",
             requisitos: "La comerciante huye (Global) INCOMPLETO", 
             objetivos: "Matar a un número de enemigos igual al número de personajes por cinco.", 
@@ -127,12 +129,30 @@ const dataGloomhaven = {
             logros: ["Los planes de Jekserah (Grupo)"], 
             nuevasUbicaciones: ["Almacén de Gloomhaven (8)", "Mina de diamantes (9)"] 
         },
+
+        // ID 4: CRIPTA DE LOS MALDITOS (AÑADIDO - Placeholder)
+        { 
+            id: 4, 
+            nombre: "Cripta de los Malditos", 
+            estado: "completado", 
+            map_pos: { top: '250px', left: '700px' }, // Colocado a la derecha del Escenario 3
+            vieneDe: "Guarida del Túmulo (2)",
+            requisitos: "Desconocido (Logro X)",
+            objetivos: "Objetivo de la Misión 4",
+            textoEscenario: ["Descripción de la Misión 4. En el futuro, añade aquí el texto del escenario real."],
+            conclusion: ["Conclusión de la Misión 4."],
+            recompensas: ["Recompensa de la Misión 4"],
+            logros: [], 
+            nuevasUbicaciones: ["Otra ubicación (5)"] 
+        },
     ],
-    // Conexiones: Verde (tipo 'alternativa') de Inicio a Túmulo Negro (1) y de 1 a 2
+    // Conexiones: Ahora incluye el enlace doble desde el escenario 2 con offset
     conexiones: [
-        { origen: 0, destino: 1, tipo: 'alternativa', offset: 10 }, 
+        { origen: 0, destino: 1, tipo: 'alternativa', offset: 0 }, 
         { origen: 1, destino: 2, tipo: 'alternativa', offset: 0 }, 
-        { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 },
+        // NUEVAS CONEXIONES MÚLTIPLES DESDE EL ESCENARIO 2
+        { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 }, // Con 15px de offset
+        { origen: 2, destino: 4, tipo: 'alternativa', offset: 0 }, // Con -15px de offset
     ]
 };
 
@@ -175,23 +195,32 @@ function crearDetalleEscenario(esc) {
     const toParagraphs = (textArray) => textArray && textArray.length > 0 ? textArray.map(p => `<p>${p}</p>`).join('') : "<p>No hay texto de historia para este escenario.</p>";
     
     // --- LÓGICA DE CONEXIONES ---
-    const nuevaUbicacionConexion = dataGloomhaven.conexiones.find(c => c.origen === esc.id);
-    const destinoId = nuevaUbicacionConexion?.destino;
     
-    let nuevasUbicacionesTexto = esc.nuevasUbicaciones.length > 0 ? esc.nuevasUbicaciones.join(', ') : "Ninguna";
+    // CAMBIO CLAVE: Usa filter para obtener todas las conexiones salientes
+    const conexionesSalientes = dataGloomhaven.conexiones.filter(c => c.origen === esc.id);
     
-    // 1. Botón al escenario siguiente (Nuevas Ubicaciones)
-    if (destinoId !== undefined) {
-        const destinoEsc = dataGloomhaven.escenarios.find(e => e.id === destinoId);
-        if (destinoEsc) {
-            nuevasUbicacionesTexto = `
+    let nuevasUbicacionesHtml = ''; 
+    
+    if (conexionesSalientes.length > 0) {
+        // Itera sobre todas las conexiones salientes para crear un botón por cada una
+        conexionesSalientes.forEach((conn, index) => {
+            const destinoId = conn.destino;
+            // Usa el texto del array nuevasUbicaciones, que debe coincidir con el orden de las conexiones
+            const ubicacionTexto = esc.nuevasUbicaciones[index] || `Escenario ${destinoId} (Ubicación no etiquetada)`; 
+            
+            nuevasUbicacionesHtml += `
                 <button class="enlace-escenario-btn siguiente" onclick="simularClickEscenario(${destinoId})">
-                    ${nuevasUbicacionesTexto}
+                    ${ubicacionTexto}
                 </button>
             `;
-        }
+        });
+    } else {
+        // Si no hay conexiones, muestra el texto simple o "Ninguna"
+        nuevasUbicacionesHtml = esc.nuevasUbicaciones.length > 0 
+            ? `<p>${esc.nuevasUbicaciones.join(', ')}</p>` 
+            : "<p>Ninguna</p>";
     }
-    
+
     // 2. Enlace al escenario anterior
     let enlaceAnteriorHtml = '';
     const conexionAnterior = dataGloomhaven.conexiones.find(c => c.destino === esc.id);
@@ -215,7 +244,7 @@ function crearDetalleEscenario(esc) {
             <hr>
             <h3>CONEXIONES Y RECOMPENSAS:</h3>
             <p><strong>Nuevas ubicaciones:</strong></p>
-            ${nuevasUbicacionesTexto} 
+            ${nuevasUbicacionesHtml} 
             <p><strong>LOGROS:</strong></p>
             <ul>${toUnorderedList(esc.logros)}</ul>
         `;
@@ -248,7 +277,7 @@ function crearDetalleEscenario(esc) {
             <h3>CONEXIONES:</h3>
             ${enlaceAnteriorHtml} 
             <p><strong>Nuevas ubicaciones:</strong></p>
-            ${nuevasUbicacionesTexto}
+            ${nuevasUbicacionesHtml}
         `;
     }
 }
