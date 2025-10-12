@@ -1,5 +1,8 @@
-// Archivo: script.js - VERSIÓN COMPLETA Y ESTABLE (CON DATOS DE CAMPAÑA Y TODAS LAS FUNCIONES)
-// ... (Todo el objeto dataGloomhaven SIN CAMBIOS) ...
+// Archivo: script.js - VERSIÓN FINAL CON AJUSTE DE PUNTA DE FLECHA
+
+// ----------------------------------------------------
+// OBJETO CENTRAL DE DATOS: ¡MODIFICA ESTOS VALORES!
+// ----------------------------------------------------
 
 const dataGloomhaven = {
     // Datos Principales
@@ -62,9 +65,9 @@ const dataGloomhaven = {
             textoEscenario: [
                 "Resulta bastante sencillo encontrar la colina. A solo un paseo de la Puerta del Mercado Nuevo ya puede verse sobresaliendo de las lindes del Soto Cadáver, como si de una rata bajo una alfombra se tratase. Cuando os acercáis, os percatáis de que el montículo está formado por tierra negra. La pequeña puerta cubierta de maleza da paso a unas desgastadas escaleras de piedra que llevan a la oscuridad. A medida que descendéis por las escaleras, percibís agradecidos una luz que emana desde abajo. Por desgracia, esa luz viene acompañada del inconfundible hedor a muerte. Cuando llegáis a los últimos escalones, os preguntáis qué clase de ladrones levantarían su campamento en tan horrible lugar. Y no tardáis en encontrar la respuesta: un rudo grupo de asesinos que no parecen haberse tomado bien vuestra repentina aparición. Uno de los ladrones que se encuentra en la parte trasera coincide con la descripción del que buscáis. —Encargaos de estos desgraciados —dice mientras retrocede hasta una salida de la cámara—. Apenas conseguís distinguir su silueta mientras se dirige hacia un pasillo y sale por una puerta a su izquierda. —Bien, no todos los días te encuentras con gente tan estúpida como para darte personalmente sus objetos de valor —sonríe uno de los más grandes mientras desenvaina una espada oxidada—. Ahora, os mataremos. Vaya sorpresa se van a llevar. Si tuvierais algo de valor, posiblemente no estaríais aquí abajo."
             ], 
-            conclusion: [ // <<-- ¡AHORA ES UN ARRAY!
+            conclusion: [ 
                 "Con el último de los bandidos muerto, os tomáis un momento para recuperar el aliento y quitaos de la cabeza la visión de los cadáveres vivientes desgarrándoos la piel. Vuestra presa no se encuentra entre los muertos. Os estremecéis solo con pensar en los horrores que os esperan abajo en las catacumbas."
-            ], // <<-- CIERRE DEL ARRAY
+            ], 
             recompensas: [], 
             logros: ["Primeros pasos (Grupo)"], 
             nuevasUbicaciones: ["Guarida del túmulo (2)"] 
@@ -74,8 +77,8 @@ const dataGloomhaven = {
         {
             id: 2, 
             nombre: "Guarida del Túmulo", 
-            estado: "completado", // O 'completado' si ya lo has jugado
-            map_pos: { top: '150px', left: '650px' }, // A la derecha del escenario 1
+            estado: "completado", 
+            map_pos: { top: '150px', left: '680px' }, // A la derecha del escenario 1
             vieneDe: "Túmulo Negro (1)", // Esto se autogenerará con el enlace anterior, pero es útil tenerlo
             requisitos: "Primeros pasos (Grupo) COMPLETO", 
             objetivos: "Matar al Capitán bandido y a todos los enemigos revelados.", 
@@ -91,22 +94,50 @@ const dataGloomhaven = {
                 "—¿Sabéis qué? —os susurra ella entre el bullicio de la taberna—. Si estáis interesados, puede que tenga otro trabajo para vosotros. Una tribu de inox ha saqueado algunas de mis caravanas en el Bosque de las Dagas cuando se dirigían a la capital. He informado a la milicia, pero no han hecho nada —dice con desprecio—. Os puedo indicar la dirección de su campamento. Si les dais una lección, os pagaré aún más.",
                 "Pone un tosco mapa del bosque sobre la mesa y se levanta, con las joyas tintineando a cada uno de sus movimientos.",
                 "—Venid a verme cuando hayáis terminado."
-            ], // <<<< ESTE CIERRE DE ARRAY ES AHORA CORRECTO
+            ], 
             recompensas: ["10 de oro para cada personaje", "+1 de prosperidad"], 
-// ...
-            logros: [], // No se especifican logros en la imagen, así que lo dejamos vacío
+            logros: [], 
             nuevasUbicaciones: ["Campamento inx (3)", "Cripta de los Malditos (4)"] 
+        },
+        // ID 3: CAMPAMENTO INOX (NUEVO)
+        {
+            id: 3, 
+            nombre: "Campamento Inox", 
+            estado: "completado", 
+            map_pos: { top: '150px', left: '1000px' }, // A la derecha del escenario 2
+            vieneDe: "Guarida del Túmulo (2)",
+            requisitos: "La comerciante huye (Global) INCOMPLETO", 
+            objetivos: "Matar a un número de enemigos igual al número de personajes por cinco.", 
+            textoEscenario: [
+                "Así que esta comerciante quiere darles una lección a unos asaltantes de caravanas. Parece bastante razonable. Aunque, por la cantidad adecuada de dinero, casi cualquier cosa parece razonable.",
+                "Os adentráis en el Bosque de las Dagas y empezáis a rastrear el campamento haciendo uso del tosco mapa de Jekserah. Está bien escondido, pero, siguiendo las indicaciones señaladas en el pergamino, os topáis con una densa agrupación de chozas en un pequeño claro del bosque. Sólo falta entrar y darles una lección, así servirán de ejemplo para futuros asaltantes."
+            ], 
+            conclusion: [
+                "Mientras corréis por el bosque, huyendo del olor a carne quemada, tenéis el tiempo suficiente para reflexionar sobre vuestras acciones.",
+                "No os cabe duda de que vuestros remordimientos se ven reflejados en vuestros rostros cuando os reunís con Jekserah, esta vez en su mansión. Con el ceño fruncido, os da un saco de monedas.",
+                "—Eran ladrones y asesinos —dice mientras mira fijamente—. Se merecían lo que les habéis hecho. Y no habláis más sobre este tema. Tengo una tarea más que me gustaría que llevarais a cabo. Necesito un diamante de tamaño considerable para un cliente, pero no logro encontrar ninguno aquí en la ciudad. Hay murmullos de diamantes, pero se encuentra en las montañas del sur, perdida en el bosque. He oído que la han invadido los Inoxes con alguna fuerza más inteligente orquestándolos, eso sin duda. Si conseguís llegar y traerme el diamante más grande que encontréis, os daré una notable recompensa. (9)",
+                "Dos enormes guardias espaldas Inox de Jekserah se acercan y os indican que abandonéis la mansión.",
+                "—Ahora, dejadme sola.",
+                "Fuera, mientras reflexionáis sobre vuestra nueva misión, oís una voz tras vosotros.",
+                "—¿Sabéis que lo que busca no son beneficios, ¿verdad?",
+                "Os dais la vuelta y veis salir a una hembra Quatryl del callejón trasero de la casa de Jekserah. Lleva puesta una armadura de cuero oscuro y sostiene un artilugio llamativo lleno de engranajes zumbando, coronado por una pieza de metal cónica conectada a un tubo.",
+                "—Argeise, guardia de la ciudad —se presenta ella—. Lo sé, no lo parezco, pero si hay alguien que no es lo que parece, es la Valrath con la que habéis estado tratando. Es cierto que es una comerciante, pero está tramando algo mucho más siniestro. Desde que llegué aquí, está intentando derrocar a los militares y tenemos mucha curiosidad por saber qué está maquinando. Mirad, podéis cumplir sus órdenes como buenos cachorritos si eso es lo que queréis, pero si lo que realmente pretendéis es ayudar a esta ciudad a mantener la paz y a que no nos invadan los salvajes, tengo una idea mejor. Lleguemos al fondo de los planes de Jekserah y averigüemos quién es en realidad. (8)"
+            ], 
+            recompensas: ["15 de oro para cada personaje", "+1 de prosperidad"],
+            logros: ["Los planes de Jekserah (Grupo)"], 
+            nuevasUbicaciones: ["Almacén de Gloomhaven (8)", "Mina de diamantes (9)"] 
         },
     ],
     // Conexiones: Verde (tipo 'alternativa') de Inicio a Túmulo Negro (1) y de 1 a 2
     conexiones: [
         { origen: 0, destino: 1, tipo: 'alternativa', offset: 10 }, 
-        { origen: 1, destino: 2, tipo: 'alternativa', offset: 0 }, // Nueva conexión: 1 a 2, flecha verde. Offset 0 por ahora.
+        { origen: 1, destino: 2, tipo: 'alternativa', offset: 0 }, 
+        { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 },
     ]
 };
 
 // ----------------------------------------------------
-// FUNCIONES DE PLANTILLA Y CÁLCULO (SIN CAMBIOS)
+// FUNCIONES DE PLANTILLA Y CÁLCULO
 // ----------------------------------------------------
 
 /** Calcula el modificador de precios de la tienda basado en la reputación. */
@@ -170,7 +201,7 @@ function crearDetalleEscenario(esc) {
             enlaceAnteriorHtml = `
                 <p><strong>Viene de:</strong>
                     <button class="enlace-escenario-btn anterior" onclick="simularClickEscenario(${conexionAnterior.origen})">
-                        ${origenEsc.id === 0 ? origenEsc.nombre : `${String(origenEsc.id).padStart(3, '0')}: ${origenEsc.nombre}`}
+                        ${origenEsc.id === 0 ? origenEsc.nombre : `${String(origenEsc.id).padStart(0, '0')}: ${origenEsc.nombre}`}
                     </button>
                 </p>
             `;
@@ -226,10 +257,8 @@ function crearDetalleEscenario(esc) {
 // FUNCIONES DE RENDERIZADO (MAPA Y MODAL)
 // ----------------------------------------------------
 
-// ... (Todo el código de drawArrow SIN CAMBIOS) ...
-
 /** * Dibuja una línea simple entre los bordes de los elementos, aplicando un offset manual si es necesario.
- * Evita el solapamiento de nodos y de líneas paralelas.
+ * Incluye lógica para acortar la línea y dejar espacio para la punta de flecha.
  */
 function drawArrow(source, target, tipo, container, customOffset = 0) {
     // 1. Obtener coordenadas y dimensiones
@@ -291,8 +320,14 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
     
     // 5. Ajustar la distancia y las coordenadas de inicio
     
-    // La distancia total se reduce dos veces (origen y destino)
-    const reduction = intersectionDistance * 2;
+    // -> MODIFICACIÓN CLAVE PARA PUNTA DE FLECHA:
+    // Distancia necesaria para la punta de flecha (7px de largo + 1px de margen)
+    const ARROW_HEAD_SPACE = 18; 
+    
+    // La distancia total se reduce: (Inicio) + (Destino) + (Espacio para la punta)
+    const reduction = intersectionDistance + intersectionDistance + ARROW_HEAD_SPACE; // <-- LÍNEA CLAVE MODIFICADA
+    
+    // La distancia final es la distancia entre centros menos la reducción total
     const finalDistance = Math.max(0, centerDistance - reduction); 
 
     // Mover el punto de inicio (x1, y1) desde el centro al borde del nodo
@@ -319,14 +354,16 @@ function mostrarDetalleEscenario(escenario) {
     const titulo = document.getElementById('modal-titulo');
     const cuerpo = document.getElementById('modal-cuerpo');
 
-    titulo.textContent = escenario.id === 0 ? escenario.nombre : ` ${String(escenario.id).padStart(0, '0')}: ${escenario.nombre}`;
+    // Título del modal: "Escenario 001: Nombre del Escenario"
+    titulo.textContent = escenario.id === 0 
+        ? escenario.nombre 
+        : `Escenario ${String(escenario.id).padStart(0, '0')}: ${escenario.nombre}`;
     cuerpo.innerHTML = crearDetalleEscenario(escenario);
     
     modal.style.display = "block";
 }
 
-/** * NUEVA FUNCIÓN: Muestra el modal de datos de grupo.
- */
+/** NUEVA FUNCIÓN: Muestra el modal de datos de grupo. */
 function mostrarDatosGrupoModal() {
     document.getElementById('modal-datos-grupo').style.display = "block";
 }
@@ -354,7 +391,7 @@ function actualizarBlackboard() {
     document.getElementById('logros-grupales').innerHTML = createLogroTags(dataGloomhaven.logrosGrupales, 'grupal');
     document.getElementById('logros-globales').innerHTML = createLogroTags(dataGloomhaven.logrosGlobales, 'global');
 
-    // 4. Renderiza el Mapa de Escenarios (SIN CAMBIOS)
+    // 4. Renderiza el Mapa de Escenarios
     const contMapa = document.getElementById('mapa-escenarios');
     contMapa.innerHTML = ''; 
     
@@ -364,7 +401,7 @@ function actualizarBlackboard() {
         div.id = `escenario-${esc.id}`; 
         div.dataset.mision = esc.id;
         
-        // Muestra el ID para los escenarios > 0
+        // Muestra el ID para los escenarios > 0: **001**Nombre
         div.innerHTML = esc.id === 0 ? esc.nombre : `<strong>${String(esc.id).padStart(0, '0')}</strong>${esc.nombre}`;
         div.style.top = esc.map_pos.top;
         div.style.left = esc.map_pos.left;
@@ -372,7 +409,7 @@ function actualizarBlackboard() {
         contMapa.appendChild(div);
     });
     
-    // 5. Renderiza las Líneas de Conexión (SIN CAMBIOS)
+    // 5. Renderiza las Líneas de Conexión
     dataGloomhaven.conexiones.forEach(conn => {
         const sourceDiv = document.getElementById(`escenario-${conn.origen}`);
         const targetDiv = document.getElementById(`escenario-${conn.destino}`);

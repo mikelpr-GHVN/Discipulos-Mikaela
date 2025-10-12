@@ -1,4 +1,4 @@
-/* Archivo: style.css - Nuevo Estilo Base44 (MODIFICADO) */
+/* Archivo: style.css - CON PUNTA DE FLECHA Y SCROLL HORIZONTAL */
 
 /* ----------------------------------------------------
    VARIABLES Y FUENTES (SIN CAMBIOS)
@@ -29,17 +29,15 @@ body {
 }
 
 /* ----------------------------------------------------
-   LAYOUT GENERAL (MODIFICADO)
+   LAYOUT GENERAL
    ---------------------------------------------------- */
 
 .blackboard-container {
     display: flex;
     width: 100%;
     max-width: 1500px;
-    /* Eliminamos el gap ya que solo queda un elemento */
 }
 
-/* Título de la Campaña - AHORA DENTRO DEL MODAL DE DATOS */
 .header {
     margin-bottom: 20px;
 }
@@ -57,24 +55,21 @@ body {
 }
 
 /* ----------------------------------------------------
-   COLUMNA IZQUIERDA (RESUMEN) - AHORA ESTILADO PARA MODAL
+   ESTILOS DE LA COLUMNA RESUMEN (AHORA PARA EL MODAL)
    ---------------------------------------------------- */
 
-/* Mantener el ancho del resumen para que el modal se vea bien */
 .resumen-columna { 
     flex: 0 0 450px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-/* Eliminar padding y sombra cuando está dentro del modal */
 .modal-resumen .data-card, .modal-resumen .logro-section {
     padding: 0;
     box-shadow: none;
-    background-color: transparent; /* Fondo transparente */
+    background-color: transparent;
 }
 
-/* Tarjeta de Datos (Prosperidad, Reputación, Objetos) - RESTO SIN CAMBIOS */
 .data-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -94,7 +89,7 @@ body {
 
 .data-item strong {
     display: block;
-    font-size: 1em;
+    font-size: 1em; /* Ajustado a 1em, el tamaño original era 1.4em */
     margin-top: 5px;
     line-height: 1.1;
 }
@@ -110,7 +105,6 @@ body {
     font-weight: bold;
 }
 
-/* Tarjetas de Logros - RESTO SIN CAMBIOS */
 .logro-section h2 {
     font-size: 1.4em;
     color: var(--color-accent-orange);
@@ -145,24 +139,22 @@ body {
 }
 
 /* ----------------------------------------------------
-   COLUMNA DERECHA (MAPA) - MODIFICADO PARA OCUPAR TODO EL ANCHO
+   COLUMNA DERECHA (MAPA) - ANCHO COMPLETO Y SCROLL HORIZONTAL
    ---------------------------------------------------- */
 
 .mapa-columna {
     flex-grow: 1;
-    /* flex: 1 1 100%; para asegurar que tome el 100% del contenedor */
-    width: 100%; /* Asegurar que toma el ancho máximo del contenedor padre */
+    width: 100%; 
     position: relative;
     background-color: var(--color-bg-card);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     padding: 25px;
     min-height: 1000px; 
-    overflow-x: auto; /* Permite el desplazamiento horizontal cuando el contenido es más ancho */
-    overflow-y: hidden; /* Opcional: evita un scroll vertical extra */ 
+    overflow-x: auto; /* Permite el desplazamiento horizontal en móviles */
+    overflow-y: hidden;
 }
 
-/* Encabezado del mapa para alinear título y botón */
 .mapa-header {
     display: flex;
     justify-content: space-between;
@@ -172,7 +164,6 @@ body {
     margin: 0 0 20px 0;
 }
 
-/* Estilo para el nuevo botón de datos de grupo */
 .btn-datos-grupo {
     background-color: var(--color-accent-blue);
     color: white;
@@ -180,7 +171,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.6em; /* Escalar el tamaño respecto al h2 */
+    font-size: 0.6em;
     font-weight: bold;
     transition: background-color 0.2s;
 }
@@ -191,13 +182,13 @@ body {
 
 #mapa-escenarios {
     position: relative;
-    width: 1400px; /* Un ancho suficiente para el mapa completo, forzando el scroll en móviles */
+    width: 1400px; /* ANCHO FIJO PARA FORZAR EL SCROLL */
     height: 100%;
-    min-height: 950px; /* Mantiene una altura mínima para el contenedor del mapa */
+    min-height: 950px; 
 }
 
 /* ----------------------------------------------------
-   ESTILOS DE LOS NODOS, CONEXIONES (SIN CAMBIOS)
+   ESTILOS DE LOS NODOS Y CONEXIONES (PUNTA DE FLECHA AÑADIDA)
    ---------------------------------------------------- */
    
 .escenario {
@@ -225,7 +216,6 @@ body {
     margin-bottom: 3px;
 }
 
-/* Estados */
 .escenario.completado {
     background-color: #2ecc71;
     border: 2px solid #27ae60;
@@ -243,30 +233,51 @@ body {
     color: var(--color-text-light);
 }
 
-/* Conexiones */
+/* Estilos de la Línea Base */
 .arrow {
     position: absolute;
     height: 3px;
-    border-radius: 5px;
+    border-radius: 0; /* Aseguramos que no haya border-radius en el extremo */
     transform-origin: 0 50%;
     z-index: 10;
+    position: absolute; 
 }
 
+/* Estilos de la Punta de Flecha (Triángulo) */
+.arrow::after {
+    content: '';
+    position: absolute;
+    left: 100%; /* Coloca la punta al final del segmento de línea acortado */
+    top: -3.5px; /* Centrado verticalmente (línea de 3px, triángulo de 10px) */
+    width: 0;
+    height: 0;
+    
+    /* Forma del triángulo: 7px de largo y 10px de ancho */
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid currentColor; /* Usa el color del texto del padre (la línea) */
+    z-index: 11;
+}
+
+/* Clases para Color y Estilo (Ahora con propiedad 'color' para la punta) */
 .arrow.principal {
     background-color: var(--color-accent-blue);
+    color: var(--color-accent-blue); 
 }
 
 .arrow.alternativa {
     background-color: #2ecc71;
+    color: #2ecc71;
 }
 
 .arrow.bloqueada {
     background-color: #e74c3c;
     border-style: dashed;
+    color: #e74c3c; 
 }
 
 /* ----------------------------------------------------
-   ESTILOS DEL MODAL (POP-UP) - MODIFICADO PARA EL MODAL DE DATOS
+   ESTILOS DEL MODAL (POP-UP)
    ---------------------------------------------------- */
 
 .modal {
@@ -287,12 +298,11 @@ body {
     padding: 30px;
     border: 1px solid #4a6480;
     width: 90%;
-    max-width: 800px; /* Estándar para el modal de detalle */
+    max-width: 800px; 
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Estilo específico para el modal de datos de grupo, que es más pequeño */
 .modal-datos-grupo-contenido {
     max-width: 500px; 
 }
@@ -337,7 +347,7 @@ body {
     cursor: pointer;
 }
 
-/* ESTILOS DE BOTONES DE NAVEGACIÓN EN MODAL (SIN CAMBIOS) */
+/* ESTILOS DE BOTONES DE NAVEGACIÓN EN MODAL */
 
 .enlace-escenario-btn {
     background-color: #3498db;
