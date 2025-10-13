@@ -38,7 +38,7 @@ const dataGloomhaven = {
             id: 0, 
             nombre: "GLOOMHAVEN: Inicio de campaña", 
             estado: "inicial", 
-            map_pos: { top: '50px', left: '400px' },
+            map_pos: { row: 0, col: 1 },
             vieneDe: "Ninguno (Inicio de Campaña)",
             requisitos: "Ninguno",
             objetivos: "Localizar a un ladrón y recuperar unos documentos robados por encargo de Jekserah.",
@@ -58,7 +58,7 @@ const dataGloomhaven = {
             id: 1, 
             nombre: "Túmulo Negro", 
             estado: "completado", 
-            map_pos: { top: '150px', left: '400px' }, 
+            map_pos: { row: 1, col: 1 }, 
             vieneDe: "GLOOMHAVEN: Inicio de campaña (0)",
             requisitos: "Ninguno", 
             objetivos: "Matar a todos los enemigos.", 
@@ -78,8 +78,8 @@ const dataGloomhaven = {
             id: 2, 
             nombre: "Guarida del Túmulo", 
             estado: "completado", 
-            map_pos: { top: '150px', left: '700px' }, // A la derecha del escenario 1
-            vieneDe: "Túmulo Negro (1)", 
+            map_pos: { row: 1, col: 2 },
+            vieneDe: "Túmulo Negro", 
             requisitos: "Primeros pasos (Grupo) COMPLETO", 
             objetivos: "Matar al Capitán bandido y a todos los enemigos revelados.", 
             textoEscenario: [
@@ -106,7 +106,7 @@ const dataGloomhaven = {
             id: 3, 
             nombre: "Campamento Inox", 
             estado: "completado", 
-            map_pos: { top: '150px', left: '1000px' }, 
+            map_pos: { row: 1, col: 3 }, 
             vieneDe: "Guarida del Túmulo (2)",
             requisitos: "La comerciante huye (Global) INCOMPLETO", 
             objetivos: "Matar a un número de enemigos igual al número de personajes por cinco.", 
@@ -135,7 +135,7 @@ const dataGloomhaven = {
             id: 4, 
             nombre: "Cripta de los Malditos", 
             estado: "completado", 
-            map_pos: { top: '250px', left: '700px' }, // Colocado a la derecha del Escenario 3
+            map_pos: { row: 2, col: 2 },
             vieneDe: "Guarida del Túmulo (2)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos.",
@@ -156,15 +156,30 @@ const dataGloomhaven = {
             id: 82, 
             nombre: "Montaña ardiente", // Nombre temporal
             estado: "pendiente", 
-            map_pos: { top: '250px', left: '400px' }, 
+            map_pos: { row: 2, col: 1 },
             vieneDe: "Cripta de los Malditos (4)",
-            requisitos: "Desconocido",
+            requisitos: "Ninguno",
             objetivos: "Desconocido",
-            textoEscenario: ["Información del Escenario 82."],
-            conclusion: ["Conclusión del Escenario 82."],
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
             recompensas: [],
-            logros: [], 
-            nuevasUbicaciones: [] 
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
+        // ID 65: NUEVO ESCENARIO 
+        { 
+            id: 65, 
+            nombre: "Mina de azufre", 
+            estado: "pendiente", 
+            map_pos: { row: 1, col: 0 },
+            vieneDe: "Túmulo Negro (1)",
+            requisitos: "Ninguno",
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
         },
     ],
     // Conexiones: Ahora incluye el enlace doble desde el escenario 2 con offset
@@ -174,8 +189,20 @@ const dataGloomhaven = {
         { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 }, 
         { origen: 2, destino: 4, tipo: 'alternativa', offset: 0 }, 
         { origen: 4, destino: 82, tipo: 'alternativa', offset: 0 }, 
+        { origen: 1, destino: 65, tipo: 'alternativa', offset: 0 },
     ]
 };
+// ----------------------------------------------------
+// CONSTANTES DE COORDENADAS (NUEVAS)
+// ----------------------------------------------------
+// Espaciado horizontal entre el centro de los nodos (en px). Basado en los 300px originales.
+const COL_SPACING = 280; 
+// Espacio vertical entre el centro de los nodos (en px). Basado en los 100px originales.
+const ROW_SPACING = 100; 
+// Margen inicial izquierdo. 100px + (col * 300) = 400px (para col 1).
+const INITIAL_LEFT_OFFSET = 100; 
+// Margen inicial superior. 50px + (row * 100) = 50px (para row 0).
+const INITIAL_TOP_OFFSET = 50; 
 
 // ----------------------------------------------------
 // FUNCIONES DE PLANTILLA Y CÁLCULO
@@ -227,7 +254,7 @@ function crearDetalleEscenario(esc) {
         conexionesSalientes.forEach((conn, index) => {
             const destinoId = conn.destino;
             // Usa el texto del array nuevasUbicaciones, que debe coincidir con el orden de las conexiones
-            const ubicacionTexto = esc.nuevasUbicaciones[index] || `Escenario ${destinoId} (Ubicación no etiquetada)`; 
+            const ubicacionTexto = esc.nuevasUbicaciones[index] || `Escenario ${destinoId} (Aleatorio!!)`; 
             
             nuevasUbicacionesHtml += `
                 <button class="enlace-escenario-btn siguiente" onclick="simularClickEscenario(${destinoId})">
@@ -324,7 +351,7 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
 
     // Dimensiones de medio nodo para calcular el borde. (Nodos son 200px de ancho y ~60px de alto)
     const HALF_WIDTH = 100;
-    const HALF_HEIGHT_ESTIMATE = 30; 
+    const HALF_HEIGHT_ESTIMATE = 20; 
     const ALIGNMENT_THRESHOLD = 5;
 
     // 2. Aplicar el offset manual (para separar líneas paralelas)
@@ -372,17 +399,19 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
     
     // -> MODIFICACIÓN CLAVE PARA PUNTA DE FLECHA:
     // Distancia necesaria para la punta de flecha (7px de largo + 1px de margen)
-    const ARROW_HEAD_SPACE = 18; 
+    const ARROW_HEAD_SPACE = 23; 
+    const EXTRA_REDUCTION_ORIGIN = 17; 
     
     // La distancia total se reduce: (Inicio) + (Destino) + (Espacio para la punta)
-    const reduction = intersectionDistance + intersectionDistance + ARROW_HEAD_SPACE; // <-- LÍNEA CLAVE MODIFICADA
+    const reduction = (intersectionDistance + EXTRA_REDUCTION_ORIGIN) + intersectionDistance + ARROW_HEAD_SPACE; // <-- LÍNEA CLAVE MODIFICADA
     
     // La distancia final es la distancia entre centros menos la reducción total
     const finalDistance = Math.max(0, centerDistance - reduction); 
 
     // Mover el punto de inicio (x1, y1) desde el centro al borde del nodo
-    let x1 = x1_offset + Math.cos(angle) * intersectionDistance;
-    let y1 = y1_offset + Math.sin(angle) * intersectionDistance;
+    const totalOriginOffset = intersectionDistance + EXTRA_REDUCTION_ORIGIN;
+    let x1 = x1_offset + Math.cos(angle) * totalOriginOffset;
+    let y1 = y1_offset + Math.sin(angle) * totalOriginOffset;
     
     // 6. Crear y dibujar la flecha
     const arrow = document.createElement('div');
@@ -453,8 +482,16 @@ function actualizarBlackboard() {
         
         // Muestra el ID para los escenarios > 0: **001**Nombre
         div.innerHTML = esc.id === 0 ? esc.nombre : `<strong>${String(esc.id).padStart(0, '0')}</strong>${esc.nombre}`;
-        div.style.top = esc.map_pos.top;
-        div.style.left = esc.map_pos.left;
+        // --- LÓGICA DE COORDENADAS (NUEVA) ---
+        const map_pos = esc.map_pos;
+        // left = Margen Inicial + Columna * Espaciado
+        const left = INITIAL_LEFT_OFFSET + map_pos.col * COL_SPACING;
+        // top = Margen Inicial + Fila * Espaciado
+        const top = INITIAL_TOP_OFFSET + map_pos.row * ROW_SPACING;
+        
+        div.style.top = `${top}px`;
+        div.style.left = `${left}px`;
+        // ---------------------------------------
         div.addEventListener('click', () => mostrarDetalleEscenario(esc));
         contMapa.appendChild(div);
     });

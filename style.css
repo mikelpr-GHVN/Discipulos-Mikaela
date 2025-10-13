@@ -256,9 +256,9 @@ body {
     height: 0;
     
     /* Forma del triángulo: 7px de largo y 10px de ancho */
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 7px solid currentColor; /* Usa el color del texto del padre (la línea) */
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 8px solid currentColor; /* Usa el color del texto del padre (la línea) */
     z-index: 11;
 }
 
