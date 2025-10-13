@@ -204,6 +204,12 @@ const INITIAL_LEFT_OFFSET = 100;
 // Margen inicial superior. 50px + (row * 100) = 50px (para row 0).
 const INITIAL_TOP_OFFSET = 50; 
 
+// NUEVAS CONSTANTES PARA EL CENTRADO INICIAL
+// (Coinciden con los estilos CSS: width: 200px, padding/altura ~60px)
+const NODE_WIDTH = 200; 
+const NODE_HEIGHT = 60; 
+const HALF_NODE_WIDTH = NODE_WIDTH / 2;
+const HALF_NODE_HEIGHT = NODE_HEIGHT / 2;
 // ----------------------------------------------------
 // FUNCIONES DE PLANTILLA Y CÁLCULO
 // ----------------------------------------------------
@@ -539,6 +545,33 @@ dataGloomhaven.conexiones.forEach(conn => {
         if (event.target === modalDatos) {
             modalDatos.style.display = "none";
         }
+    }
+    // ----------------------------------------------------
+    // FASE 9. Establecer la Vista Inicial Centrada en el Escenario 0 (GLOOMHAVEN)
+    // ----------------------------------------------------
+    const escenarioInicial = dataGloomhaven.escenarios.find(e => e.id === 0);
+    
+    if (escenarioInicial) {
+        const { row, col } = escenarioInicial.map_pos;
+
+        // A. Calcular la posición central del Escenario 0:
+        // Posición Left (X) del centro del nodo
+        const targetX = INITIAL_LEFT_OFFSET + col * COL_SPACING + HALF_NODE_WIDTH;
+        
+        // Posición Top (Y) del centro del nodo
+        const targetY = INITIAL_TOP_OFFSET + row * ROW_SPACING + HALF_NODE_HEIGHT;
+
+        // B. Determinar la posición de SCROLL necesaria para centrar el punto:
+        
+        // scrollLeft = (Centro X del nodo) - (Mitad del ancho de la vista del mapa)
+        const scrollX = targetX - (contMapa.offsetWidth / 2);
+        
+        // scrollTop = (Centro Y del nodo) - (Mitad de la altura de la vista del mapa)
+        const scrollY = targetY - (contMapa.offsetHeight / 2);
+        
+        // C. Aplicar el scroll al contenedor
+        contMapa.scrollLeft = scrollX;
+        contMapa.scrollTop = scrollY;
     }
 }
 
