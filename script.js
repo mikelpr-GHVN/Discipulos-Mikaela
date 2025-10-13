@@ -151,6 +151,23 @@ const dataGloomhaven = {
             logros: [], 
             nuevasUbicaciones: ["Cripta ruinosa (5)", "Cripta decadente (6)"] 
         },
+        // ID 6: CRIPTA DECADENTE (NUEVO)
+        { 
+            id: 6, 
+            nombre: "Cripta Decadente", 
+            estado: "completado", 
+            // Posición: Fila 2 (igual que el 4), Columna 3 (a la derecha)
+            map_pos: { row: 2, col: 3 }, 
+            vieneDe: "Cripta de los Malditos (4)",
+            requisitos: "Ninguno",
+            objetivos: "Matar a todos los enemigos.",
+            textoEscenario: ["Los aldeanos se dirigen a vosotros. Les han robado sus suministros y necesitan que encontréis el escondite de los ladrones en una cripta cercana."],
+            conclusion: ["Éxito. Habéis recuperado los bienes robados para los aldeanos."],
+            recompensas: ["10 monedas de oro para cada personaje"],
+            logros: [], 
+            nuevasUbicaciones: ["Almacén de Gloomhaven (8)"] // Conecta al escenario 8
+        },
+        
         // ID 82: NUEVO ESCENARIO (POSICIÓN CALCULADA: 250, 400)
         { 
             id: 82, 
@@ -190,26 +207,22 @@ const dataGloomhaven = {
         { origen: 2, destino: 4, tipo: 'alternativa', offset: 0 }, 
         { origen: 4, destino: 82, tipo: 'alternativa', offset: 0 }, 
         { origen: 1, destino: 65, tipo: 'alternativa', offset: 0 },
-    ]
+        { origen: 4, destino: 6, tipo: 'alternativa', offset: 0 }, 
+        { origen: 6, destino: 8, tipo: 'alternativa', offset: 0 },
+          ]
 };
 // ----------------------------------------------------
 // CONSTANTES DE COORDENADAS (NUEVAS)
 // ----------------------------------------------------
 // Espaciado horizontal entre el centro de los nodos (en px). Basado en los 300px originales.
-const COL_SPACING = 280; 
+const COL_SPACING = 260; 
 // Espacio vertical entre el centro de los nodos (en px). Basado en los 100px originales.
 const ROW_SPACING = 100; 
 // Margen inicial izquierdo. 100px + (col * 300) = 400px (para col 1).
-const INITIAL_LEFT_OFFSET = 100; 
+const INITIAL_LEFT_OFFSET = 80; 
 // Margen inicial superior. 50px + (row * 100) = 50px (para row 0).
 const INITIAL_TOP_OFFSET = 50; 
 
-// NUEVAS CONSTANTES PARA EL CENTRADO INICIAL
-// (Coinciden con los estilos CSS: width: 200px, padding/altura ~60px)
-const NODE_WIDTH = 200; 
-const NODE_HEIGHT = 60; 
-const HALF_NODE_WIDTH = NODE_WIDTH / 2;
-const HALF_NODE_HEIGHT = NODE_HEIGHT / 2;
 // ----------------------------------------------------
 // FUNCIONES DE PLANTILLA Y CÁLCULO
 // ----------------------------------------------------
@@ -405,8 +418,8 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
     
     // -> MODIFICACIÓN CLAVE PARA PUNTA DE FLECHA:
     // Distancia necesaria para la punta de flecha (7px de largo + 1px de margen)
-    const ARROW_HEAD_SPACE = 23; 
-    const EXTRA_REDUCTION_ORIGIN = 17; 
+    const ARROW_HEAD_SPACE = 21; 
+    const EXTRA_REDUCTION_ORIGIN = 15; 
     
     // La distancia total se reduce: (Inicio) + (Destino) + (Espacio para la punta)
     const reduction = (intersectionDistance + EXTRA_REDUCTION_ORIGIN) + intersectionDistance + ARROW_HEAD_SPACE; // <-- LÍNEA CLAVE MODIFICADA
@@ -549,27 +562,30 @@ dataGloomhaven.conexiones.forEach(conn => {
     // ----------------------------------------------------
     // FASE 9. Establecer la Vista Inicial Centrada en el Escenario 0 (GLOOMHAVEN)
     // ----------------------------------------------------
-        // 1. OBTENER EL ELEMENTO VIEWPORT (el que tiene overflow: auto en CSS)
-    const contViewport = document.querySelector('.mapa-columna'); // <-- ELEMENTO CORREGIDO
+    
+    const contViewport = document.querySelector('.mapa-columna'); // El elemento con overflow: auto
     const escenarioInicial = dataGloomhaven.escenarios.find(e => e.id === 0);
     
     if (escenarioInicial && contViewport) {
+        // 1. Obtener el div del escenario ya renderizado
+        const divInicial = document.getElementById(`escenario-0`); 
+
+        // 2. CALCULAR DIMENSIONES DINÁMICAS (Sincronización con CSS)
+        // offsetWidth/offsetHeight lee el tamaño real (width + padding + border)
+        const halfNodeWidth = divInicial.offsetWidth / 2;
+        const halfNodeHeight = divInicial.offsetHeight / 2;
+        
         const { row, col } = escenarioInicial.map_pos;
 
-        // A. Calcular la posición central del Escenario 0 (dentro del contenido #mapa-escenarios):
-        // targetX = Posición 'left' del centro del nodo
-        const targetX = INITIAL_LEFT_OFFSET + col * COL_SPACING + HALF_NODE_WIDTH;
+        // A. Calcular la posición central del Escenario 0:
+        // Posición Left (X) del centro del nodo
+        const targetX = INITIAL_LEFT_OFFSET + col * COL_SPACING + halfNodeWidth; // <-- Usa valor dinámico
         
-        // targetY = Posición 'top' del centro del nodo
-        const targetY = INITIAL_TOP_OFFSET + row * ROW_SPACING + HALF_NODE_HEIGHT;
+        // Posición Top (Y) del centro del nodo
+        const targetY = INITIAL_TOP_OFFSET + row * ROW_SPACING + halfNodeHeight; // <-- Usa valor dinámico
 
         // B. Determinar la posición de SCROLL necesaria para centrar el punto:
-        
-        // scrollLeft = (Centro X del nodo) - (Mitad del ancho visible del viewport)
-        // Usamos clientWidth/Height para obtener el espacio visible sin incluir scrollbars
         const scrollX = targetX - (contViewport.clientWidth / 2);
-        
-        // scrollTop = (Centro Y del nodo) - (Mitad de la altura visible del viewport)
         const scrollY = targetY - (contViewport.clientHeight / 2);
         
         // C. Aplicar el scroll al VIEWPORT
