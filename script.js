@@ -549,29 +549,32 @@ dataGloomhaven.conexiones.forEach(conn => {
     // ----------------------------------------------------
     // FASE 9. Establecer la Vista Inicial Centrada en el Escenario 0 (GLOOMHAVEN)
     // ----------------------------------------------------
+        // 1. OBTENER EL ELEMENTO VIEWPORT (el que tiene overflow: auto en CSS)
+    const contViewport = document.querySelector('.mapa-columna'); // <-- ELEMENTO CORREGIDO
     const escenarioInicial = dataGloomhaven.escenarios.find(e => e.id === 0);
     
-    if (escenarioInicial) {
+    if (escenarioInicial && contViewport) {
         const { row, col } = escenarioInicial.map_pos;
 
-        // A. Calcular la posición central del Escenario 0:
-        // Posición Left (X) del centro del nodo
+        // A. Calcular la posición central del Escenario 0 (dentro del contenido #mapa-escenarios):
+        // targetX = Posición 'left' del centro del nodo
         const targetX = INITIAL_LEFT_OFFSET + col * COL_SPACING + HALF_NODE_WIDTH;
         
-        // Posición Top (Y) del centro del nodo
+        // targetY = Posición 'top' del centro del nodo
         const targetY = INITIAL_TOP_OFFSET + row * ROW_SPACING + HALF_NODE_HEIGHT;
 
         // B. Determinar la posición de SCROLL necesaria para centrar el punto:
         
-        // scrollLeft = (Centro X del nodo) - (Mitad del ancho de la vista del mapa)
-        const scrollX = targetX - (contMapa.offsetWidth / 2);
+        // scrollLeft = (Centro X del nodo) - (Mitad del ancho visible del viewport)
+        // Usamos clientWidth/Height para obtener el espacio visible sin incluir scrollbars
+        const scrollX = targetX - (contViewport.clientWidth / 2);
         
-        // scrollTop = (Centro Y del nodo) - (Mitad de la altura de la vista del mapa)
-        const scrollY = targetY - (contMapa.offsetHeight / 2);
+        // scrollTop = (Centro Y del nodo) - (Mitad de la altura visible del viewport)
+        const scrollY = targetY - (contViewport.clientHeight / 2);
         
-        // C. Aplicar el scroll al contenedor
-        contMapa.scrollLeft = scrollX;
-        contMapa.scrollTop = scrollY;
+        // C. Aplicar el scroll al VIEWPORT
+        contViewport.scrollLeft = scrollX;
+        contViewport.scrollTop = scrollY;
     }
 }
 
