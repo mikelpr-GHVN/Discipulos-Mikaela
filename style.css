@@ -5,7 +5,7 @@
    ---------------------------------------------------- */
 :root {
     --color-bg-dark: #1e212b;
-    --color-bg-card: #2c313d;
+    --color-bg-card: #485166;
     --color-accent-orange: #ff9800;
     --color-accent-blue: #3498db;
     --color-text-light: #e0e6f0;
@@ -217,22 +217,25 @@ body {
 }
 
 .escenario.completado {
-    background-color: #2ecc71;
-    border: 2px solid #27ae60;
+    background-color: #6cf1a3;
+    border: 2px solid #074421;
 }
 
 .escenario.pendiente {
-    background-color: #f39c12;
-    border: 2px solid #e67e22;
+    background-color: #f6ce8e;
+    border: 2px solid #61340c;
 }
 
 .escenario.bloqueado {
-    background-color: #7f8c8d;
-    border: 2px solid #95a5a6;
+    background-color: #f47e7e;
+    border: 2px solid #4e0202;
     cursor: not-allowed;
     color: var(--color-text-light);
 }
-
+.escenario.inicial {
+    background-color: #43e0ee;
+    border: 2px solid #6141d4;
+}
 /* Estilos de la Línea Base */
 .arrow {
     position: absolute;
@@ -274,6 +277,24 @@ body {
     background-color: #e74c3c;
     border-style: dashed;
     color: #e74c3c; 
+}
+.arrow.estado-completado {
+    /* Color de flecha y punta basado en .escenario.completado */
+    background-color: #074421; /* Verde oscuro (del borde completado) */
+    color: #074421; 
+}
+
+.arrow.estado-pendiente {
+    /* Color de flecha y punta basado en .escenario.pendiente */
+    background-color: #61340c; /* Naranja oscuro (del borde pendiente) */
+    color: #61340c;
+}
+
+.arrow.estado-bloqueado {
+    /* Color de flecha y punta basado en .escenario.bloqueado */
+    background-color: #4e0202; /* Rojo oscuro (del borde bloqueado) */
+    color: #4e0202;
+    border-style: dashed; /* Se mantiene punteada para el estado 'bloqueado' */
 }
 
 /* ----------------------------------------------------

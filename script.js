@@ -37,7 +37,7 @@ const dataGloomhaven = {
         { 
             id: 0, 
             nombre: "GLOOMHAVEN: Inicio de campaña", 
-            estado: "completado", 
+            estado: "inicial", 
             map_pos: { top: '50px', left: '400px' },
             vieneDe: "Ninguno (Inicio de Campaña)",
             requisitos: "Ninguno",
@@ -98,7 +98,7 @@ const dataGloomhaven = {
             recompensas: ["10 de oro para cada personaje", "+1 de prosperidad"], 
             logros: [], 
             // ¡IMPORTANTE! Se mantiene la lista de ubicaciones de texto, ahora con dos salidas
-            nuevasUbicaciones: ["Campamento inx (3)", "Cripta de los Malditos (4)"] 
+            nuevasUbicaciones: ["Campamento Inox (3)", "Cripta de los Malditos (4)"] 
         },
 
         // ID 3: CAMPAMENTO INOX (EXISTENTE)
@@ -137,22 +137,43 @@ const dataGloomhaven = {
             estado: "completado", 
             map_pos: { top: '250px', left: '700px' }, // Colocado a la derecha del Escenario 3
             vieneDe: "Guarida del Túmulo (2)",
-            requisitos: "Desconocido (Logro X)",
-            objetivos: "Objetivo de la Misión 4",
-            textoEscenario: ["Descripción de la Misión 4. En el futuro, añade aquí el texto del escenario real."],
-            conclusion: ["Conclusión de la Misión 4."],
+            requisitos: "Ninguno",
+            objetivos: "Matar a todos los enemigos.",
+            textoEscenario: ["Las revelaciones del comandante de los bandidos acerca de una \"Penumbra\" no sientan bien a vuestros estómagos mientras buscáis la curva del río Aguasmanas: hay algo aquí que despierta el interés de esos maníacos.",
+                "En cierto modo, os sorprende encontrar las ruinas de una antigua cripta medio cubierta de musgo y hiedra. La historia de este lugar es antigua y oscura. Sin más información que ésa, os adentráis en las profundidades. Independientemente de lo que estén tramando esas sabandijas, estáis decididos a descubrirlo, incluso después de tropezaros con un gran grupo de bandidos y de muertos vivientes al final de la escalera.",
+                "—Habéis cometido un error viniendo aquí —susurra uno de los bandidos. Pero vosotros no estáis de acuerdo. Estáis exactamente donde queréis estar."
+            ],
+            conclusion: ["Está claro que habéis interrumpido algún tipo de ritual que se estaba llevando a cabo aquí. Estos demonios elementales pertenecen a un plano de existencia completamente distinto, pero, de alguna manera, los sectarios han conseguido traerlos a este mundo.",
+                "En el altar de la sala trasera, hay una gran cantidad de garabatos hechos para estos rituales. No toda la escritura es inteligible, pero os da la sensación de que esta cripta es un lugar poderoso antaño utilizado por alguna antigua civilización. Los antiguos hicieron uso del poder de los elementos para mejorar sus propias vidas y, aunque el verdadero destino que sufrieron está más allá de vuestro conocimiento, resulta obvio que no acabó bien.",
+                "Entre los pergaminos también hay notas sobre un par de lugares de poder que también se encuentran en esta zona. Uno parece muy usado por la secta y el otro está marcado como invadido por despiadados muertos vivientes. Parece que tenéis la oportunidad de interrumpir más rituales (5) o bien la de hacer buenas migas con ellos al ayudar a eliminar una amenaza. (6)"
+            ],
             recompensas: ["Recompensa de la Misión 4"],
             logros: [], 
-            nuevasUbicaciones: ["Otra ubicación (5)"] 
+            nuevasUbicaciones: ["Cripta ruinosa (5)", "Cripta decadente (6)"] 
+        },
+        // ID 82: NUEVO ESCENARIO (POSICIÓN CALCULADA: 250, 400)
+        { 
+            id: 82, 
+            nombre: "Montaña ardiente", // Nombre temporal
+            estado: "pendiente", 
+            map_pos: { top: '250px', left: '400px' }, 
+            vieneDe: "Cripta de los Malditos (4)",
+            requisitos: "Desconocido",
+            objetivos: "Desconocido",
+            textoEscenario: ["Información del Escenario 82."],
+            conclusion: ["Conclusión del Escenario 82."],
+            recompensas: [],
+            logros: [], 
+            nuevasUbicaciones: [] 
         },
     ],
     // Conexiones: Ahora incluye el enlace doble desde el escenario 2 con offset
     conexiones: [
         { origen: 0, destino: 1, tipo: 'alternativa', offset: 0 }, 
         { origen: 1, destino: 2, tipo: 'alternativa', offset: 0 }, 
-        // NUEVAS CONEXIONES MÚLTIPLES DESDE EL ESCENARIO 2
-        { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 }, // Con 15px de offset
-        { origen: 2, destino: 4, tipo: 'alternativa', offset: 0 }, // Con -15px de offset
+        { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 }, 
+        { origen: 2, destino: 4, tipo: 'alternativa', offset: 0 }, 
+        { origen: 4, destino: 82, tipo: 'alternativa', offset: 0 }, 
     ]
 };
 
@@ -439,13 +460,24 @@ function actualizarBlackboard() {
     });
     
     // 5. Renderiza las Líneas de Conexión
-    dataGloomhaven.conexiones.forEach(conn => {
-        const sourceDiv = document.getElementById(`escenario-${conn.origen}`);
-        const targetDiv = document.getElementById(`escenario-${conn.destino}`);
+dataGloomhaven.conexiones.forEach(conn => {
+    const sourceDiv = document.getElementById(`escenario-${conn.origen}`);
+    const targetDiv = document.getElementById(`escenario-${conn.destino}`);
+    
+    if (sourceDiv && targetDiv) {
+        // --- CÓDIGO A MODIFICAR ---
         
-        if (sourceDiv && targetDiv) {
-            // Pasamos conn.offset o 0 por defecto
-            drawArrow(sourceDiv, targetDiv, conn.tipo, contMapa, conn.offset || 0);
+        // 1. Encontrar el objeto de escenario destino para obtener su estado
+        const targetEscenario = dataGloomhaven.escenarios.find(e => e.id === conn.destino);
+        
+        // 2. Determinar la clase CSS a aplicar
+        // Usaremos el estado del destino (e.g., 'completado') para crear la clase (e.g., 'estado-completado')
+        const estadoClase = `estado-${targetEscenario.estado}`; 
+        
+        // 3. Llamar a drawArrow con la nueva clase
+        drawArrow(sourceDiv, targetDiv, estadoClase, contMapa, conn.offset || 0);
+
+        // --- FIN DEL CÓDIGO MODIFICADO ---
         }
     });
 
