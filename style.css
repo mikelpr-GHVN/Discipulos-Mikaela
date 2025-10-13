@@ -35,7 +35,7 @@ body {
 .blackboard-container {
     display: flex;
     width: 100%;
-    max-width: 1500px;
+    max-width: 1800px;
 }
 
 .header {
@@ -275,7 +275,6 @@ body {
 
 .arrow.bloqueada {
     background-color: #e74c3c;
-    border-style: dashed;
     color: #e74c3c; 
 }
 .arrow.estado-completado {
@@ -294,8 +293,7 @@ body {
     /* Color de flecha y punta basado en .escenario.bloqueado */
     background-color: #4e0202; /* Rojo oscuro (del borde bloqueado) */
     color: #4e0202;
-    border-style: dashed; /* Se mantiene punteada para el estado 'bloqueado' */
-}
+   }
 
 /* ----------------------------------------------------
    ESTILOS DEL MODAL (POP-UP)

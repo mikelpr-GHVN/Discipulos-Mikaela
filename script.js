@@ -135,7 +135,7 @@ const dataGloomhaven = {
             id: 4, 
             nombre: "Cripta de los Malditos", 
             estado: "completado", 
-            map_pos: { row: 2, col: 2 },
+            map_pos: { row: 3, col: 2 },
             vieneDe: "Guarida del Túmulo (2)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos.",
@@ -149,13 +149,13 @@ const dataGloomhaven = {
             ],
             recompensas: ["Recompensa de la Misión 4"],
             logros: [], 
-            nuevasUbicaciones: ["Cripta ruinosa (5)", "Cripta decadente (6)", "Montaña ardiente (82)"], 
+            nuevasUbicaciones: ["Cripta ruinosa (5)", "Cripta decadente (6)"], 
         },
         // ID 5: CRIPTA RUINOSA (AÑADIDO - Placeholder)
         {   id: 5, 
             nombre: "Cripta Ruinosa", 
             estado: "completado", 
-            map_pos: { row: 4, col: 3 },
+            map_pos: { row: 5, col: 3 },
             vieneDe: "Cripta de los Malditos (4)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos.",
@@ -171,7 +171,7 @@ const dataGloomhaven = {
             nombre: "Cripta Decadente", 
             estado: "completado", 
             // Posición: Fila 2 (igual que el 4), Columna 3 (a la derecha)
-            map_pos: { row: 2, col: 3 }, 
+            map_pos: { row: 3, col: 3 }, 
             vieneDe: "Cripta de los Malditos (4)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos.",
@@ -181,6 +181,22 @@ const dataGloomhaven = {
             logros: [], 
             nuevasUbicaciones: ["Almacén de Gloomhaven (8)"] // Conecta al escenario 8
         },
+        // ID 7: GRUTA TREPIDANTE (NUEVO - Placeholder) 
+{ 
+            id: 7, 
+            nombre: "Gruta Trepidante", 
+            estado: "pendiente", 
+            map_pos: { row: 2, col: 5 },     
+            vieneDe: "Almacén de Gloomhaven (8)",
+            requisitos: "El poder de la mejora (Global) y La comerciante huye (Global) COMPLETOS", 
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"],
+            nuevasUbicaciones: ["Desconocido"]
+
+},
         // ID 8: ALMACÉN DE GLOOMHAVEN (Nuevo Escenario)
 { 
             id: 8, 
@@ -202,13 +218,75 @@ const dataGloomhaven = {
             logros: ["La comerciante huye (Global)"], 
             nuevasUbicaciones: ["Gruta trepidante (7)", "Templo del Vidente (13)", "Hondonada Helada (14)"] 
 },
+// ID 9: MINA DE DIAMANTES
+{ 
+            id: 9, 
+            nombre: "Mina de Diamantes", 
+            estado: "bloqueado", 
+            map_pos: { row: 0, col: 3 }, 
+            vieneDe: "Campamento Inox (3)",
+            requisitos: "La comerciante huye (Global) INCOMPLETO", 
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"],
+            nuevasUbicaciones: ["Desconocido"]
+
+},
+
+        // ID 10: PLANO DEL PODER ELEMENTAL (NUEVO)
+        { 
+            id: 10, 
+            nombre: "Plano del Poder Elemental", 
+            estado: "completado", 
+            map_pos: { row: 6, col: 3 }, // Debajo del 5 (row 4, col 3)
+            vieneDe: "Cripta Ruinosa (5)",
+            requisitos: "La grieta neutralizada (Global) INCOMPLETO",
+            objetivos: "Matar a todos los enemigos",
+            textoEscenario: [
+                "Vuestra visión cambia y el entorno se difumina. Unos horribles lamentos os perforan los oídos. Sentís como si se os estiraran las extremidades, como si el universo intentara despedazaros.",
+                "Y entonces se detiene. Abrís los ojos y veis que vuestros pies se encuentran sobre tierra firme, pero a vuestro alrededor se arremolinan extrañas energías elementales: fuego mezclándose con hielo con un poder torrencial.",
+                "Recuperáis el aliento, miráis hacia atrás y os aliviáis al ver un vacío de oscuridad muy parecido a aquel que os trajo a este lugar.",
+                "Sin embargo, poco os dura el alivio, ya que una resonante voz llena el aire crepitante.",
+                "—¿Quiénes sois vosotros para matar a mis sirvientes e invadir mi reino? ¡Esta afrenta no quedará sin castigo!",
+                "Ante vosotros las energías en el aire comienzan a crear vagas formas demoñiacas. Tendréis que luchar para abriros camino y adentraros más en este intempestivo lugar."
+            ],
+            conclusion: [
+                "Mientras el último demonio a la vista grita y se disipa en el viento, caéis de rodillas agradecidos de que la lucha haya terminado.",
+                "—Interesante —suena la voz en algún profundo lugar de vuestras mentes, arañándoos el cerebro con cada palabra—. Sois unos intrusos sorprendentemente poderosos, y lo cierto es que podríais serme de utilidad si no fuera por vuestro obvio y vulgar plan.",
+                "La roca roja bajo vosotros retumba y se agrieta, abriendo una ardiente fisura a vuestros pies.",
+                "—Os abro las puertas de mi reino. Venid, hablemos cara a cara.",
+                "Habiendo dado ya este día un primer salto de fe, no creéis que dar otro vaya a mataros. El calor se vuelve más intenso a medida que descendéis con el aire hirviente elevándose desde abajo y ralentizando la caída. Aterrizáis con bastante seguridad en lo que parece ser un templo subterráneo. Ante vosotros se alza una terrorífica y monstruosa criatura con cuernos, se encuentra de pie sobre cuatro patas con pezuñas y sostiene un tridente.",
+                "—Valientes y necios —la voz sigue resonando en el interior de vuestras cabezas—. Me seréis de utilidad. Hay un artefacto de gran poder en un templo olvidado junto al río Beso de la Sierpe. Podéis recuperarlo y traérmelo (21) o morir aquí y ahora. (21)"
+            ],
+            recompensas: [],
+            logros: ["El recado de un demonio (Grupo)"], 
+            nuevasUbicaciones: ["Trono infernal(21)", "Templo de los Elementos (22)"] 
+        },
+        // ID 13: NUEVO ESCENARIO 
+        { 
+            id: 13, 
+            nombre: "Templo del Vidente", 
+            estado: "pendiente", 
+            map_pos: { row: 1, col: 5 },
+            vieneDe: "Almacén de Gloomhaven (8)",
+            requisitos: "Ninguno",
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
+
 // ID 14: HONDONADA HELADA (NUEVO)
         { 
             id: 14, 
             nombre: "Hondonada Helada", 
             estado: "completado", 
             // Posición: Fila 4, Columna 3 (debajo del Escenario 8)
-            map_pos: { row: 2, col: 4 }, 
+            map_pos: { row: 3, col: 4 }, 
             vieneDe: "Almacén de Gloomhaven (8), Cripta ruinosa (5)", // Añadido el 5 como origen
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos", 
@@ -227,12 +305,72 @@ const dataGloomhaven = {
             // 7: Gruta Trepidante, 31: Ruinas del bosque, 43: Guarida del Dragón
             nuevasUbicaciones: ["Gruta trepidante (7)", "Plano de la noche (31)", "Nido de dracos (43)"] 
         },
+        
+        // ID 19: NUEVO ESCENARIO
+        {
+            id: 19, 
+            nombre: "Cripta olvidada", 
+            estado: "completado",
+            map_pos: { row: 5, col: 4 }, // Debajo del 14 (row 4, col 4)
+            vieneDe: "Cripta Ruinosa (5)",
+            requisitos: "El poder de la mejora (Global) COMPLETO", // Requisito del escenario
+            objetivos: "Matar a todos los enemigos.",
+            textoEscenario: [
+                "—¿Qué queréis hacer qué? —dice Hail, mirando fijamente—. ¿Habéis encontrado una grieta en el Plano del Poder Elemental y queréis cerrarla? —suspira Hail—. Bueno, accedí a ayudaros. —Hail comienza a jugar con la esfera lanzándola arriba y abajo—. De acuerdo, por lo que describís, vamos a necesitar algo de trabajo extra para cerrar una grieta de esa magnitud. Podría hacerlo yo misma, pero me llevaría mucho tiempo, y tendríamos muchos problemas si nos atacaran desde el otro lado en mitad del hechizo. Sería mucho más sencillo de hacer si tuviera un incensario elemental, cosa que, siendo sinceros, sería muy oportuno, ya que necesito uno para mis estudios. Hace muchos años conocí a un poderoso elementalista que poseía uno, ahora está muerto, pero os llevaré personalmente a su cripta. No es recomendable que manejéis el incensario por vuestra cuenta.",
+                "Tras un día de viaje, encontráis un enorme y descuidado mausoleo junto al río Beso de la Sierpe.",
+                "—Romperrocas era un buen tipo. No obstante, acabar aplastado por piedras gigantes es uno de los peligros que todo elementalista debe asumir.",
+                "Tras quitar las enormes enredaderas, os adentráis en la cripta."
+            ],
+            conclusion: [
+                "¡Vaya! ¡Genial! —dice Hail—. Hoy en día, estos malditos sectarios están por todas partes. Seguramente también busquen el incensario, lo puede que no quieran que lo tengáis vosotros.",
+                "Miráis a Hail muy confundidos y ella señala hacia las sombras, de donde emergen unas figuras oscuras con túnicas negras.",
+                "—No deberías haber venido aquí, carafantasma —dice uno de ellos.",
+                "—Uf —suspira Hail—. Despachad rápido a estos mentecatos. Me aburren.",
+                "***",
+                "Hail avanza y logra coger el incensario. Lo levanta y pronuncia unas palabras en una lengua desconocida. Un fuego estalla y destruye a los no muertos que quedaban, reduciéndolos a cenizas.",
+                "—Bien, ahora que nos hemos encargado de esos estorbos, vayamos a lo divertido —dice Hail con la más pequeña de las sonrisas—. Mostradme esa grieta vuestra. (27)"
+            ],
+            recompensas: ["+1 de prosperidad"], // Recompensa del escenario
+            logros: ["Incensario de Romperrocas (Grupo)"], // Logro de grupo
+            nuevasUbicaciones: ["Grieta destructiva (27)"] // Nueva ubicación
+        },
+
+        // ID 31: NUEVO ESCENARIO 
+        { 
+            id: 31, 
+            nombre: "Plano de la noche", 
+            estado: "bloqueado", 
+            map_pos: { row: 4, col: 5 },
+            vieneDe: "Hondonada Helada (14)",
+            requisitos: "El poder de la mejora (Global) COMPLETO",
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
+        // ID 43: NUEVO ESCENARIO 
+        { 
+            id: 43, 
+            nombre: "Nido de dracos", 
+            estado: "pendiente", 
+            map_pos: { row: 3, col: 5 },
+            vieneDe: "Hondonada Helada (14)",
+            requisitos: "El poder de la mejora (Global) COMPLETO",
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
         // ID 82: NUEVO ESCENARIO 
         { 
             id: 82, 
             nombre: "Montaña ardiente", 
             estado: "pendiente", 
-            map_pos: { row: 2, col: 1 },
+            map_pos: { row: 3, col: 1 },
             vieneDe: "Cripta de los Malditos (4)",
             requisitos: "Ninguno",
             objetivos: "Desconocido",
@@ -257,6 +395,50 @@ const dataGloomhaven = {
             logros: ["desconocido"], 
             nuevasUbicaciones: ["Desconocido"] 
         },
+        // ID 67: Biblioteca arcana
+        { 
+            id: 67, 
+            nombre: "Biblioteca arcana", 
+            estado: "completado", // Estado solicitado: "completado"
+            map_pos: { row: 0, col: 4 }, // Encima del 8 (row 1, col 4)
+            vieneDe: "Almacén de Gloomhaven (8)", // Origen solicitado: Escenario 8
+            requisitos: "Ninguno",
+            objetivos: "Matar al Golem arcano",
+            textoEscenario: [
+                "Parece que las antiguas escrituras que encontrasteis del místico y lunático Morsbane eran ciertas. Sus desvaríos hablan acerca de un gran tesoro que él custodiaba y que solo se volvería más poderoso y valioso con el tiempo. Ese malvado lleva ya mucho tiempo muerto, pero, siguiendo las escrituras, encontráis las ruinas de lo que una vez fue su gran torre.",
+                "Ahora es poco más que escombros. Cualquier tesoro que estuviera en su interior o ya no está o ha quedado enterrado en las profundidades, pero no sois tan fáciles de disuadir. En la base de la colina, veis una puerta de piedra cubierta de vegetación. Pero, desgraciadamente, está custodiada por varias criaturas amenazantes del bosque."
+            ],
+            conclusion: [
+                "—Gracias —al proferir su última palabra los glifos en las extremidades del Gólem comienzan a desvanecerse y varios trozos de piedra caen de su estructura.",
+                "Buscando en la biblioteca, encontráis un viejo diario que detalla cómo se le otorgó inteligencia y capacidad de aprendizaje al Gólem. Sin embargo, lo que aprendió es que era un monstruo sin alma y que no podía conocer nada más, ya que se le ordenó que nunca abandonara el lugar y que matara a todos los intrusos. También encontráis un brillante núcleo de poder dentro del cuerpo del gólem."
+            ],
+            recompensas: ["Núcleo de energía (Objeto 132)"],
+            logros: ["Tecnología antigua (Global)"], 
+            nuevasUbicaciones: [] 
+        },
+        // INSERCIÓN DEL ESCENARIO 93
+        { 
+            id: 93, 
+            nombre: "Barco naufragado", 
+            estado: "completado", // Estado solicitado: "completado"
+            map_pos: { row: 0, col: 5 }, // A la derecha del 67 (row 0, col 4)
+            vieneDe: "Biblioteca arcana (67)",
+            requisitos: "Mapa del tesoro (Grupo) COMPLETO",
+            objetivos: "Matar a todos los enemigos.",
+            textoEscenario: [
+                "Agarráis el descolorido mapa y os lo pegáis al pecho como si fuera una manta para protegeros de los fuertes vientos del norte. Habéis estado navegando en un pequeño barco alquilado durante lo que os han parecido siglos en busca de ese barco hundido olvidado hace ya tiempo. Tal vez, si os acercáis más al mapa, conseguiréis que los trazos y las cifras se vean más claros y podáis descifrarlos.",
+                "Cuando ya no os quedan pocas esperanzas, divisáis en el horizonte una isla que os da un mal presentimiento. A medida que os acercáis, distinguís el contorno de un barco estrellado con los arrecifes de la isla, medio hundido y que apenas se sostiene.",
+                "Navegáis hacia el lado más lejano de la isla, donde una playa remota y acogedora os permite echar anclas con más seguridad. La idea del tesoro que os espera a bordo de la nave os ayuda a luchar contra el viento, pero vuestros pensamientos también rondan los peligros que podrían estar protegiéndolo. Mientras vuestro bote navega hasta la orilla, veis un banco de acechadores que se levanta desde las olas dándoos la bienvenida. Quién sabe cuánto tiempo llevarán siguiendo vuestro barco desde las profundidades, esperando el momento oportuno para atacaros."
+            ],
+            conclusion: [
+                "Los espíritus parecen tranquilos y los acechadores se han retirado. Tras saquear todo lo que podéis del barco, estáis ansiosos por navegar de vuelta a Gloomhaven y poner los pies en tierra seca y cálida.",
+                "Echáis un último vistazo a la extraña isla y al barco encallado para luego poneros en marcha."
+            ],
+            recompensas: ["10 PX para cada personaje"],
+            logros: [], 
+            nuevasUbicaciones: [] 
+        },
+
     ],
     // Conexiones: Ahora incluye el enlace doble desde el escenario 2 con offset
     conexiones: [
@@ -266,22 +448,24 @@ const dataGloomhaven = {
         { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 }, 
         { origen: 2, destino: 4, tipo: 'alternativa', offset: 0 },  
         { origen: 3, destino: 8, tipo: 'alternativa', offset: 0 }, 
-        { origen: 4, destino: 82, tipo: 'alternativa', offset: 0 }, 
+        { origen: 3, destino: 9, tipo: 'alternativa', offset: 0 }, 
+        { origen: 4, destino: 5, tipo: 'alternativa', offset: 0 }, 
         { origen: 4, destino: 6, tipo: 'alternativa', offset: 0 }, 
-        { origen: 4, destino: 5, tipo: 'alternativa', offset: 0 },
+        { origen: 4, destino: 82, tipo: 'alternativa', offset: 0 },
         { origen: 5, destino: 10, tipo: 'alternativa', offset: 0 },
         { origen: 5, destino: 14, tipo: 'alternativa', offset: 0 },
         { origen: 5, destino: 19, tipo: 'alternativa', offset: 0 },
         { origen: 6, destino: 8, tipo: 'alternativa', offset: 0 },
         { origen: 8, destino: 7, tipo: 'alternativa', offset: 0 }, 
         { origen: 8, destino: 13, tipo: 'alternativa', offset: 0 },
-        { origen: 8, destino: 14, tipo: 'alternativa', offset: 0 },
         { origen: 8, destino: 14, tipo: 'alternativa', offset: 0 }, 
+        { origen: 8, destino: 67, tipo: 'alternativa', offset: 0 }, 
+        { origen: 10, destino: 21, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 7, tipo: 'alternativa', offset: 0 }, 
+        { origen: 14, destino: 19, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 31, tipo: 'alternativa', offset: 0 },
         { origen: 14, destino: 43, tipo: 'alternativa', offset: 0 }, 
-        
-        
+        { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
     ]          
     
 };
@@ -289,13 +473,13 @@ const dataGloomhaven = {
 // CONSTANTES DE COORDENADAS (NUEVAS)
 // ----------------------------------------------------
 // Espaciado horizontal entre el centro de los nodos (en px). Basado en los 300px originales.
-const COL_SPACING = 240; 
+const COL_SPACING = 220; 
 // Espacio vertical entre el centro de los nodos (en px). Basado en los 100px originales.
-const ROW_SPACING = 100; 
+const ROW_SPACING = 90; 
 // Margen inicial izquierdo. 100px + (col * 300) = 400px (para col 1).
-const INITIAL_LEFT_OFFSET = 80; 
+const INITIAL_LEFT_OFFSET = 30; 
 // Margen inicial superior. 50px + (row * 100) = 50px (para row 0).
-const INITIAL_TOP_OFFSET = 50; 
+const INITIAL_TOP_OFFSET = 30; 
 
 // ----------------------------------------------------
 // FUNCIONES DE PLANTILLA Y CÁLCULO
