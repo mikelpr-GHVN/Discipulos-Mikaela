@@ -5,7 +5,7 @@
    ---------------------------------------------------- */
 :root {
     --color-bg-dark: #1e212b;
-    --color-bg-card: #485166;
+    --color-bg-card: #56617a;
     --color-accent-orange: #ff9800;
     --color-accent-blue: #3498db;
     --color-text-light: #e0e6f0;
@@ -193,7 +193,7 @@ body {
    
 .escenario {
     position: absolute;
-    width: 190px;
+    width: 160px;
     padding: 10px;
     text-align: center;
     border-radius: 8px;
@@ -239,7 +239,7 @@ body {
 /* Estilos de la Línea Base */
 .arrow {
     position: absolute;
-    height: 3px;
+    height: 5px;
     border-radius: 0; /* Aseguramos que no haya border-radius en el extremo */
     transform-origin: 0 50%;
     z-index: 10;

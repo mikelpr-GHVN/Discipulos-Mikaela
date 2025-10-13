@@ -149,7 +149,21 @@ const dataGloomhaven = {
             ],
             recompensas: ["Recompensa de la Misión 4"],
             logros: [], 
-            nuevasUbicaciones: ["Cripta ruinosa (5)", "Cripta decadente (6)"] 
+            nuevasUbicaciones: ["Cripta ruinosa (5)", "Cripta decadente (6)", "Montaña ardiente (82)"], 
+        },
+        // ID 5: CRIPTA RUINOSA (AÑADIDO - Placeholder)
+        {   id: 5, 
+            nombre: "Cripta Ruinosa", 
+            estado: "completado", 
+            map_pos: { row: 4, col: 3 },
+            vieneDe: "Cripta de los Malditos (4)",
+            requisitos: "Ninguno",
+            objetivos: "Matar a todos los enemigos.",
+            textoEscenario: ["Vuestra misión está clara. Estos sectarios elementales están manipulando el tejido de la realidad de vuestro mundo y hay que detenerlos. Con este objetivo en mente, seguís la pista de los pergaminos que recuperasteis hasta la antigua cripta que suponéis que es la base de operaciones de la secta. Preparándoos para el combate, abatís la carcomida puerta e irrumpís por la entrada de la cripta. La vista que se abre ante vosotros es a la vez horrible y maravillosa. Un grupo de sectarios está llevando a cabo conjuros rituales frente a un enorme agujero negro en el aire. Los sectarios se vuelven hacia vosotros y gruñen, desenfundando sus dagas de sacrificio. Tras ellos, una oscuridad emana del agujero y toma la forma de horripilantes criaturas llenas de dientes y garras. Sois conscientes de que debéis enviar a estos horrores del plano elemental de vuelta al vacío, pero el miedo os paraliza."],
+            conclusion: ["Con los sectarios y sus esbirros muertos, parece que la grieta oscura se encuentra ahora latente. Pero no por ello es menos desconcertante. Tiráis una piedra al agujero y ésta desaparece en la nada. Debéis admitir que os preguntáis si podríais entrar por la grieta y sobrevivir al viaje a donde quiera que haya acabado la piedra (10). Por otro lado, encontrar algún modo de cerrar la grieta es, probablemente, la decisión más prudente. Hay una hechicera etérida en Gloomhaven que podría saber más sobre todo este asunto de los planos. Aunque es famosa por pedir favores imposibles antes de ayudar a nadie (14) (19)."],
+            recompensas: [""],
+            logros: [], 
+            nuevasUbicaciones: ["Plano del poder elemental (10)", "Hondonada helada (14)", "Cripta olvidada (19)"], 
         },
         // ID 6: CRIPTA DECADENTE (NUEVO)
         { 
@@ -167,11 +181,56 @@ const dataGloomhaven = {
             logros: [], 
             nuevasUbicaciones: ["Almacén de Gloomhaven (8)"] // Conecta al escenario 8
         },
-        
-        // ID 82: NUEVO ESCENARIO (POSICIÓN CALCULADA: 250, 400)
+        // ID 8: ALMACÉN DE GLOOMHAVEN (Nuevo Escenario)
+{ 
+            id: 8, 
+            nombre: "Almacén de Gloomhaven", 
+            estado: "completado", // Estado solicitado
+            map_pos: { row: 1, col: 4 }, 
+            vieneDe: "Campamento Inox (3), Cripta Decadente (6)",
+            requisitos: "Los planes de Jekserah (Grupo) COMPLETO Y La invasión de los muertos (Global) INCOMPLETO", 
+            objetivos: "Matar a los dos Guardaespaldas inox", 
+            textoEscenario: [
+                "Bajo las órdenes de vuestro misterioso contacto, os dirigís hacia el almacén de Jekserah arropados por el manto de la noche. Con algo de suerte, descubriréis sus planes y podréis ponerles fin.",
+                "Esperando encontraros un almacén prácticamente abandonado, os encontráis con que, en su lugar, está plagado de no muertos. Al menos eso os da una idea más clara de sus planes. No cabe duda de que ha estado usando los pergaminos de necromancia que le devolvisteis para levantar a los no muertos dentro de las murallas de la ciudad. Y ha llegado el momento de devolverlos a su descanso eterno."
+    ], 
+            conclusion: [ 
+                "Terminada la batalla, miráis por la ventana y no hay rastro de la huidiza valrath. Habéis detenido sus planes por ahora, pero después de sus palabras, queda claro que tendréis que darle caza antes de que pueda cumplir sus amenazas. (13)",
+                "—Está más allá de donde alcanza mi red de inteligencia —os dice la guardia Argeise encogiéndose de hombros cuando le preguntáis más tarde—. Me encantaría asegurarme de que no nos causará más problemas, pero ha huido de la ciudad y no estoy dispuesta a perseguirla a través de los bosques. Puede que tengáis más suerte con la hechicera etérida de la ciudad —os sugiere—. Seguro que ella puede adivinar la ubicación de esa cobarde por vosotros..., si conseguís que coopere. (14) (7)"
+    ], 
+            recompensas: ["+2 de reputación"],
+            logros: ["La comerciante huye (Global)"], 
+            nuevasUbicaciones: ["Gruta trepidante (7)", "Templo del Vidente (13)", "Hondonada Helada (14)"] 
+},
+// ID 14: HONDONADA HELADA (NUEVO)
+        { 
+            id: 14, 
+            nombre: "Hondonada Helada", 
+            estado: "completado", 
+            // Posición: Fila 4, Columna 3 (debajo del Escenario 8)
+            map_pos: { row: 2, col: 4 }, 
+            vieneDe: "Almacén de Gloomhaven (8), Cripta ruinosa (5)", // Añadido el 5 como origen
+            requisitos: "Ninguno",
+            objetivos: "Matar a todos los enemigos", 
+            textoEscenario: [
+                "Necesitáis una hechicera, así que una hechicera debéis encontrar. Siguiendo las indicaciones de un etérido en el Distrito de la Caldera, os encontráis ante una taberna decrépita y abandonada: el Hueso Retorcido. Al abrir la puerta, el interior se encuentra en calma. No es lo que esperáis. Es Hail. Es una Inox de piel oscura con un vestido rojo andrajoso que se sienta junto a un barril y está contando monedas. Tiene una esfera de cristal sobre el barril, que parece ser el origen de la luz en la sala. El lugar entero está repleto de trastos, polvorientos, oxidados, mohosos y con las telarañas por doquier. Al atravesar la puerta, una mujer translúcida aparece repentinamente ante vosotros. —Oh, mirad a la mujer etérida. Ella podrá cumplir todos vuestros deseos. Todo lo que tiene que hacer es un pacto con las mareas y nuestros mayores sueños se harán realidad —suspira con frustración mientras agita las manos—. Dejadme en paz. Al moveros, ella se queda mirándoos fijamente. —Bien, dejando a un lado la interrupción, tal vez podáis ayudarme. Hoy por mí, tal vez mañana por vosotros. Así es como funcionan estos asuntos, que yo sepa. —Se da la vuelta y camina hacia unas escaleras destartaladas, pero, tras unos pocos pasos, se desvanece por completo—. Necesito una esfera, se encuentra en la Hondonada Helada, en las Montañas Cobrizas. —La voz de la mujer viene directamente de enfrente de vosotros, como si no se hubiera movido del sitio—. Traédmela y puede que os ayude.",
+                "El por cierto, mi nombre es Hail. No volváis sin la esfera. El mapa resulta fácil de seguir. En las profundidades de las Montañas Cobrizas, oculto por las ventiscas de nieve, encontráis la entrada a una cueva oscura y estrecha. Las huellas de lobos alrededor de la entrada son inquietantes, pero, firmemente decididos, entráis."
+            ], 
+            conclusion: [
+                "Con el último de vuestros adversarios muerto, os acercáis a la pared trasera de la cámara, donde una pequeña esfera azul flota sobre el suelo. Extendéis la mano lentamente y notáis que la esfera está **fría al tacto**. La agarráis firmemente y notáis que la temperatura es casi insoportable, así que la guardáis rápidamente en la bolsa y regresáis al Hueso Retorcido.",
+                "Entráis en la taberna abandonada y llamáis a Hail. Deambuláis, observando el caótico desastre a vuestro alrededor sin obtener respuesta. Os preguntáis cómo Hail puede llevar a cabo cualquier tipo de hechicería en un entorno así. Al acercaros al mostrador, Hail aparece ante vosotros, sosteniendo la esfera.",
+                "—¡Oh, aún estáis aquí! —Os dais la vuelta y veis a Hail en el centro de la habitación. «Qué gusto tener en experimento con vosotros», os parece bien. —Se acerca a vosotros y os tropezáis hacia atrás, cayendo sobre una mesa que se rompe en varios pedazos—. «Vamos, no seáis críos, estoy bastante segura de que saldrá bien. Hail explica que quiere intentar traer poder puro de otro plano y contenerlo en una pequeña esfera que podría otorgar grandes poderes y quien lo posea. Sin embargo, el proceso de contención requiere una gran cantidad de **metal dorado**.",
+                "—Ahora que me habéis ayudado con mis cometidos, supongo que debería devolveros el favor —suspira Hail—. ¿Tenéis algo en lo que queráis exactamente? (7) (31) (43)"
+            ],
+            recompensas: ["Logro global: El poder de la mejora"],
+            logros: ["El poder de la mejora (Global)"], 
+            // 7: Gruta Trepidante, 31: Ruinas del bosque, 43: Guarida del Dragón
+            nuevasUbicaciones: ["Gruta trepidante (7)", "Plano de la noche (31)", "Nido de dracos (43)"] 
+        },
+        // ID 82: NUEVO ESCENARIO 
         { 
             id: 82, 
-            nombre: "Montaña ardiente", // Nombre temporal
+            nombre: "Montaña ardiente", 
             estado: "pendiente", 
             map_pos: { row: 2, col: 1 },
             vieneDe: "Cripta de los Malditos (4)",
@@ -203,19 +262,34 @@ const dataGloomhaven = {
     conexiones: [
         { origen: 0, destino: 1, tipo: 'alternativa', offset: 0 }, 
         { origen: 1, destino: 2, tipo: 'alternativa', offset: 0 }, 
-        { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 }, 
-        { origen: 2, destino: 4, tipo: 'alternativa', offset: 0 }, 
-        { origen: 4, destino: 82, tipo: 'alternativa', offset: 0 }, 
         { origen: 1, destino: 65, tipo: 'alternativa', offset: 0 },
+        { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 }, 
+        { origen: 2, destino: 4, tipo: 'alternativa', offset: 0 },  
+        { origen: 3, destino: 8, tipo: 'alternativa', offset: 0 }, 
+        { origen: 4, destino: 82, tipo: 'alternativa', offset: 0 }, 
         { origen: 4, destino: 6, tipo: 'alternativa', offset: 0 }, 
+        { origen: 4, destino: 5, tipo: 'alternativa', offset: 0 },
+        { origen: 5, destino: 10, tipo: 'alternativa', offset: 0 },
+        { origen: 5, destino: 14, tipo: 'alternativa', offset: 0 },
+        { origen: 5, destino: 19, tipo: 'alternativa', offset: 0 },
         { origen: 6, destino: 8, tipo: 'alternativa', offset: 0 },
-          ]
+        { origen: 8, destino: 7, tipo: 'alternativa', offset: 0 }, 
+        { origen: 8, destino: 13, tipo: 'alternativa', offset: 0 },
+        { origen: 8, destino: 14, tipo: 'alternativa', offset: 0 },
+        { origen: 8, destino: 14, tipo: 'alternativa', offset: 0 }, 
+        { origen: 14, destino: 7, tipo: 'alternativa', offset: 0 }, 
+        { origen: 14, destino: 31, tipo: 'alternativa', offset: 0 },
+        { origen: 14, destino: 43, tipo: 'alternativa', offset: 0 }, 
+        
+        
+    ]          
+    
 };
 // ----------------------------------------------------
 // CONSTANTES DE COORDENADAS (NUEVAS)
 // ----------------------------------------------------
 // Espaciado horizontal entre el centro de los nodos (en px). Basado en los 300px originales.
-const COL_SPACING = 260; 
+const COL_SPACING = 240; 
 // Espacio vertical entre el centro de los nodos (en px). Basado en los 100px originales.
 const ROW_SPACING = 100; 
 // Margen inicial izquierdo. 100px + (col * 300) = 400px (para col 1).
@@ -290,18 +364,23 @@ function crearDetalleEscenario(esc) {
 
     // 2. Enlace al escenario anterior
     let enlaceAnteriorHtml = '';
-    const conexionAnterior = dataGloomhaven.conexiones.find(c => c.destino === esc.id);
-    if (conexionAnterior) {
-        const origenEsc = dataGloomhaven.escenarios.find(e => e.id === conexionAnterior.origen);
-        if (origenEsc) {
-            enlaceAnteriorHtml = `
-                <p><strong>Viene de:</strong>
-                    <button class="enlace-escenario-btn anterior" onclick="simularClickEscenario(${conexionAnterior.origen})">
+    // **CAMBIO CLAVE: Utilizamos filter() en lugar de find()**
+    const conexionesAnteriores = dataGloomhaven.conexiones.filter(c => c.destino === esc.id);
+    
+    if (conexionesAnteriores.length > 0) {
+        let botonesHtml = '';
+        conexionesAnteriores.forEach(conn => {
+            const origenEsc = dataGloomhaven.escenarios.find(e => e.id === conn.origen);
+            if (origenEsc) {
+                botonesHtml += `
+                    <button class="enlace-escenario-btn anterior" onclick="simularClickEscenario(${conn.origen})">
                         ${origenEsc.id === 0 ? origenEsc.nombre : `${String(origenEsc.id).padStart(0, '0')}: ${origenEsc.nombre}`}
                     </button>
-                </p>
-            `;
-        }
+                `;
+            }
+        });
+        // Unimos todos los botones generados
+        enlaceAnteriorHtml = `<p><strong>Viene de:</strong> ${botonesHtml}</p>`;
     }
     
     // --- LÓGICA CONDICIONAL PARA ESCENARIO 0 (INICIO DE CAMPAÑA - Conexiones/Recompensas simplificadas) ---
@@ -369,8 +448,8 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
     let cy2 = targetRect.top + targetRect.height / 2 - containerRect.top;
 
     // Dimensiones de medio nodo para calcular el borde. (Nodos son 200px de ancho y ~60px de alto)
-    const HALF_WIDTH = 100;
-    const HALF_HEIGHT_ESTIMATE = 20; 
+    const HALF_WIDTH = 85;
+    const HALF_HEIGHT_ESTIMATE = 22; 
     const ALIGNMENT_THRESHOLD = 5;
 
     // 2. Aplicar el offset manual (para separar líneas paralelas)
