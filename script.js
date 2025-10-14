@@ -308,7 +308,7 @@ const dataGloomhaven = {
         
         // ID 19: NUEVO ESCENARIO
         {
-                        id: 19, 
+            id: 19, 
             nombre: "Cripta olvidada", 
             estado: "completado",
             map_pos: { row: 5, col: 4 }, 
@@ -358,6 +358,49 @@ const dataGloomhaven = {
             logros: ["La grieta neutralizada, Si el logro Artefacto perdido está completo: Artefacto recuperado"],
             nuevasUbicaciones: [] 
         },
+        // ESCENARIO 22
+        { 
+            id: 22, 
+            nombre: "Templo de los Elementos",
+            estado: "pendiente",
+            map_pos: { row: 6, col: 2 }, 
+            vieneDe: "Plano del Poder Elemental (10)",
+            requisitos: "El recado de un demonio (Grupo) COMPLETO o Tras la pista (grupo) COMPLETO",
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
+        // ID 27: NUEVO ESCENARIO
+        { 
+            id: 27, 
+            nombre: "Grieta destructiva",
+            estado: "completado",
+            map_pos: { row: 6, col: 4 },
+            vieneDe: "Cripta olvidada (19)",
+            requisitos: "Artefacto perdido (Global) INCOMPLETO e Incensario de Romperrocas (Grupo) COMPLETO",
+            objetivos: "Proteger a Hail durante 10 rondas",
+            textoEscenario: ["De regreso a la Cripta Ruinosa, Hail casi parece feliz mientras camina por el fango con vosotros, impaciente por ayudaros a luchar contra los demonios y los no muertoos",
+"—Ha pasado mucho tiempo desde la última vez que salí de Gloomhaven —os comenta, balanceando el incensario elemental mientras camina—. Necesito estar en la ciudad para llevar a cabo mis investigaciones, pero sienta bien tomarse un pequeño descanso y viajar a este plano de nuevo. Además, ahora ya no es tan peligroso.",
+"Miráis a la étérida de forma inquisitiva.",
+"—Los encuentros con los sectarios y los demonios no son precisamente amistosos, desde luego, pero la última vez que estuve por estas tierras... Bueno, es algo de lo que juré que nunca hablaría.",
+"Hail se sume en el silencio hasta que llegáis a la cripta. Al abrir las antiguas puertas casi esperáis que, de nuevo, el lugar esté plagado de sectarios y demonios, pero las estancias de piedra están desoladas y en silencio. Os dirigís hacia la cámara principal, donde encontráis la grieta gigante, situada sobre el altar demoníaco.",
+"—Bueno, está claro que no bromeabais —dice Hail—. ¡Esto es una belleza! ¡Su amplitud y estabilidad son impresionantes!",
+"—Hail camina por el perímetro del altar mientras arroja arena al aire y observa cómo cae—. Gracias al incensario del viejo Romperrocas, estoy bastante segura de poder cerrarlo, aunque no creo que a las fuerzas del otro lado de la grieta les vaya a hacer mucha gracia.",
+"Hail levanta el incensario sobre su cabeza con un brazo y sumerge el otro en la grieta hasta la altura de su codo.",
+"—¡Acérquense, damas y caballeros! Estamos a punto de presenciar un espectáculo de muerte."],  
+            conclusion: ["Hail grita con una intensidad espeluznante. La miráis con miedo de que más demonios os hayan sobrepasado y la estén atacando. Entonces, veis como saca el brazo de la grieta, marchito y humeante.",
+"Cuando sus dedos nudosos despejan las energías caóticas, la grieta vacila y empieza a menguar. En la cámara se levanta un fuerte viento y, por primera vez, los demonios que luchan contra vosotros muestran miedo. En lugar de clavaros las garras a vosotros, las aferran al suelo de piedra en un intento desesperado de no sucumbir a la atracción de la grieta.",
+"Pero sus esfuerzos son inútiles. Todos y cada uno de ellos son devueltos a su plano. La grieta se encoge hasta convertirse en un punto brillante y acaba desapareciendo.",
+"Hail se derrumba y corréis a su lado.",
+"—Oh, no os preocupéis por mí —tose—, estaré bien. Este viejo cuerpo ha pasado por cosas mucho peores. —A Hail le da un ataque de tos que no tarda en convertirse en risa—. Aunque eso ha sido increíble, ¿eh? Si hay algo para lo que puedo confiar en vosotros, es para encontrar desafíos como éste. Ayudadme a levantarme. He de volver a Gloomhaven de inmediato. Tengo muchas ideas nuevas para mis investigaciones. Venid cuando queráis, encontraré la manera de agradecéroslo como os merecéis."],
+            recompensas: ["+1 de prosperidad","100 de oro para cada personaje - este oro debe gastarse de immediato en mejoras" ],    
+            logros: ["La grieta neutralizada (Global)"],
+            nuevasUbicaciones: ["Ninguna"]
+        },
+
         // ID 31: NUEVO ESCENARIO 
         { 
             id: 31, 
@@ -365,7 +408,7 @@ const dataGloomhaven = {
             estado: "bloqueado", 
             map_pos: { row: 4, col: 5 },
             vieneDe: "Hondonada Helada (14)",
-            requisitos: "El poder de la mejora (Global) COMPLETO",
+            requisitos: "El poder de la mejora (Global) y Artefacto recuperado (Global) COMPLETOS",
             objetivos: "Desconocido",
             textoEscenario: ["Desconocido"],
             conclusion: ["Desconocido"],
@@ -527,10 +570,12 @@ const dataGloomhaven = {
         { origen: 8, destino: 14, tipo: 'alternativa', offset: 0 }, 
         { origen: 8, destino: 67, tipo: 'alternativa', offset: 0 }, 
         { origen: 10, destino: 21, tipo: 'alternativa', offset: 0 }, 
+        { origen: 10, destino: 22, tipo: 'alternativa', offset: 0 },
         { origen: 14, destino: 7, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 19, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 31, tipo: 'alternativa', offset: 0 },
         { origen: 14, destino: 43, tipo: 'alternativa', offset: 0 }, 
+        { origen: 19, destino: 27, tipo: 'alternativa', offset: 0 },
         { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
         { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
     ]          
@@ -779,12 +824,12 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
 }
 
 
-function mostrarDetalleEscenario(escenario) {
+function mostrarDetalleEscenario(escenario) { // Recibe el objeto escenario completo
     const modal = document.getElementById('modal-detalle');
     const titulo = document.getElementById('modal-titulo');
     const cuerpo = document.getElementById('modal-cuerpo');
 
-    // Título del modal: "Escenario 001: Nombre del Escenario"
+    // Título del modal: "Escenario 1: Nombre del Escenario"
     titulo.textContent = escenario.id === 0 
         ? escenario.nombre 
         : `Escenario ${String(escenario.id).padStart(0, '0')}: ${escenario.nombre}`;
@@ -793,7 +838,7 @@ function mostrarDetalleEscenario(escenario) {
     modal.style.display = "block";
 }
 
-/** NUEVA FUNCIÓN: Muestra el modal de datos de grupo. */
+// NUEVA FUNCIÓN: Muestra el modal de datos de grupo. 
 function mostrarDatosGrupoModal() {
     document.getElementById('modal-datos-grupo').style.display = "block";
 }
@@ -924,7 +969,7 @@ dataGloomhaven.conexiones.forEach(conn => {
     }
 }
  // Mostrar el contenido del Sobre X al hacer clic en el enlace
-function abrirModalImagen(sobreX) {
+function abrirModalImagen() {
     // 1. Crear el elemento modal de fondo
     const modal = document.createElement('div');
     modal.style.position = 'fixed';
@@ -942,7 +987,7 @@ function abrirModalImagen(sobreX) {
     const contenido = document.createElement('div');
     contenido.style.textAlign = 'center';
 
-    // 3. Crear la imagen (tendrías que reemplazar 'ruta/a/sobreX.jpg' por la ruta real)
+    // 3. Crear la imagen 
     const imagen = document.createElement('img');
     imagen.src = 'sobreX.jpg'; // Reemplaza esto con la URL de la imagen
     imagen.style.maxWidth = '90vw';
@@ -964,7 +1009,6 @@ function abrirModalImagen(sobreX) {
     modal.appendChild(contenido);
     document.body.appendChild(modal);
 }   
-
 
 
 document.addEventListener('DOMContentLoaded', actualizarBlackboard);
