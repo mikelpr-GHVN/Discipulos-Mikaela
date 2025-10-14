@@ -4,8 +4,8 @@ const dataGloomhaven = {
     // Datos Principales
     grupo: "Discípules de Mikaela",
     reputacion: 6, 
-    prosperidadNivel: 2,
-    prosperidadProgreso: 4, 
+    prosperidadNivel: 3, // Nivel de prosperidad actual
+    prosperidadProgreso: 1, // Progreso hacia el siguiente nivel (0-6)
     jugadores: ["Zaki", "Dani", "Siscu", "Jose", "Miquel"], 
     
     // Logros
@@ -47,8 +47,7 @@ const dataGloomhaven = {
             logros: ["Gobierno de la ciudad: Militarista (Global)"], 
             nuevasUbicaciones: ["Túmulo Negro (1)"] 
         }, 
-        
-        
+ 
 // ID 1: TÚMULO NEGRO 
         {
             id: 1, 
@@ -260,7 +259,7 @@ const dataGloomhaven = {
                 "La roca roja bajo vosotros retumba y se agrieta, abriendo una ardiente fisura a vuestros pies.",
                 "—Os abro las puertas de mi reino. Venid, hablemos cara a cara.",
                 "Habiendo dado ya este día un primer salto de fe, no creéis que dar otro vaya a mataros. El calor se vuelve más intenso a medida que descendéis con el aire hirviente elevándose desde abajo y ralentizando la caída. Aterrizáis con bastante seguridad en lo que parece ser un templo subterráneo. Ante vosotros se alza una terrorífica y monstruosa criatura con cuernos, se encuentra de pie sobre cuatro patas con pezuñas y sostiene un tridente.",
-                "—Valientes y necios —la voz sigue resonando en el interior de vuestras cabezas—. Me seréis de utilidad. Hay un artefacto de gran poder en un templo olvidado junto al río Beso de la Sierpe. Podéis recuperarlo y traérmelo (21) o morir aquí y ahora. (21)"
+                "—Valientes y necios —la voz sigue resonando en el interior de vuestras cabezas—. Me seréis de utilidad. Hay un artefacto de gran poder en un templo olvidado junto al río Beso de la Sierpe. Podéis recuperarlo y traérmelo (22) o morir aquí y ahora. (21)"
             ],
             recompensas: [],
             logros: ["El recado de un demonio (Grupo)"], 
@@ -852,8 +851,8 @@ function actualizarBlackboard() {
     // 2. Actualiza Tarjetas de Datos (AHORA EN EL MODAL DE DATOS)
     const modPrecios = calcularModificador(dataGloomhaven.reputacion);
     const colorMod = modPrecios < 0 ? 'green' : (modPrecios > 0 ? 'red' : 'white');
-
-    document.getElementById('prosperidad').textContent = `${dataGloomhaven.prosperidadNivel} + ${dataGloomhaven.prosperidadProgreso} / 5`;
+    // denominador del progreso de prosperidad es variable en función del nivel actual
+    document.getElementById('prosperidad').textContent = `${dataGloomhaven.prosperidadNivel} + ${dataGloomhaven.prosperidadProgreso} / 6`;
     
     document.getElementById('reputacion-val').textContent = (dataGloomhaven.reputacion >= 0 ? '+' : '') + dataGloomhaven.reputacion;
     document.getElementById('reputacion-mod').innerHTML = `Modificador de precios: <span style="color: ${colorMod};">${modPrecios}</span>`;

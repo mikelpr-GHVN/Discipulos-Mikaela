@@ -285,8 +285,8 @@ body {
 
 .arrow.estado-pendiente {
     /* Color de flecha y punta basado en .escenario.pendiente */
-    background-color: #61340c; /* Naranja oscuro (del borde pendiente) */
-    color: #61340c;
+    background-color: #f48e35; /* Naranja oscuro (del borde pendiente) */
+    color: #ec8a33;
 }
 
 .arrow.estado-bloqueado {
