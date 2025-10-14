@@ -922,7 +922,7 @@ dataGloomhaven.conexiones.forEach(conn => {
         contViewport.scrollLeft = scrollX;
         contViewport.scrollTop = scrollY;
     }
-
+}
  // Mostrar el contenido del Sobre X al hacer clic en el enlace
 function abrirModalImagen(sobreX) {
     // 1. Crear el elemento modal de fondo
@@ -964,6 +964,7 @@ function abrirModalImagen(sobreX) {
     modal.appendChild(contenido);
     document.body.appendChild(modal);
 }   
-}
+
+
 
 document.addEventListener('DOMContentLoaded', actualizarBlackboard);
