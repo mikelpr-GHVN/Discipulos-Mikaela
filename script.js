@@ -1,8 +1,4 @@
-// Archivo: script.js - VERSIÓN FINAL CON AJUSTE DE PUNTA DE FLECHA
-
-// ----------------------------------------------------
 // OBJETO CENTRAL DE DATOS: ¡MODIFICA ESTOS VALORES!
-// ----------------------------------------------------
 
 const dataGloomhaven = {
     // Datos Principales
@@ -53,7 +49,7 @@ const dataGloomhaven = {
         }, 
         
         
-// ID 1: TÚMULO NEGRO (Tu escenario actual)
+// ID 1: TÚMULO NEGRO 
         {
             id: 1, 
             nombre: "Túmulo Negro", 
@@ -73,7 +69,7 @@ const dataGloomhaven = {
             nuevasUbicaciones: ["Guarida del túmulo (2)"] 
         },
 
-        // ID 2: GUARIDA DEL TÚMULO (EXISTENTE)
+        // ID 2: GUARIDA DEL TÚMULO 
         {
             id: 2, 
             nombre: "Guarida del Túmulo", 
@@ -97,11 +93,10 @@ const dataGloomhaven = {
             ], 
             recompensas: ["10 de oro para cada personaje", "+1 de prosperidad"], 
             logros: [], 
-            // ¡IMPORTANTE! Se mantiene la lista de ubicaciones de texto, ahora con dos salidas
             nuevasUbicaciones: ["Campamento Inox (3)", "Cripta de los Malditos (4)"] 
         },
 
-        // ID 3: CAMPAMENTO INOX (EXISTENTE)
+        // ID 3: CAMPAMENTO INOX        
         {
             id: 3, 
             nombre: "Campamento Inox", 
@@ -170,7 +165,6 @@ const dataGloomhaven = {
             id: 6, 
             nombre: "Cripta Decadente", 
             estado: "completado", 
-            // Posición: Fila 2 (igual que el 4), Columna 3 (a la derecha)
             map_pos: { row: 3, col: 3 }, 
             vieneDe: "Cripta de los Malditos (4)",
             requisitos: "Ninguno",
@@ -179,7 +173,7 @@ const dataGloomhaven = {
             conclusion: ["Éxito. Habéis recuperado los bienes robados para los aldeanos."],
             recompensas: ["10 monedas de oro para cada personaje"],
             logros: [], 
-            nuevasUbicaciones: ["Almacén de Gloomhaven (8)"] // Conecta al escenario 8
+            nuevasUbicaciones: ["Almacén de Gloomhaven (8)"] 
         },
         // ID 7: GRUTA TREPIDANTE (NUEVO - Placeholder) 
 { 
@@ -201,7 +195,7 @@ const dataGloomhaven = {
 { 
             id: 8, 
             nombre: "Almacén de Gloomhaven", 
-            estado: "completado", // Estado solicitado
+            estado: "completado", 
             map_pos: { row: 1, col: 4 }, 
             vieneDe: "Campamento Inox (3), Cripta Decadente (6)",
             requisitos: "Los planes de Jekserah (Grupo) COMPLETO Y La invasión de los muertos (Global) INCOMPLETO", 
@@ -240,7 +234,7 @@ const dataGloomhaven = {
             id: 10, 
             nombre: "Plano del Poder Elemental", 
             estado: "completado", 
-            map_pos: { row: 6, col: 3 }, // Debajo del 5 (row 4, col 3)
+            map_pos: { row: 6, col: 3 }, 
             vieneDe: "Cripta Ruinosa (5)",
             requisitos: "La grieta neutralizada (Global) INCOMPLETO",
             objetivos: "Matar a todos los enemigos",
@@ -285,9 +279,8 @@ const dataGloomhaven = {
             id: 14, 
             nombre: "Hondonada Helada", 
             estado: "completado", 
-            // Posición: Fila 4, Columna 3 (debajo del Escenario 8)
             map_pos: { row: 3, col: 4 }, 
-            vieneDe: "Almacén de Gloomhaven (8), Cripta ruinosa (5)", // Añadido el 5 como origen
+            vieneDe: "Almacén de Gloomhaven (8), Cripta ruinosa (5)", 
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos", 
             textoEscenario: [
@@ -302,7 +295,6 @@ const dataGloomhaven = {
             ],
             recompensas: ["Logro global: El poder de la mejora"],
             logros: ["El poder de la mejora (Global)"], 
-            // 7: Gruta Trepidante, 31: Ruinas del bosque, 43: Guarida del Dragón
             nuevasUbicaciones: ["Gruta trepidante (7)", "Plano de la noche (31)", "Nido de dracos (43)"] 
         },
         
@@ -311,9 +303,9 @@ const dataGloomhaven = {
             id: 19, 
             nombre: "Cripta olvidada", 
             estado: "completado",
-            map_pos: { row: 5, col: 4 }, // Debajo del 14 (row 4, col 4)
+            map_pos: { row: 5, col: 4 }, 
             vieneDe: "Cripta Ruinosa (5)",
-            requisitos: "El poder de la mejora (Global) COMPLETO", // Requisito del escenario
+            requisitos: "El poder de la mejora (Global) COMPLETO", 
             objetivos: "Matar a todos los enemigos.",
             textoEscenario: [
                 "—¿Qué queréis hacer qué? —dice Hail, mirando fijamente—. ¿Habéis encontrado una grieta en el Plano del Poder Elemental y queréis cerrarla? —suspira Hail—. Bueno, accedí a ayudaros. —Hail comienza a jugar con la esfera lanzándola arriba y abajo—. De acuerdo, por lo que describís, vamos a necesitar algo de trabajo extra para cerrar una grieta de esa magnitud. Podría hacerlo yo misma, pero me llevaría mucho tiempo, y tendríamos muchos problemas si nos atacaran desde el otro lado en mitad del hechizo. Sería mucho más sencillo de hacer si tuviera un incensario elemental, cosa que, siendo sinceros, sería muy oportuno, ya que necesito uno para mis estudios. Hace muchos años conocí a un poderoso elementalista que poseía uno, ahora está muerto, pero os llevaré personalmente a su cripta. No es recomendable que manejéis el incensario por vuestra cuenta.",
@@ -330,11 +322,34 @@ const dataGloomhaven = {
                 "Hail avanza y logra coger el incensario. Lo levanta y pronuncia unas palabras en una lengua desconocida. Un fuego estalla y destruye a los no muertos que quedaban, reduciéndolos a cenizas.",
                 "—Bien, ahora que nos hemos encargado de esos estorbos, vayamos a lo divertido —dice Hail con la más pequeña de las sonrisas—. Mostradme esa grieta vuestra. (27)"
             ],
-            recompensas: ["+1 de prosperidad"], // Recompensa del escenario
-            logros: ["Incensario de Romperrocas (Grupo)"], // Logro de grupo
-            nuevasUbicaciones: ["Grieta destructiva (27)"] // Nueva ubicación
+            recompensas: ["+1 de prosperidad"], 
+            logros: ["Incensario de Romperrocas (Grupo)"], 
+            nuevasUbicaciones: ["Grieta destructiva (27)"] 
         },
-
+        // ESCENARIO 21
+        { 
+            id: 21, 
+            nombre: "Trono Infernal", 
+            estado: "completado", 
+            map_pos: { row: 7, col: 3 }, 
+            vieneDe: "Plano del Poder Elemental (10)",
+            requisitos: "La Grieta neutralizada (Global) INCOMPLETO",
+            objetivos: "Matar al demonio supremo",
+            textoEscenario: [
+                "Antes de que podáis echar mano a vuestras armas, el demonio se percata de vuestras intenciones.",
+"— ¡Idiotas! — Su voz os provoca un dolor desgarrador en la cabeza y os tambaleáis de dolor— ¡¿Os atrevéis a atacarme en mi propio territorio?! ¡Acabáis de cometer un gran error!",
+"Con un estallido de llamas, su enorme forma se desvanece en la oscuridad.",
+"— ¡A mí, mis sirvientes! ¡Aplastad a estos mortales contra las piedras! ¡Decorad mi palacio con sus entrañas!",
+            ], 
+            conclusion: [
+"Con un golpe final, la grieta se vuelve más caótica, gira violentamente y lanza zarcillos de energía en ángulos extraños. Un fuerte gemido emerge de la grieta y su intensidad aumenta hasta que su sonido invade todo el palacio. Con un destello de luz, el vacío se colapsa sobre sí mismo y, entonces, explota, produciendo una onda expansiva que destruye a todos los demonios que encuentra en su camino.",
+"Cuando la onda entra en contacto con el Demonio Supremo, su aura se disipa y su grito os perfora la mente. Las piernas se le doblan y el demonio se desploma en el suelo, fragmentándose en innumerables esquirlas de roca.",
+"Entonces, los gritos se detienen y el palacio se sumerge en un extraño silencio. Con la amenaza destruida, lo único que queda por hacer es saquear el palacio y regresar a vuestro propio plano.",
+      ],
+            recompensas: ["50 de oro para cada personaje, +1 de prosperidad, Añade el Evento de ciudad 78 al mazo"],
+            logros: ["La grieta neutralizada, Si el logro Artefacto perdido está completo: Artefacto recuperado"],
+            nuevasUbicaciones: [] 
+        },
         // ID 31: NUEVO ESCENARIO 
         { 
             id: 31, 
@@ -365,6 +380,7 @@ const dataGloomhaven = {
             logros: ["desconocido"], 
             nuevasUbicaciones: ["Desconocido"] 
         },
+        
         // ID 82: NUEVO ESCENARIO 
         { 
             id: 82, 
@@ -399,9 +415,9 @@ const dataGloomhaven = {
         { 
             id: 67, 
             nombre: "Biblioteca arcana", 
-            estado: "completado", // Estado solicitado: "completado"
-            map_pos: { row: 0, col: 4 }, // Encima del 8 (row 1, col 4)
-            vieneDe: "Almacén de Gloomhaven (8)", // Origen solicitado: Escenario 8
+            estado: "completado", 
+            map_pos: { row: 0, col: 4 },
+            vieneDe: "Almacén de Gloomhaven (8)", 
             requisitos: "Ninguno",
             objetivos: "Matar al Golem arcano",
             textoEscenario: [
@@ -420,8 +436,8 @@ const dataGloomhaven = {
         { 
             id: 93, 
             nombre: "Barco naufragado", 
-            estado: "completado", // Estado solicitado: "completado"
-            map_pos: { row: 0, col: 5 }, // A la derecha del 67 (row 0, col 4)
+            estado: "completado", 
+            map_pos: { row: 0, col: 5 }, 
             vieneDe: "Biblioteca arcana (67)",
             requisitos: "Mapa del tesoro (Grupo) COMPLETO",
             objetivos: "Matar a todos los enemigos.",
@@ -440,7 +456,6 @@ const dataGloomhaven = {
         },
 
     ],
-    // Conexiones: Ahora incluye el enlace doble desde el escenario 2 con offset
     conexiones: [
         { origen: 0, destino: 1, tipo: 'alternativa', offset: 0 }, 
         { origen: 1, destino: 2, tipo: 'alternativa', offset: 0 }, 
@@ -632,9 +647,11 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
     let cy2 = targetRect.top + targetRect.height / 2 - containerRect.top;
 
     // Dimensiones de medio nodo para calcular el borde. (Nodos son 200px de ancho y ~60px de alto)
-    const HALF_WIDTH = 85;
-    const HALF_HEIGHT_ESTIMATE = 22; 
-    const ALIGNMENT_THRESHOLD = 5;
+    // Modificar estos valores para desplazar las flechas más cerca o más lejos del borde.
+    // En diagonales, se usa un promedio para reducir el solapamiento.
+    const HALF_WIDTH = 85; // Ancho / 2 (200px / 2 = 100px, menos un margen de 15px)
+    const HALF_HEIGHT_ESTIMATE = 22; //Altura / 2 estimada (60px / 2 = 30px, menos un margen de 8px)
+    const ALIGNMENT_THRESHOLD = 5; // Umbral para considerar líneas como "casi verticales" o "casi horizontales"
 
     // 2. Aplicar el offset manual (para separar líneas paralelas)
     let x1_offset = cx1;
@@ -674,15 +691,15 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
     }
     else {
         // En diagonales, usamos un promedio para reducir el solapamiento.
-        intersectionDistance = (HALF_WIDTH + HALF_HEIGHT_ESTIMATE) / 2;
+        intersectionDistance = (HALF_WIDTH + HALF_HEIGHT_ESTIMATE) / 1.3;
     }
     
     // 5. Ajustar la distancia y las coordenadas de inicio
     
     // -> MODIFICACIÓN CLAVE PARA PUNTA DE FLECHA:
     // Distancia necesaria para la punta de flecha (7px de largo + 1px de margen)
-    const ARROW_HEAD_SPACE = 21; 
-    const EXTRA_REDUCTION_ORIGIN = 15; 
+    const ARROW_HEAD_SPACE = 21; // Espacio para la punta de flecha al final del conector
+    const EXTRA_REDUCTION_ORIGIN = 15; // Espacio extra en el origen del conector para evitar solapamiento
     
     // La distancia total se reduce: (Inicio) + (Destino) + (Espacio para la punta)
     const reduction = (intersectionDistance + EXTRA_REDUCTION_ORIGIN) + intersectionDistance + ARROW_HEAD_SPACE; // <-- LÍNEA CLAVE MODIFICADA
@@ -730,7 +747,7 @@ function mostrarDatosGrupoModal() {
 }
 
 
-/** Actualiza el panel de resumen con el formato Base44 y renderiza el mapa. */
+/** Actualiza el panel de resumen y renderiza el mapa. */
 function actualizarBlackboard() {
     // 1. Actualiza Cabecera (AHORA EN EL MODAL DE DATOS)
     document.getElementById('nombre-grupo').textContent = dataGloomhaven.grupo;
@@ -764,7 +781,7 @@ function actualizarBlackboard() {
         
         // Muestra el ID para los escenarios > 0: **001**Nombre
         div.innerHTML = esc.id === 0 ? esc.nombre : `<strong>${String(esc.id).padStart(0, '0')}</strong>${esc.nombre}`;
-        // --- LÓGICA DE COORDENADAS (NUEVA) ---
+        // --- LÓGICA DE COORDENADAS (NUEVA) --
         const map_pos = esc.map_pos;
         // left = Margen Inicial + Columna * Espaciado
         const left = INITIAL_LEFT_OFFSET + map_pos.col * COL_SPACING;
@@ -784,7 +801,6 @@ dataGloomhaven.conexiones.forEach(conn => {
     const targetDiv = document.getElementById(`escenario-${conn.destino}`);
     
     if (sourceDiv && targetDiv) {
-        // --- CÓDIGO A MODIFICAR ---
         
         // 1. Encontrar el objeto de escenario destino para obtener su estado
         const targetEscenario = dataGloomhaven.escenarios.find(e => e.id === conn.destino);
@@ -796,7 +812,6 @@ dataGloomhaven.conexiones.forEach(conn => {
         // 3. Llamar a drawArrow con la nueva clase
         drawArrow(sourceDiv, targetDiv, estadoClase, contMapa, conn.offset || 0);
 
-        // --- FIN DEL CÓDIGO MODIFICADO ---
         }
     });
 
