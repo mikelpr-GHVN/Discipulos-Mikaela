@@ -4,8 +4,8 @@
    VARIABLES Y FUENTES (SIN CAMBIOS)
    ---------------------------------------------------- */
 :root {
-    --color-bg-dark: #1e212b;
-    --color-bg-card: #56617a;
+    --color-bg-dark: #1e212b;/* Color de fondo de la web */
+    --color-bg-card: #2f2d34; /* Color de fondo del mapa de escenarios */
     --color-accent-orange: #ff9800;
     --color-accent-blue: #3498db;
     --color-text-light: #e0e6f0;
@@ -279,8 +279,8 @@ body {
 }
 .arrow.estado-completado {
     /* Color de flecha y punta basado en .escenario.completado */
-    background-color: #074421; /* Verde oscuro (del borde completado) */
-    color: #074421; 
+    background-color: #2ebd6c; /* Verde oscuro (del borde completado) */
+    color: #35ee85; 
 }
 
 .arrow.estado-pendiente {
@@ -291,8 +291,8 @@ body {
 
 .arrow.estado-bloqueado {
     /* Color de flecha y punta basado en .escenario.bloqueado */
-    background-color: #4e0202; /* Rojo oscuro (del borde bloqueado) */
-    color: #4e0202;
+    background-color: #fb0808; /* Rojo oscuro (del borde bloqueado) */
+    color: #f00f0f;
    }
 
 /* ----------------------------------------------------
@@ -399,4 +399,65 @@ body {
 
 .enlace-escenario-btn.anterior:hover {
     background-color: #f39c12; 
+}
+/* --- ESTILOS PARA LA ETIQUETA DE ESTADO DEL ESCENARIO --- */
+.estado-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.5em;
+    font-weight: bold;
+    margin-left: 15px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Color para estado COMPLETADO (Verde) */
+.estado-tag.estado-completado {
+    background-color: #6cf1a3;
+    color: #074421;
+    border: 1px solid #074421;
+}
+
+/* Color para estado PENDIENTE (Naranja) */
+.estado-tag.estado-pendiente {
+    background-color: #f6ce8e;
+    color: #61340c;
+    border: 1px solid #61340c;
+}
+
+/* Color para estado BLOQUEADO (Rojo) */
+.estado-tag.estado-bloqueado {
+    background-color: #f47e7e;
+    color: #4e0202;
+    border: 1px solid #4e0202;
+}
+
+/* Color para estado INICIAL (Azul) */
+.estado-tag.estado-inicial {
+    background-color: #43e0ee;
+    color: #0f3c6e;
+    border: 1px solid #6141d4;
+}
+/* ----------------------------------------------------
+   NUEVOS ESTILOS PARA LA FECHA DE COMPLETADO (SUBTÍTULO)
+   ---------------------------------------------------- */
+
+.modal-subtitulo-fecha {
+    /* Estilo para la fecha de completado debajo del título */
+    font-size: 0.9em; /* Texto un poco más pequeño que el cuerpo del modal */
+    color: var(--color-text-faded); /* Color discreto para un aspecto sutil */
+    font-style: italic;
+    font-weight: normal; /* Asegurar que no sea negrita por defecto */
+    margin-top: 5px; /* Pequeño margen superior para separarlo del título */
+    margin-bottom: 20px; /* Separarlo del resto del contenido del cuerpo */
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+}
+
+/* Opcional: Asegurar que el título no tenga un margen inferior excesivo */
+#modal-titulo {
+    margin-bottom: 0; /* Quitamos el margen inferior para que el subtítulo esté cerca */
 }

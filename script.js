@@ -146,10 +146,11 @@ const dataGloomhaven = {
             nuevasUbicaciones: ["Cripta ruinosa (5)", "Cripta decadente (6)"], 
         },
         // ID 5: CRIPTA RUINOSA (AÑADIDO - Placeholder)
-        {   id: 5, 
+        {   
+            id: 5, 
             nombre: "Cripta Ruinosa", 
             estado: "completado", 
-            map_pos: { row: 5, col: 3 },
+            map_pos: { row: 4, col: 3 },
             vieneDe: "Cripta de los Malditos (4)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos.",
@@ -241,7 +242,7 @@ const dataGloomhaven = {
             id: 10, 
             nombre: "Plano del Poder Elemental", 
             estado: "completado", 
-            map_pos: { row: 6, col: 3 }, 
+            map_pos: { row: 5, col: 3 }, 
             vieneDe: "Cripta Ruinosa (5)",
             requisitos: "La grieta neutralizada (Global) INCOMPLETO",
             objetivos: "Matar a todos los enemigos",
@@ -310,7 +311,7 @@ const dataGloomhaven = {
             id: 19, 
             nombre: "Cripta olvidada", 
             estado: "completado",
-            map_pos: { row: 5, col: 4 }, 
+            map_pos: { row: 4, col: 4 }, 
             vieneDe: "Cripta Ruinosa (5)",
             requisitos: "El poder de la mejora (Global) COMPLETO", 
             objetivos: "Matar a todos los enemigos.",
@@ -338,7 +339,7 @@ const dataGloomhaven = {
             id: 21, 
             nombre: "Trono Infernal", 
             estado: "completado", 
-            map_pos: { row: 7, col: 3 }, 
+            map_pos: { row: 6, col: 3 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "La Grieta neutralizada (Global) INCOMPLETO",
             objetivos: "Matar al demonio supremo",
@@ -362,7 +363,7 @@ const dataGloomhaven = {
             id: 22, 
             nombre: "Templo de los Elementos",
             estado: "pendiente",
-            map_pos: { row: 6, col: 2 }, 
+            map_pos: { row: 5, col: 2 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "El recado de un demonio (Grupo) COMPLETO o Tras la pista (grupo) COMPLETO",
             objetivos: "Desconocido",
@@ -375,9 +376,10 @@ const dataGloomhaven = {
         // ID 27: NUEVO ESCENARIO
         { 
             id: 27, 
+            fechaCompletado: "09-10-2025",
             nombre: "Grieta destructiva",
             estado: "completado",
-            map_pos: { row: 6, col: 4 },
+            map_pos: { row: 5, col: 4 },
             vieneDe: "Cripta olvidada (19)",
             requisitos: "Artefacto perdido (Global) INCOMPLETO e Incensario de Romperrocas (Grupo) COMPLETO",
             objetivos: "Proteger a Hail durante 10 rondas",
@@ -435,7 +437,7 @@ const dataGloomhaven = {
     id: 57, 
     nombre: "MP - Investigación", 
     estado: "completado", 
-    map_pos: { row: 5, col: 2 }, // Ubicado a la izquierda del escenario 5 (5,3)
+    map_pos: { row: 4, col: 2 }, // Ubicado a la izquierda del escenario 5 (5,3)
     vieneDe: "Escenario 5",
     requisitos: "Misión personal \"Venganza\"",
     objetivos: "Matar al espía",
@@ -455,7 +457,7 @@ const dataGloomhaven = {
     id: 58, 
     nombre: "Cabaña ensangrentada", 
     estado: "completado", 
-    map_pos: { row: 5, col: 1 }, // Ubicado a la izquierda del escenario 57 (5,2)
+    map_pos: { row: 4, col: 1 }, // Ubicado a la izquierda del escenario 57 (5,2)
     vieneDe: "Investigación (57)",
     requisitos: "Misión personal \"Venganza\"",
     objetivos: "Matar al Cosechador",
@@ -829,10 +831,38 @@ function mostrarDetalleEscenario(escenario) { // Recibe el objeto escenario comp
     const cuerpo = document.getElementById('modal-cuerpo');
 
     // Título del modal: "Escenario 1: Nombre del Escenario"
-    titulo.textContent = escenario.id === 0 
-        ? escenario.nombre 
-        : `Escenario ${String(escenario.id).padStart(0, '0')}: ${escenario.nombre}`;
-    cuerpo.innerHTML = crearDetalleEscenario(escenario);
+    // --- CÓDIGO NUEVO PARA EL TÍTULO Y LA ETIQUETA DE ESTADO ---
+
+// 1. Mapeo de estados a texto legible
+const textoEstado = {
+    completado: "Completado",
+    pendiente: "Pendiente",
+    bloqueado: "Bloqueado",
+    inicial: "Inicial"
+};
+
+// 2. Generar el título base del escenario
+const tituloTexto = escenario.id === 0 
+    ? escenario.nombre 
+    : `Escenario ${String(escenario.id).padStart(0, '0')}: ${escenario.nombre}`;
+
+// 3. Crear el HTML de la etiqueta de estado
+const estadoTagHtml = `<span class="estado-tag estado-${escenario.estado}">${textoEstado[escenario.estado]}</span>`;
+
+// 4. Combinar título y etiqueta usando innerHTML
+titulo.innerHTML = tituloTexto + estadoTagHtml;
+
+// 5. Generar el HTML de la fecha de completado (Subtítulo)
+    let fechaHtml = '';
+    // Solo si está completado Y tiene la propiedad fechaCompletado
+    if (escenario.estado === 'completado' && escenario.fechaCompletado) {
+        // Creamos un párrafo con una clase especial para el estilo
+        fechaHtml = `<p class="modal-subtitulo-fecha">Completado el: <strong>${escenario.fechaCompletado}</strong></p>`;
+    }
+    
+    // 6. Construir el Cuerpo del modal, incluyendo la fecha como primer elemento
+    // La función `crearDetalleEscenario(escenario)` debería devolver el resto del HTML del cuerpo.
+    cuerpo.innerHTML = fechaHtml + crearDetalleEscenario(escenario);
     
     modal.style.display = "block";
 }
