@@ -161,20 +161,28 @@ const dataGloomhaven = {
             nuevasUbicaciones: ["Plano del poder elemental (10)", "Hondonada helada (14)", "Cripta olvidada (19)"], 
         },
         // ID 6: CRIPTA DECADENTE (NUEVO)
-        { 
-            id: 6, 
-            nombre: "Cripta Decadente", 
-            estado: "completado", 
-            map_pos: { row: 3, col: 3 }, 
-            vieneDe: "Cripta de los Malditos (4)",
-            requisitos: "Ninguno",
-            objetivos: "Matar a todos los enemigos.",
-            textoEscenario: ["Los aldeanos se dirigen a vosotros. Les han robado sus suministros y necesitan que encontréis el escondite de los ladrones en una cripta cercana."],
-            conclusion: ["Éxito. Habéis recuperado los bienes robados para los aldeanos."],
-            recompensas: ["10 monedas de oro para cada personaje"],
-            logros: [], 
-            nuevasUbicaciones: ["Almacén de Gloomhaven (8)"] 
-        },
+   { 
+    id: 6, 
+    nombre: "Cripta Decadente", 
+    estado: "completado", 
+    map_pos: { row: 3, col: 3 }, 
+    vieneDe: "Cripta de los Malditos (4)",
+    requisitos: "Ninguno",
+    objetivos: "Revelar la pieza M y matar a todos los enemigos revelados",
+    textoEscenario: [
+        "¿Qué sería la vida sin algo de intriga? Los sectarios han señalado claramente esta cripta como un punto problemático para ellos. Tal vez despejar ese lugar mejore vuestras relaciones con ellos. O tal vez solo encontréis un gran alijo de tesoros que no haya llegado aún a manos de los saqueadores.",
+        "Cuando llegáis, el olor hace que os arrepintáis de vuestra decisión más que de ninguna otra. No es el hecho de que estéis hartos de explorar antiguas criptas decrépitas. No son los horrobles no muertos que se tambalean y gimen en las sombras. Es el olor. El olor a muerte, a inhumanidad y a carne putrefacta."
+    ],
+    conclusion: [
+        "Después de los terribles gritos y gemidos de los no muertos, el sonido de alguien aplaudiendo resulta extraño y alarmante. Os dais la vuelta y veis una figura encapuchada de pie a pocos centímetros de vuestra antorcha. Levantáis las armas, pero no parece que la sonrisa de su rostro sea del tipo que pida a gritos borrarla a base de acero. Resulta amenazante, sí, pero de una forma que nunca antes habíais experimentado.",
+        "—Buen trabajo, chicos —manifiesta la figura—, vaya, vaya, sois un grupo de lo más especial ¿eh? Y lo cierto es que habéis llamado nuestra atención despejando de no muertos descarriados esta problemática cripta. La verdad es que preferimos que nuestros no muertos sean de la variedad controlable, ¿no?",
+        "Se hace un largo silencio mientras la figura continúa mirándoos, aún sonriente.",
+        "—Bueno, ¿seríais tan amables de hacernos otro favor? Después, casi podríamos dar por zanjado todo ese asunto del asesinato de algunos de mis hermanos —dice mientras deja de sonreír—. Hay una nigromante en Gloomhaven. Nos ha estado causando algunos problemas, enviándonos mercenarios para que le hagan el trabajo sucio. Puede que la conozcáis. Matad a Jekserah. Traed su cabeza hasta nuestro cuartel general y puede que os perdonemos la vida. ⑧"
+    ],
+    recompensas: ["5 de oro para cada personaje"],
+    logros: ["Los planes de Jekserah", "Encargo siniestro"], 
+    nuevasUbicaciones: ["Almacén de Gloomhaven (8)"] 
+},
         // ID 7: GRUTA TREPIDANTE (NUEVO - Placeholder) 
 { 
             id: 7, 
@@ -300,7 +308,7 @@ const dataGloomhaven = {
         
         // ID 19: NUEVO ESCENARIO
         {
-            id: 19, 
+                        id: 19, 
             nombre: "Cripta olvidada", 
             estado: "completado",
             map_pos: { row: 5, col: 4 }, 
@@ -380,7 +388,49 @@ const dataGloomhaven = {
             logros: ["desconocido"], 
             nuevasUbicaciones: ["Desconocido"] 
         },
-        
+        //ID 57: NUEVO ESCENARIO
+        { 
+    id: 57, 
+    nombre: "MP - Investigación", 
+    estado: "completado", 
+    map_pos: { row: 5, col: 2 }, // Ubicado a la izquierda del escenario 5 (5,3)
+    vieneDe: "Escenario 5",
+    requisitos: "Misión personal \"Venganza\"",
+    objetivos: "Matar al espía",
+    textoEscenario: [
+        "Recopilar información sobre la muerte de vuestro amigo no fue tarea fácil, pero vuestra incesante investigación os acaba llevando a conocer a cierto teniente corrupto emplazado en los barracones occidentales. Aparentemente, se le conoce por hacer la vista gorda ante ciertos delitos en el Mercado Zozobrante, y estaba de guardia la noche que asesinaron a vuestro amigo. Ha llegado el momento de tirar abajo algunas puertas y obtener algunas respuestas, cueste lo que cueste."
+    ],
+    conclusion: [
+        "Al buscar entre los restos del espía, encontráis una nota con la fecha de una reunión fuera de la ciudad en una cabaña remota y algo sobre recolectar cadáveres. Esperáis con ansia esa reunión para cobraros vuestra venganza. 58",
+        "Descubierto el espía, el resto de los guardias de la ciudad os da las gracias."
+    ],
+    recompensas: ["+1 de reputación"],
+    logros: [], 
+    nuevasUbicaciones: ["Cabaña ensangrentada (58)"] 
+},
+// ID 58: NUEVO ESCENARIO
+{ 
+    id: 58, 
+    nombre: "Cabaña ensangrentada", 
+    estado: "completado", 
+    map_pos: { row: 5, col: 1 }, // Ubicado a la izquierda del escenario 57 (5,2)
+    vieneDe: "Investigación (57)",
+    requisitos: "Misión personal \"Venganza\"",
+    objetivos: "Matar al Cosechador",
+    textoEscenario: [
+        "Rodeáis la pequeña cabaña en la Costa de los Anzuelos y preparáis vuestras armas. Sin embargo, el propietario del lugar no está del todo desprevenido. Unos grandes elementales de tierra y una patrulla de atormentadores acompañados de grotescos duendes negros custodian ambas entradas. Entráis en acción con la esperanza de deshaceros de todos ellos antes de que den la alarma."
+    ],
+    conclusion: [
+        "La sed de sangre es algo extraño, una vez saciada, te convierte en una cáscara vacía. La daga cae al suelo mientras una fría sensación os invade. El trabajo está hecho y ha llegado el momento de seguir adelante, por duro que resulte."
+    ],
+    recompensas: [
+        "Misión \"Venganza\" completa",
+        "<a href=\"#\" onclick=\"abrirModalImagen('sobreX.jpg'); return false;\">Abre el sobre X</a>",
+        "+2 de reputación",
+    ],
+    logros: [], 
+    nuevasUbicaciones: [] 
+},
         // ID 82: NUEVO ESCENARIO 
         { 
             id: 82, 
@@ -470,6 +520,7 @@ const dataGloomhaven = {
         { origen: 5, destino: 10, tipo: 'alternativa', offset: 0 },
         { origen: 5, destino: 14, tipo: 'alternativa', offset: 0 },
         { origen: 5, destino: 19, tipo: 'alternativa', offset: 0 },
+        { origen: 5, destino: 57, tipo: 'alternativa', offset: 0 },
         { origen: 6, destino: 8, tipo: 'alternativa', offset: 0 },
         { origen: 8, destino: 7, tipo: 'alternativa', offset: 0 }, 
         { origen: 8, destino: 13, tipo: 'alternativa', offset: 0 },
@@ -480,6 +531,7 @@ const dataGloomhaven = {
         { origen: 14, destino: 19, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 31, tipo: 'alternativa', offset: 0 },
         { origen: 14, destino: 43, tipo: 'alternativa', offset: 0 }, 
+        { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
         { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
     ]          
     
@@ -870,6 +922,48 @@ dataGloomhaven.conexiones.forEach(conn => {
         contViewport.scrollLeft = scrollX;
         contViewport.scrollTop = scrollY;
     }
+
+ // Mostrar el contenido del Sobre X al hacer clic en el enlace
+function abrirModalImagen(sobreX) {
+    // 1. Crear el elemento modal de fondo
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+    modal.style.zIndex = '1000';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+
+    // 2. Crear el contenedor de la imagen y el botón
+    const contenido = document.createElement('div');
+    contenido.style.textAlign = 'center';
+
+    // 3. Crear la imagen (tendrías que reemplazar 'ruta/a/sobreX.jpg' por la ruta real)
+    const imagen = document.createElement('img');
+    imagen.src = 'sobreX.jpg'; // Reemplaza esto con la URL de la imagen
+    imagen.style.maxWidth = '90vw';
+    imagen.style.maxHeight = '90vh';
+    imagen.style.display = 'block';
+
+    // 4. Crear el botón de cerrar
+    const botonCerrar = document.createElement('button');
+    botonCerrar.textContent = 'Cerrar';
+    botonCerrar.style.marginTop = '10px';
+    botonCerrar.onclick = function() {
+        document.body.removeChild(modal);
+    };
+
+    // 5. Ensamblar y añadir al DOM
+    contenido.appendChild(imagen);
+    contenido.appendChild(document.createElement('br')); // Espacio
+    contenido.appendChild(botonCerrar);
+    modal.appendChild(contenido);
+    document.body.appendChild(modal);
+}   
 }
 
 document.addEventListener('DOMContentLoaded', actualizarBlackboard);
