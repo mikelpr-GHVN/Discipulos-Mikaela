@@ -310,6 +310,7 @@ const dataGloomhaven = {
         {
             id: 19, 
             nombre: "Cripta olvidada", 
+            fechaCompletado: "02-09-2025",
             estado: "completado",
             map_pos: { row: 4, col: 4 }, 
             vieneDe: "Cripta Ruinosa (5)",
@@ -1038,6 +1039,7 @@ function abrirModalImagen() {
     modal.appendChild(contenido);
     document.body.appendChild(modal);
 }   
+
 
 
 document.addEventListener('DOMContentLoaded', actualizarBlackboard);
