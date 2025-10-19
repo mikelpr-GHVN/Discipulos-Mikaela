@@ -218,7 +218,7 @@ body {
 
 .escenario.completado {
     background-color: #6cf1a3;
-    border: 2px solid #074421;
+    border: 3px solid #bce8cf;
 }
 
 .escenario.pendiente {
@@ -460,4 +460,22 @@ body {
 /* Opcional: Asegurar que el título no tenga un margen inferior excesivo */
 #modal-titulo {
     margin-bottom: 0; /* Quitamos el margen inferior para que el subtítulo esté cerca */
+}
+.marca-proxima-partida {
+  margin-top: 6px;
+  font-size: 0.75em;
+  color: #333;
+  background-color: #6ad2f2;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.marca-ultima-partida {
+  margin-top: 6px;
+  font-size: 0.75em;
+  color: #000000;
+  background-color: #91fc89;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: inline-block;
 }

@@ -242,7 +242,7 @@ const dataGloomhaven = {
             id: 10, 
             nombre: "Plano del Poder Elemental", 
             estado: "completado", 
-            map_pos: { row: 5, col: 3 }, 
+            map_pos: { row: 5.2, col: 3 }, 
             vieneDe: "Cripta Ruinosa (5)",
             requisitos: "La grieta neutralizada (Global) INCOMPLETO",
             objetivos: "Matar a todos los enemigos",
@@ -309,8 +309,8 @@ const dataGloomhaven = {
         // ID 19: NUEVO ESCENARIO
         {
             id: 19, 
-            nombre: "Cripta olvidada", 
             fechaCompletado: "02-09-2025",
+            nombre: "Cripta olvidada", 
             estado: "completado",
             map_pos: { row: 4, col: 4 }, 
             vieneDe: "Cripta Ruinosa (5)",
@@ -340,7 +340,7 @@ const dataGloomhaven = {
             id: 21, 
             nombre: "Trono Infernal", 
             estado: "completado", 
-            map_pos: { row: 6, col: 3 }, 
+            map_pos: { row: 6.3, col: 3 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "La Grieta neutralizada (Global) INCOMPLETO",
             objetivos: "Matar al demonio supremo",
@@ -364,7 +364,8 @@ const dataGloomhaven = {
             id: 22, 
             nombre: "Templo de los Elementos",
             estado: "pendiente",
-            map_pos: { row: 5, col: 2 }, 
+            fechaProximapartida: "24-10-2025",
+            map_pos: { row: 5.2, col: 2 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "El recado de un demonio (Grupo) COMPLETO o Tras la pista (grupo) COMPLETO",
             objetivos: "Desconocido",
@@ -380,7 +381,7 @@ const dataGloomhaven = {
             fechaCompletado: "09-10-2025",
             nombre: "Grieta destructiva",
             estado: "completado",
-            map_pos: { row: 5, col: 4 },
+            map_pos: { row: 5.2, col: 4 },
             vieneDe: "Cripta olvidada (19)",
             requisitos: "Artefacto perdido (Global) INCOMPLETO e Incensario de Romperrocas (Grupo) COMPLETO",
             objetivos: "Proteger a Hail durante 10 rondas",
@@ -900,14 +901,25 @@ function actualizarBlackboard() {
     const contMapa = document.getElementById('mapa-escenarios');
     contMapa.innerHTML = ''; 
     
-    dataGloomhaven.escenarios.forEach(esc => {
-        const div = document.createElement('div');
+    dataGloomhaven.escenarios.forEach(esc => { // Recibe el objeto escenario completo
+        // Crea el div del escenario
+        const div = document.createElement('div'); // Div contenedor del escenario
         div.className = `escenario ${esc.estado}`;
         div.id = `escenario-${esc.id}`; 
-        div.dataset.mision = esc.id;
+        div.dataset.mision = esc.id; 
         
         // Muestra el ID para los escenarios > 0: **001**Nombre
         div.innerHTML = esc.id === 0 ? esc.nombre : `<strong>${String(esc.id).padStart(0, '0')}</strong>${esc.nombre}`;
+        
+        // Añadir marca de próxima partida si existe
+            if (esc.fechaProximapartida) {
+            const marcaFecha = document.createElement('div');
+            marcaFecha.className = 'marca-proxima-partida';
+            marcaFecha.textContent = `🎯 Próxima partida: ${esc.fechaProximapartida}`;
+        div.appendChild(marcaFecha);
+
+  }
+
         // --- LÓGICA DE COORDENADAS (NUEVA) --
         const map_pos = esc.map_pos;
         // left = Margen Inicial + Columna * Espaciado
@@ -918,8 +930,8 @@ function actualizarBlackboard() {
         div.style.top = `${top}px`;
         div.style.left = `${left}px`;
         // ---------------------------------------
-        div.addEventListener('click', () => mostrarDetalleEscenario(esc));
-        contMapa.appendChild(div);
+        div.addEventListener('click', () => mostrarDetalleEscenario(esc)); 
+        contMapa.appendChild(div); 
     });
     
     // 5. Renderiza las Líneas de Conexión
@@ -952,7 +964,7 @@ dataGloomhaven.conexiones.forEach(conn => {
     const btnAbrirDatos = document.getElementById('btn-abrir-datos');
     const spanCloseDatos = modalDatos.querySelector('.cerrar-modal');
     
-    btnAbrirDatos.addEventListener('click', mostrarDatosGrupoModal);
+    btnAbrirDatos.addEventListener('click', mostrarDatosGrupoModal); 
     spanCloseDatos.onclick = () => modalDatos.style.display = "none";
     
     // 8. Configurar el cierre global al hacer click fuera
@@ -996,7 +1008,38 @@ dataGloomhaven.conexiones.forEach(conn => {
         // C. Aplicar el scroll al VIEWPORT
         contViewport.scrollLeft = scrollX;
         contViewport.scrollTop = scrollY;
+            marcarUltimaPartida(dataGloomhaven.escenarios); // Llama a la función para marcar la última partida
+
     }
+            // Llama a la función para marcar la última partida
+        function marcarUltimaPartida(escenarios) { 
+        const hoy = new Date();
+        let ultima = null;
+
+         escenarios.forEach(esc => {
+            if (!esc.fechaCompletado) return;
+
+    const fecha = new Date(esc.fechaCompletado.split('-').reverse().join('-')); // formato dd-mm-yyyy
+    const esFutura = fecha > hoy;
+    const esProxima = esc.fechaProximapartida === esc.fechaCompletado;
+
+    if (!esFutura && !esProxima) {
+      if (!ultima || fecha > new Date(ultima.fechaCompletado.split('-').reverse().join('-'))) {
+        ultima = esc;
+      }
+    }
+  });
+
+  if (!ultima) return;
+
+  const nodo = document.getElementById(`escenario-${ultima.id}`);
+  if (!nodo) return;
+
+  const marca = document.createElement('div');
+  marca.className = 'marca-ultima-partida';
+  marca.textContent = `✅ Última partida: ${ultima.fechaCompletado}`;
+  nodo.appendChild(marca);
+}
 }
  // Mostrar el contenido del Sobre X al hacer clic en el enlace
 function abrirModalImagen() {
@@ -1041,5 +1084,4 @@ function abrirModalImagen() {
 }   
 
 
-
-document.addEventListener('DOMContentLoaded', actualizarBlackboard);
+document.addEventListener('DOMContentLoaded', actualizarBlackboard); // Espera a que el DOM esté cargado antes de ejecutar
