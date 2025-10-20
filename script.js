@@ -3,7 +3,7 @@
 const dataGloomhaven = {
     // Datos Principales
     grupo: "Discípules de Mikaela",
-    reputacion: 6, 
+    reputacion: 7, 
     prosperidadNivel: 3, // Nivel de prosperidad actual
     prosperidadProgreso: 1, // Progreso hacia el siguiente nivel (0-6)
     jugadores: ["Zaki", "Dani", "Siscu", "Jose", "Miquel"], 
@@ -1084,6 +1084,7 @@ function abrirModalImagen() {
     modal.appendChild(contenido);
     document.body.appendChild(modal);
 }   
+
 
 
 document.addEventListener('DOMContentLoaded', actualizarBlackboard); // Espera a que el DOM esté cargado antes de ejecutar
