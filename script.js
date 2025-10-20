@@ -220,7 +220,7 @@ const dataGloomhaven = {
             logros: ["La comerciante huye (Global)"], 
             nuevasUbicaciones: ["Gruta trepidante (7)", "Templo del Vidente (13)", "Hondonada Helada (14)"] 
 },
-// ID 9: MINA DE DIAMANTES
+            // ID 9: MINA DE DIAMANTES
 { 
             id: 9, 
             nombre: "Mina de Diamantes", 
@@ -240,6 +240,7 @@ const dataGloomhaven = {
         // ID 10: PLANO DEL PODER ELEMENTAL (NUEVO)
         { 
             id: 10, 
+            fechaCompletado: "28-07-2025",
             nombre: "Plano del Poder Elemental", 
             estado: "completado", 
             map_pos: { row: 5.2, col: 3 }, 
@@ -338,6 +339,7 @@ const dataGloomhaven = {
         // ESCENARIO 21
         { 
             id: 21, 
+            fechaCompletado: "06-08-2025",
             nombre: "Trono Infernal", 
             estado: "completado", 
             map_pos: { row: 6.3, col: 3 }, 
