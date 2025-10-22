@@ -176,10 +176,15 @@ body {
     transition: background-color 0.2s;
 }
 
-.btn-datos-grupo:hover {
+.btn-datos-grupo:hover { 
     background-color: #2980b9; 
 }
-
+.btn-next-scenario { 
+    background-color: #41dee9;
+}
+.btn-prev-scenario{
+    background-color: #3fc264;
+}
 #mapa-escenarios {
     position: relative;
     width: 1400px; /* ANCHO FIJO PARA FORZAR EL SCROLL */

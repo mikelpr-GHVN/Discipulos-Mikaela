@@ -1086,5 +1086,4 @@ function abrirModalImagen() {
 }   
 
 
-
 document.addEventListener('DOMContentLoaded', actualizarBlackboard); // Espera a que el DOM esté cargado antes de ejecutar
