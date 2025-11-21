@@ -366,7 +366,7 @@ const dataGloomhaven = {
             id: 22, 
             nombre: "Templo de los Elementos",
             estado: "pendiente",
-            fechaCompletado: "09-10-2025",
+            fechaCompletado: "24-10-2025",
             map_pos: { row: 5.2, col: 2 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "El recado de un demonio (Grupo) COMPLETO o Tras la pista (grupo) COMPLETO",
