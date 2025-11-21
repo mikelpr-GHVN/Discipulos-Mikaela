@@ -366,7 +366,7 @@ const dataGloomhaven = {
             id: 22, 
             nombre: "Templo de los Elementos",
             estado: "pendiente",
-            fechaProximapartida: "24-10-2025",
+            fechaCompletado: "09-10-2025",
             map_pos: { row: 5.2, col: 2 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "El recado de un demonio (Grupo) COMPLETO o Tras la pista (grupo) COMPLETO",
@@ -380,7 +380,6 @@ const dataGloomhaven = {
         // ID 27: NUEVO ESCENARIO
         { 
             id: 27, 
-            fechaCompletado: "09-10-2025",
             nombre: "Grieta destructiva",
             estado: "completado",
             map_pos: { row: 5.2, col: 4 },
@@ -484,6 +483,7 @@ const dataGloomhaven = {
             id: 82, 
             nombre: "Montaña ardiente", 
             estado: "pendiente", 
+            fechaProximapartida: "21-11-2025",
             map_pos: { row: 3, col: 1 },
             vieneDe: "Cripta de los Malditos (4)",
             requisitos: "Ninguno",
@@ -1087,3 +1087,47 @@ function abrirModalImagen() {
 
 
 document.addEventListener('DOMContentLoaded', actualizarBlackboard); // Espera a que el DOM esté cargado antes de ejecutar
+
+
+function centrarEscenario(idEscenario) {
+  const contenedor = document.getElementById('mapa-escenarios');
+  const nodo = document.getElementById(`escenario-${idEscenario}`);
+  if (!nodo || !contenedor) return;
+
+  const offsetX = nodo.offsetLeft + nodo.offsetWidth / 2 - contenedor.clientWidth / 2;
+  const offsetY = nodo.offsetTop + nodo.offsetHeight / 2 - contenedor.clientHeight / 2;
+
+  contenedor.scrollTo({
+    left: offsetX,
+    top: offsetY,
+    behavior: 'smooth'
+  });
+}
+
+function scrollProximaPartida() {
+  const escenarios = dataGloomhaven.escenarios;
+  const proximo = escenarios.find(e => e.fechaProximapartida);
+  if (proximo) centrarEscenario(proximo.id);
+}
+
+function scrollUltimaPartida() {
+  const hoy = new Date();
+  let ultima = null;
+
+  dataGloomhaven.escenarios.forEach(e => {
+    if (!e.fechaCompletado) return;
+    const fecha = new Date(e.fechaCompletado.split('-').reverse().join('-'));
+    if (fecha < hoy && (!ultima || fecha > new Date(ultima.fechaCompletado.split('-').reverse().join('-')))) {
+      ultima = e;
+    }
+  });
+
+  if (ultima) centrarEscenario(ultima.id);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btnProxima = document.getElementById('btn-proxima-partida');
+  const btnUltima = document.getElementById('btn-ultima-partida');
+  if (btnProxima) btnProxima.addEventListener('click', scrollProximaPartida);
+  if (btnUltima) btnUltima.addEventListener('click', scrollUltimaPartida);
+});
