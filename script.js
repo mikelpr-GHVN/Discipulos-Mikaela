@@ -481,8 +481,8 @@ const dataGloomhaven = {
         { 
             id: 82, 
             nombre: "Montaña ardiente", 
-            estado: "pendiente", 
-            // fechaProximapartida: "21-11-2025",
+            estado: "completado", 
+            fechaCompletado: "21-11-2025",
             map_pos: { row: 3, col: 1 },
             vieneDe: "Cripta de los Malditos (4)",
             requisitos: "Ninguno",
