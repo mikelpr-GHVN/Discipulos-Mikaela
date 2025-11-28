@@ -3,9 +3,9 @@
 const dataGloomhaven = {
     // Datos Principales
     grupo: "Discípules de Mikaela",
-    reputacion: 7, 
-    prosperidadNivel: 3, // Nivel de prosperidad actual
-    prosperidadProgreso: 1, // Progreso hacia el siguiente nivel (0-6)
+    reputacion: 6, 
+    prosperidadNivel: 2, // Nivel de prosperidad actual
+    prosperidadProgreso: 5, // Progreso hacia el siguiente nivel (0-6)
     jugadores: ["Zaki", "Dani", "Siscu", "Jose", "Miquel"], 
     
     // Logros
@@ -477,7 +477,7 @@ const dataGloomhaven = {
     logros: [], 
     nuevasUbicaciones: [] 
 },
-        // ID 82: NUEVO ESCENARIO 
+        // ID 82: Montaña ardiente 
         { 
             id: 82, 
             nombre: "Montaña ardiente", 
@@ -486,14 +486,16 @@ const dataGloomhaven = {
             map_pos: { row: 3, col: 1 },
             vieneDe: "Cripta de los Malditos (4)",
             requisitos: "Ninguno",
-            objetivos: "Desconocido",
-            textoEscenario: ["Desconocido"],
-            conclusion: ["Desconocido"],
-            recompensas: [],
-            logros: ["desconocido"], 
-            nuevasUbicaciones: ["Desconocido"] 
+            objetivos: "Sacrificar un artefacto o escapar con todos los artefactos",
+            textoEscenario: ["Siguiendo el rastro de los inox, encontráis en una hendidura los restos quemados y derrumbados de su poblado.", 
+"Una nube oscura corona la montaña trasera. Seguís un viejo camino de piedra, aparentemente intacto, que serpentea por el terreno chamuscado y termina en un acantilado de cientos de metros de altura. Encontráis unas grandes puertas de piedra, cálidas al tacto y esculpidas en la ladera de la montaña. Una vez dentro, veis charcos de llamas líquidas iluminando la sala con un espeluznante brillo rojo. Los cadáveres carbonizados de los savvas están esparcidos por todas partes. La tierra da una violenta sacudida y varios demonios vuelven sus miradas hacia vosotros.",
+"Los savvas intentan convertir esta cámara trasera en su última defensa. Los cuerpos destrozados y achicharrados de muchos de ellos yacen en los alrededores. Un trono ocupa el centro de la cámara y, sobre él, el cuerpo de un majestuoso savvas sostiene un martillo y un casco. Chamuscadas en la pared se leen las siguientes palabras: 'Locura'. 'La bestia se despierta'. 'Es imposible controlar el poder de la montaña'. 'Devuélvelos y se dormirán de nuevo'  "],
+            conclusion: ["Atravesáis las puertas de piedra con el calor y las cenizas pisándoos los talones. El temblor de la montaña continúa creciendo mientras bajáis por el camino de piedra, ajora lleno de fisuras. El cielo se ha vuelto negro y grandes rocas caen por las laderas. Apenas conseguís escapar de regreso a Gloomhaven. La devastación del volcán se percibe incluso desde allí."],
+            recompensas: ["-1 de reputación", "-2 de prosperidad"],
+            logros: ["Ninguno"], 
+            nuevasUbicaciones: ["Ninguna"] 
         },
-        // ID 65: NUEVO ESCENARIO 
+        // ID 65: MINA DE AZUFRE 
         { 
             id: 65, 
             nombre: "Mina de azufre", 
@@ -502,8 +504,8 @@ const dataGloomhaven = {
             map_pos: { row: 1, col: 0 },
             vieneDe: "Túmulo Negro (1)",
             requisitos: "Ninguno",
-            objetivos: "Desconocido",
-            textoEscenario: ["Desconocido"],
+            objetivos: "Matar a todos los enemigos y saquear todas las piezas de tesoro",
+            textoEscenario: ["No puede decirse que la ubicación de la Mina de Azufre sea un secreto, su hedor se percibe fácilmente a una milla de distancia. Sin embargo, el mapa que encontrasteis hace una mención particular a un artefacto poderoso de una civilización extinta: una especie de taladro a vapor que podría ser de mucha utilidad si acabara en las manos adecuadas. A medida que os acercáis el olor a podrido se va volviendo más fuerte hasta que apenas podéis respirar."],
             conclusion: ["Desconocido"],
             recompensas: [],
             logros: ["desconocido"], 
