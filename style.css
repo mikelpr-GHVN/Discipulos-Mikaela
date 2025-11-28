@@ -484,3 +484,14 @@ body {
   border-radius: 4px;
   display: inline-block;
 }
+.marca-intento-fallido {
+    display: inline-block;       /* Necesario para que coja el padding y fondo */
+    margin-top: 6px;
+    font-size: 0.75em;
+    color: #fff; /* Texto blanco para contraste */
+    background-color: #e74c3c; /* Rojo intenso */
+    padding: 4px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

@@ -150,7 +150,7 @@ const dataGloomhaven = {
             id: 5, 
             nombre: "Cripta Ruinosa", 
             estado: "completado", 
-            map_pos: { row: 4, col: 3 },
+            map_pos: { row: 4.2, col: 3 },
             vieneDe: "Cripta de los Malditos (4)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos.",
@@ -313,7 +313,7 @@ const dataGloomhaven = {
             fechaCompletado: "02-09-2025",
             nombre: "Cripta olvidada", 
             estado: "completado",
-            map_pos: { row: 4, col: 4 }, 
+            map_pos: { row: 4.2, col: 4 }, 
             vieneDe: "Cripta Ruinosa (5)",
             requisitos: "El poder de la mejora (Global) COMPLETO", 
             objetivos: "Matar a todos los enemigos.",
@@ -366,6 +366,7 @@ const dataGloomhaven = {
             id: 22, 
             nombre: "Templo de los Elementos",
             estado: "pendiente",
+            fechaFallido: "24-10-2025",
             map_pos: { row: 5.2, col: 2 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "El recado de un demonio (Grupo) COMPLETO o Tras la pista (grupo) COMPLETO",
@@ -409,7 +410,7 @@ const dataGloomhaven = {
             id: 31, 
             nombre: "Plano de la noche", 
             estado: "bloqueado", 
-            map_pos: { row: 4, col: 5 },
+            map_pos: { row: 4.2, col: 5 },
             vieneDe: "Hondonada Helada (14)",
             requisitos: "El poder de la mejora (Global) y Artefacto recuperado (Global) COMPLETOS",
             objetivos: "Desconocido",
@@ -439,7 +440,7 @@ const dataGloomhaven = {
     id: 57, 
     nombre: "MP - Investigación", 
     estado: "completado", 
-    map_pos: { row: 4, col: 2 }, // Ubicado a la izquierda del escenario 5 (5,3)
+    map_pos: { row: 4.2, col: 2 }, // Ubicado a la izquierda del escenario 5 (5,3)
     vieneDe: "Escenario 5",
     requisitos: "Misión personal \"Venganza\"",
     objetivos: "Matar al espía",
@@ -459,7 +460,7 @@ const dataGloomhaven = {
     id: 58, 
     nombre: "Cabaña ensangrentada", 
     estado: "completado", 
-    map_pos: { row: 4, col: 1 }, // Ubicado a la izquierda del escenario 57 (5,2)
+    map_pos: { row: 4.2, col: 1 }, // Ubicado a la izquierda del escenario 57 (5,2)
     vieneDe: "Investigación (57)",
     requisitos: "Misión personal \"Venganza\"",
     objetivos: "Matar al Cosechador",
@@ -500,7 +501,7 @@ const dataGloomhaven = {
             id: 65, 
             nombre: "Mina de azufre", 
             estado: "pendiente", 
-            fechaCompletado: "21-11-2025",
+            fechaFallido: "21-11-2025",
             map_pos: { row: 1, col: 0 },
             vieneDe: "Túmulo Negro (1)",
             requisitos: "Ninguno",
@@ -865,7 +866,10 @@ titulo.innerHTML = tituloTexto + estadoTagHtml;
         // Creamos un párrafo con una clase especial para el estilo
         fechaHtml = `<p class="modal-subtitulo-fecha">Completado el: <strong>${escenario.fechaCompletado}</strong></p>`;
     }
-    
+    // --- 5.1: Añade el tag de fecha fallido ---
+    if (escenario.fechaFallido) {
+    fechaHtml += `<p class="modal-subtitulo-fecha fallido"><i class="fas fa-times-circle"></i> Intento fallido el: <strong>${escenario.fechaFallido}</strong></p>`;
+}
     // 6. Construir el Cuerpo del modal, incluyendo la fecha como primer elemento
     // La función `crearDetalleEscenario(escenario)` debería devolver el resto del HTML del cuerpo.
     cuerpo.innerHTML = fechaHtml + crearDetalleEscenario(escenario);
@@ -921,8 +925,16 @@ function actualizarBlackboard() {
             marcaFecha.className = 'marca-proxima-partida';
             marcaFecha.textContent = `🎯 Próxima partida: ${esc.fechaProximapartida}`;
         div.appendChild(marcaFecha);
-
-  }
+            }                
+        // ---  Marca de Intento Fallido ---
+            if (esc.fechaFallido) {
+            const marcaFallido = document.createElement('div');
+            marcaFallido.className = 'marca-intento-fallido';
+            // Usamos un icono de calavera o X (FontAwesome ya está incluido en tu head)
+            marcaFallido.innerHTML = `<i class="fas fa-skull"></i> Fallido: ${esc.fechaFallido}`;
+            div.appendChild(marcaFallido);
+}
+  
 
         // --- LÓGICA DE COORDENADAS (NUEVA) --
         const map_pos = esc.map_pos;
@@ -1041,7 +1053,7 @@ dataGloomhaven.conexiones.forEach(conn => {
 
   const marca = document.createElement('div');
   marca.className = 'marca-ultima-partida';
-  marca.textContent = `✅ Última partida: ${ultima.fechaCompletado}`;
+  marca.textContent = `✅ Última victoria: ${ultima.fechaCompletado}`;
   nodo.appendChild(marca);
 }
 }
