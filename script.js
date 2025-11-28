@@ -300,11 +300,11 @@ const dataGloomhaven = {
                 "Con el último de vuestros adversarios muerto, os acercáis a la pared trasera de la cámara, donde una pequeña esfera azul flota sobre el suelo. Extendéis la mano lentamente y notáis que la esfera está **fría al tacto**. La agarráis firmemente y notáis que la temperatura es casi insoportable, así que la guardáis rápidamente en la bolsa y regresáis al Hueso Retorcido.",
                 "Entráis en la taberna abandonada y llamáis a Hail. Deambuláis, observando el caótico desastre a vuestro alrededor sin obtener respuesta. Os preguntáis cómo Hail puede llevar a cabo cualquier tipo de hechicería en un entorno así. Al acercaros al mostrador, Hail aparece ante vosotros, sosteniendo la esfera.",
                 "—¡Oh, aún estáis aquí! —Os dais la vuelta y veis a Hail en el centro de la habitación. «Qué gusto tener en experimento con vosotros», os parece bien. —Se acerca a vosotros y os tropezáis hacia atrás, cayendo sobre una mesa que se rompe en varios pedazos—. «Vamos, no seáis críos, estoy bastante segura de que saldrá bien. Hail explica que quiere intentar traer poder puro de otro plano y contenerlo en una pequeña esfera que podría otorgar grandes poderes y quien lo posea. Sin embargo, el proceso de contención requiere una gran cantidad de **metal dorado**.",
-                "—Ahora que me habéis ayudado con mis cometidos, supongo que debería devolveros el favor —suspira Hail—. ¿Tenéis algo en lo que queráis exactamente? (7) (31) (43)"
+                "—Ahora que me habéis ayudado con mis cometidos, supongo que debería devolveros el favor —suspira Hail—. ¿Tenéis algo en lo que queráis exactamente? (7) (19) (31) (43)"
             ],
             recompensas: ["Logro global: El poder de la mejora"],
             logros: ["El poder de la mejora (Global)"], 
-            nuevasUbicaciones: ["Gruta trepidante (7)", "Plano de la noche (31)", "Nido de dracos (43)"] 
+            nuevasUbicaciones: ["Gruta trepidante (7)", "Cripta olvidada (19)", "Plano de la noche (31)", "Nido de dracos (43)"] 
         },
         
         // ID 19: NUEVO ESCENARIO
@@ -879,13 +879,13 @@ titulo.innerHTML = tituloTexto + estadoTagHtml;
     modal.style.display = "block";
 }
 
-// NUEVA FUNCIÓN: Muestra el modal de datos de grupo. 
+// Muestra el modal de datos de grupo. 
 function mostrarDatosGrupoModal() {
     document.getElementById('modal-datos-grupo').style.display = "block";
 }
 
 
-/** Actualiza el panel de resumen y renderiza el mapa. */
+/** Actualiza el panel de resumen del grupo y renderiza el mapa. */
 function actualizarBlackboard() {
     // 1. Actualiza Cabecera (AHORA EN EL MODAL DE DATOS)
     document.getElementById('nombre-grupo').textContent = dataGloomhaven.grupo;
