@@ -187,6 +187,7 @@ const dataGloomhaven = {
 { 
             id: 7, 
             nombre: "Gruta Trepidante", 
+            fechaProximapartida: "02-12-25",
             estado: "pendiente", 
             map_pos: { row: 2, col: 5 },     
             vieneDe: "Almacén de Gloomhaven (8)",
