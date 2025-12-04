@@ -187,17 +187,34 @@ const dataGloomhaven = {
 { 
             id: 7, 
             nombre: "Gruta Trepidante", 
-            fechaProximapartida: "02-12-25",
-            estado: "pendiente", 
+            fechaCompletado: "02-12-2025",
+            estado: "completado", 
             map_pos: { row: 2, col: 5 },     
             vieneDe: "Almacén de Gloomhaven (8)",
             requisitos: "El poder de la mejora (Global) y La comerciante huye (Global) COMPLETOS", 
-            objetivos: "Desconocido",
-            textoEscenario: ["Desconocido"],
-            conclusion: ["Desconocido"],
-            recompensas: [],
-            logros: ["desconocido"],
-            nuevasUbicaciones: ["Desconocido"]
+            objetivos: "Saquear todas las piezas de tesoro",
+            textoEscenario: ["Entráis con cautela en el Hueso Retorcido, evitando cristales rotos, clavos y demás objetos traicioneros. Echáis un vistazo a la habitación y no veis más que los tipicos restos. Pero, antes de que podáis llamar a Hail, una explosión en una habitación del piso de arriba sacude violentamente todo el edificio.",
+"-¡Ojala ardais todos en el abismo! -grita la voz incorpórea de Hail- . Elegí la choza más apartada pequeña, decrépita y desagradable que encontré para llevar a cabo mi obra, y, aun así, incluso los mayores idiotas logran encontrarla e interrumpir mis investigaciones. - La mujer translúcida aparece repentinamente ante vosotros-. Sabéis que vuestra mera presencia en este lugar cambia el flujo del éter, provocando sucesos imprevistos de consecuencias catastróficas, ¿no? Es decir, ¿cómo podríais no saberlo? ",
+"Hail cierra los ojos y empieza a respirar profundamente, desapareciendo un poco más con cada exhalación.",
+"-Si, accedí a ayudaros. Y esperaba que el recuerdo no fuera más que una pesadilla, pero no lo era, así que ya no me queda otro remedio. Sin embargo, lo menos que podéis hacer a cambio es avisarme antes de cruzar el umbral. - Os lanza una mirada gélida-. En cualquier caso, ¿qué es lo que queréis? Acabemos rápido con esto. ",
+"Le explicáis la situación con Jekserah y la necesidad de averiguar dónde se esconde. ",
+"-Ah, ¿un simple rastreo? Bien, entonces, estamos de suerte - responde Hail -. O, mejor dicho, estoy de suerte. El ingrediente principal que necesito para una tarea así es raíz dentada, que justo se me acabó la semana pasada. Iba a salir a buscar más, pero ahora puedo enviaros a vosotros a por ella en mi lugar. ¡Todos ganamos! Excepto esos infernales duendes del bosque que rondan mi lugar de recogida habitual. Espero que mueran algunos de ellos. ",
+"Un pequeño mapa cae en vuestras manos, Hail hace un movimiento con los brazos y una fuerza repentina y poderosa os empuja hacia la puerta. ",
+"- ¡Recordad! ¡Tocad el timbre cuando volváis y esperad 47 segundos antes de entrar por la puerta! ",
+"Conseguís seguir el mapa hasta una red de pequeñas cuevas al norte del Bosque de las Dagas. El lugar se encuentra lleno de vida. hay enormes plantas frondosas, además de varios duendes y animales hostiles. Os preparáis para el ataque. "], 
+            conclusion: ["Arrancáis el último arbusto y le podáis la raíz. En la gruta todavía quedan muchas criaturas hostiles, pero con la mochila ahora llena de raíz dentada, os retiráis con rapidez y, finalmente, encontráis el Camino de Piedra que va hacia Gloomhaven, de vuelta al Hueso Retorcido. Tocáis el timbre y esperáis un minuto antes de entrar por la inclinada puerta. No hay signos de Hail, así que la llamáis y esperáis. Y tarda bastante más de lo que os gustaría. ",
+"Cuando por fin aparece al otro lado de la barra del bar, parece muy sorprendida de veros. ¿Eso que lleváis ahí es raíz dentada? ¡Ja! Qué casualidad, justo se me acabó la semana pasada y estaba pensando en salir a buscar. ",
+"Os miráis todos, confundidos. ",
+"-Oh, os envié yo a por ella, ¿verdad? - dice mientras se rasca la cabeza-. Cierto. Rastreo. Ahora lo recuerdo. Dadme las raíces, ",
+"Le dais las bolsas llenas de raíz dentada. ",
+"-Recordadme los detalles. ¿Jekserah? Una mujer valrath, ¿así de alta? ¿Una comerciante que coquetea con la nigromancia? ¿Lleva una capa roja y varias joyas de oro? No debería resultar difícil. ",
+"Hail desaparece con las raíces y empezáis a escuchar un leve golpeteo desde el piso de arriba. Finalmente, Hail aparece ante vosotros sosteniendo un pergamino cubierto de pasta de raíz dentada muy espesa y viscosa. ",
+"-Ahí tenéis. Siguiendo el mapa deberíais encontrar el camino a donde se esté escondiendo. ",
+"Cogéis el mapa con indecisión. -Podría haberle limpiado la pasta, pero pensé que le añadía algo de encanto."],
+
+            recompensas: ["Ninguna"],
+            logros: ["Ninguno"],
+            nuevasUbicaciones: ["Santuario de la nigromante (20)"]
 
 },
         // ID 8: ALMACÉN DE GLOOMHAVEN (Nuevo Escenario)
@@ -337,6 +354,21 @@ const dataGloomhaven = {
             logros: ["Incensario de Romperrocas (Grupo)"], 
             nuevasUbicaciones: ["Grieta destructiva (27)"] 
         },
+        { 
+            id: 20, 
+            nombre: "Santuario de la nigromante", 
+            estado: "pendiente", 
+            map_pos: { row: 2, col: 6 },     
+            vieneDe: "Gruta Trepidante (7)",
+            requisitos: "El poder de la mejora (Global) y La comerciante huye (Global) COMPLETOS", 
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"],
+            nuevasUbicaciones: ["Desconocido"]
+
+},
         // ESCENARIO 21
         { 
             id: 21, 
@@ -576,6 +608,7 @@ const dataGloomhaven = {
         { origen: 5, destino: 19, tipo: 'alternativa', offset: 0 },
         { origen: 5, destino: 57, tipo: 'alternativa', offset: 0 },
         { origen: 6, destino: 8, tipo: 'alternativa', offset: 0 },
+        { origen: 7, destino: 20, tipo: 'alternativa', offset: 0},
         { origen: 8, destino: 7, tipo: 'alternativa', offset: 0 }, 
         { origen: 8, destino: 13, tipo: 'alternativa', offset: 0 },
         { origen: 8, destino: 14, tipo: 'alternativa', offset: 0 }, 
