@@ -61,7 +61,7 @@ const dataGloomhaven = {
                 "Resulta bastante sencillo encontrar la colina. A solo un paseo de la Puerta del Mercado Nuevo ya puede verse sobresaliendo de las lindes del Soto Cadáver, como si de una rata bajo una alfombra se tratase. Cuando os acercáis, os percatáis de que el montículo está formado por tierra negra. La pequeña puerta cubierta de maleza da paso a unas desgastadas escaleras de piedra que llevan a la oscuridad. A medida que descendéis por las escaleras, percibís agradecidos una luz que emana desde abajo. Por desgracia, esa luz viene acompañada del inconfundible hedor a muerte. Cuando llegáis a los últimos escalones, os preguntáis qué clase de ladrones levantarían su campamento en tan horrible lugar. Y no tardáis en encontrar la respuesta: un rudo grupo de asesinos que no parecen haberse tomado bien vuestra repentina aparición. Uno de los ladrones que se encuentra en la parte trasera coincide con la descripción del que buscáis. —Encargaos de estos desgraciados —dice mientras retrocede hasta una salida de la cámara—. Apenas conseguís distinguir su silueta mientras se dirige hacia un pasillo y sale por una puerta a su izquierda. —Bien, no todos los días te encuentras con gente tan estúpida como para darte personalmente sus objetos de valor —sonríe uno de los más grandes mientras desenvaina una espada oxidada—. Ahora, os mataremos. Vaya sorpresa se van a llevar. Si tuvierais algo de valor, posiblemente no estaríais aquí abajo."
             ], 
             conclusion: [ 
-                "Con el último de los bandidos muerto, os tomáis un momento para recuperar el aliento y quitaos de la cabeza la visión de los cadáveres vivientes desgarrándoos la piel. Vuestra presa no se encuentra entre los muertos. Os estremecéis solo con pensar en los horrores que os esperan abajo en las catacumbas."
+                "Con el último de los bandidos muerto, os tomáis un momento para recuperar el aliento y quitaos de la cabeza la visión de los cadáveres vivientes desgarrándoos la piel. Vuestra presa no se encuentra entre los muertos. Os estremecéis solo con pensar en los horrores que os esperan abajo en las catacumbas.(2)"
             ], 
             recompensas: [], 
             logros: ["Primeros pasos (Grupo)"], 
@@ -83,12 +83,12 @@ const dataGloomhaven = {
             ], 
            
             conclusion: [ 
-                "Escudriñando la carnicería que queda tras la batalla, encontráis un alijo al fondo de la sala que contiene los pergaminos por los que os contrataron. No podéis evitar echarles un vistazo, pero lo que haya escrito en ellos está en un antiguo lenguaje que desconocéis. No obstante, os llama la atención un mapa de la zona rural norte. Una curva del río Aguasmanas está claramente marcada como punto importante. Mientras os planteáis buscar más información sobre la llamada \"Penumbra\", decidís que ese lugar también podría ser un punto de interés para vosotros.",
+                "Escudriñando la carnicería que queda tras la batalla, encontráis un alijo al fondo de la sala que contiene los pergaminos por los que os contrataron. No podéis evitar echarles un vistazo, pero lo que haya escrito en ellos está en un antiguo lenguaje que desconocéis. No obstante, os llama la atención un mapa de la zona rural norte. Una curva del río Aguasmanas está claramente marcada como punto importante. Mientras os planteáis buscar más información sobre la llamada \"Penumbra\", decidís que ese lugar también podría ser un punto de interés para vosotros.(4)",
                 "Pero, de momento, podéis dejarlo a un lado. Guardáis los pergaminos y regresáis a Gloomhaven para obtener vuestra recompensa.",
                 "Os reunís con Jekserah de nuevo en el León Durmiente, le entregáis los papeles y os paga la cantidad acordada.",
                 "—¿Sabéis qué? —os susurra ella entre el bullicio de la taberna—. Si estáis interesados, puede que tenga otro trabajo para vosotros. Una tribu de inox ha saqueado algunas de mis caravanas en el Bosque de las Dagas cuando se dirigían a la capital. He informado a la milicia, pero no han hecho nada —dice con desprecio—. Os puedo indicar la dirección de su campamento. Si les dais una lección, os pagaré aún más.",
                 "Pone un tosco mapa del bosque sobre la mesa y se levanta, con las joyas tintineando a cada uno de sus movimientos.",
-                "—Venid a verme cuando hayáis terminado."
+                "—Venid a verme cuando hayáis terminado.(3)"
             ], 
             recompensas: ["10 de oro para cada personaje", "+1 de prosperidad"], 
             logros: [], 
