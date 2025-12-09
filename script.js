@@ -4,8 +4,8 @@ const dataGloomhaven = {
     // Datos Principales
     grupo: "Discípules de Mikaela",
     reputacion: 6, 
-    prosperidadNivel: 2, // Nivel de prosperidad actual
-    prosperidadProgreso: 5, // Progreso hacia el siguiente nivel (0-6)
+    prosperidadNivel: 3, // Nivel de prosperidad actual
+    prosperidadProgreso: 0, // Progreso hacia el siguiente nivel (0-6)
     jugadores: ["Zaki", "Dani", "Siscu", "Jose", "Miquel"], 
     
     // Logros
@@ -141,8 +141,8 @@ const dataGloomhaven = {
                 "En el altar de la sala trasera, hay una gran cantidad de garabatos hechos para estos rituales. No toda la escritura es inteligible, pero os da la sensación de que esta cripta es un lugar poderoso antaño utilizado por alguna antigua civilización. Los antiguos hicieron uso del poder de los elementos para mejorar sus propias vidas y, aunque el verdadero destino que sufrieron está más allá de vuestro conocimiento, resulta obvio que no acabó bien.",
                 "Entre los pergaminos también hay notas sobre un par de lugares de poder que también se encuentran en esta zona. Uno parece muy usado por la secta y el otro está marcado como invadido por despiadados muertos vivientes. Parece que tenéis la oportunidad de interrumpir más rituales (5) o bien la de hacer buenas migas con ellos al ayudar a eliminar una amenaza. (6)"
             ],
-            recompensas: ["Recompensa de la Misión 4"],
-            logros: [], 
+            recompensas: ["Ninguna"],
+            logros: ["Ninguno"], 
             nuevasUbicaciones: ["Cripta ruinosa (5)", "Cripta decadente (6)"], 
         },
         // ID 5: CRIPTA RUINOSA (AÑADIDO - Placeholder)
@@ -354,10 +354,12 @@ const dataGloomhaven = {
             logros: ["Incensario de Romperrocas (Grupo)"], 
             nuevasUbicaciones: ["Grieta destructiva (27)"] 
         },
+        // ESCENARIO 20: SANTUARIO DE LA NIGROMANTE (NUEVO)
         { 
             id: 20, 
             nombre: "Santuario de la nigromante", 
             estado: "pendiente", 
+            fechaProximapartida: "16-12-2025",
             map_pos: { row: 2, col: 6 },     
             vieneDe: "Gruta Trepidante (7)",
             requisitos: "El poder de la mejora (Global) y La comerciante huye (Global) COMPLETOS", 
