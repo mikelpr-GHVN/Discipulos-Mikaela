@@ -3,9 +3,9 @@
 const dataGloomhaven = {
     // Datos Principales
     grupo: "Discípules de Mikaela",
-    reputacion: 6, 
+    reputacion: 8, 
     prosperidadNivel: 3, // Nivel de prosperidad actual
-    prosperidadProgreso: 0, // Progreso hacia el siguiente nivel (0-6)
+    prosperidadProgreso: 1, // Progreso hacia el siguiente nivel (0-6)
     jugadores: ["Zaki", "Dani", "Siscu", "Jose", "Miquel"], 
     
     // Logros
@@ -129,7 +129,7 @@ const dataGloomhaven = {
             id: 4, 
             nombre: "Cripta de los Malditos", 
             estado: "completado", 
-            map_pos: { row: 3, col: 2 },
+            map_pos: { row: 3.1, col: 2 },
             vieneDe: "Guarida del Túmulo (2)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos.",
@@ -165,7 +165,7 @@ const dataGloomhaven = {
     id: 6, 
     nombre: "Cripta Decadente", 
     estado: "completado", 
-    map_pos: { row: 3, col: 3 }, 
+    map_pos: { row: 3.1, col: 3 }, 
     vieneDe: "Cripta de los Malditos (4)",
     requisitos: "Ninguno",
     objetivos: "Revelar la pieza M y matar a todos los enemigos revelados",
@@ -306,7 +306,7 @@ const dataGloomhaven = {
             id: 14, 
             nombre: "Hondonada Helada", 
             estado: "completado", 
-            map_pos: { row: 3, col: 4 }, 
+            map_pos: { row: 3.1, col: 4 }, 
             vieneDe: "Almacén de Gloomhaven (8), Cripta ruinosa (5)", 
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos", 
@@ -324,7 +324,38 @@ const dataGloomhaven = {
             logros: ["El poder de la mejora (Global)"], 
             nuevasUbicaciones: ["Gruta trepidante (7)", "Cripta olvidada (19)", "Plano de la noche (31)", "Nido de dracos (43)"] 
         },
-        
+        // ID 16: MINA DE DIAMANTES
+{ 
+            id: 16, 
+            nombre: "El paso de la montaña", 
+            estado: "pendiente", 
+            map_pos: { row: 1, col: 7 }, 
+            vieneDe: "Santuario de la nigromante (20)",
+            requisitos: "Desconocido", 
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"],
+            nuevasUbicaciones: ["Desconocido"]
+
+},
+// ID 18: CLOACAS ABANDONADAS (NUEVO)
+{ 
+            id: 18, 
+            nombre: "Cloacas abandonadas", 
+            estado: "pendiente", 
+            map_pos: { row: 2, col: 7 }, 
+            vieneDe: "Santuario de la nigromante (20)",
+            requisitos: "Desconocido", 
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"],
+            nuevasUbicaciones: ["Desconocido"]
+
+},
         // ID 19: NUEVO ESCENARIO
         {
             id: 19, 
@@ -358,19 +389,26 @@ const dataGloomhaven = {
         { 
             id: 20, 
             nombre: "Santuario de la nigromante", 
-            estado: "pendiente", 
-            fechaProximapartida: "16-12-2025",
+            estado: "completado", 
+            fechaCompletado: "16-12-2025",
             map_pos: { row: 2, col: 6 },     
             vieneDe: "Gruta Trepidante (7)",
             requisitos: "El poder de la mejora (Global) y La comerciante huye (Global) COMPLETOS", 
             objetivos: "Desconocido",
-            textoEscenario: ["Desconocido"],
-            conclusion: ["Desconocido"],
-            recompensas: [],
+            textoEscenario: ["Una cosa sí que es cierta: nunca habríais encontrado la guarida de Jekserah sin ayuda. Os habríais perdido irremediablemente desde hace horas en las profundidades del Bosque de las Dagas de no ser por las detalladas indicaciones que lleváis.",
+                "Tras varios giros y vueltas, os encontráis frente a un antiguo mausoleo oculto entre la maleza del bosque. Un enorme tronco bloquea gran parte de la entrada principal. Este edificio debió construirse hace eras; y debe llevar olvidado gran parte de ellas.",
+                "Conseguís pasar por el tronco del árbol hasta las oscuras salas de la tumba. Encendéis una antorcha y esperáis en silencio, intentando oír los ruidos de sus moradores. El sonido es débil, pero escucháis el sonido de algo arrastrándose a vuestra izquierda. Os acercáis y abrís unas puertas de piedra. Ante vosotros, la luz de la antorcha revela las sombras de los muertos vivientes. Parece que Jekserah ha puesto mucho empeño en reconstruir su ejército."],
+            conclusion: ["Jekserah se derrumba mientras la vida se apaga en sus ojos. - Yo... - os susurra -. No tenéis ni idea de lo que se avecina (28)",
+                "Con un último golpe de espada le cercenáis la cabeza y abandonáis ese desdichado lugar lleno de cadáveres destrozados todo lo rápido que podéis. Le entregáis la cabeza al capitán de la guardia y os pagan una generosa recompensa por ella.",            
+                "—Si os interesa, puede que tenga más trabajo para vosotros —os dice con tono lúgubre—. Para empezar, los exploradores del norte nos han informado de que se han avistado unas criaturas voladoras de gran tamaño. La gente teme que sean dragones —dice sacudiendo la cabeza con irritación—. Me gustaría que os dirigierais al paso norte y lo investigarais. (16)",
+                "Sin embargo, algo más cerca de casa, tenemos ciertos problemas gestándose en las alcantarillas bajo el Mercado Zozobrante. Los pozos de la zona parecen estar envenenados, y las alcantarillas se han llenado de serpientes y lodos vivientes, lo que dificulta que lo investiguemos. Necesito que descubráis la fuente del veneno. (18)"],
+            recompensas: ["20 de oro para cada personaje", 
+                "+1 de prosperidad",
+                "+2 de reputación"],
             logros: ["desconocido"],
-            nuevasUbicaciones: ["Desconocido"]
+            nuevasUbicaciones: ["El paso de la montaña (16)", "Cloacas abandonadas (18)", "Cámara ritual ultraterrestre (28)"],
 
-},
+        },
         // ESCENARIO 21
         { 
             id: 21, 
@@ -441,6 +479,21 @@ const dataGloomhaven = {
             logros: ["La grieta neutralizada (Global)"],
             nuevasUbicaciones: ["Ninguna"]
         },
+// ID 28: CÁMARA RITUAL ULTRATERRESTRE (NUEVO)
+        { 
+            id: 28, 
+            nombre: "Cámara ritual ultraterrestre", 
+            estado: "pendiente", 
+            map_pos: { row: 3, col: 7 },
+            vieneDe: "Santuario de la nigromante (20)",
+            requisitos: "desconocido",
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
 
         // ID 31: NUEVO ESCENARIO 
         { 
@@ -462,7 +515,7 @@ const dataGloomhaven = {
             id: 43, 
             nombre: "Nido de dracos", 
             estado: "pendiente", 
-            map_pos: { row: 3, col: 5 },
+            map_pos: { row: 3.1, col: 5 },
             vieneDe: "Hondonada Helada (14)",
             requisitos: "El poder de la mejora (Global) COMPLETO",
             objetivos: "Desconocido",
@@ -515,31 +568,14 @@ const dataGloomhaven = {
     logros: [], 
     nuevasUbicaciones: [] 
 },
-        // ID 82: Montaña ardiente 
-        { 
-            id: 82, 
-            nombre: "Montaña ardiente", 
-            estado: "completado", 
-            fechaCompletado: "21-11-2025",
-            map_pos: { row: 3, col: 1 },
-            vieneDe: "Cripta de los Malditos (4)",
-            requisitos: "Ninguno",
-            objetivos: "Sacrificar un artefacto o escapar con todos los artefactos",
-            textoEscenario: ["Siguiendo el rastro de los inox, encontráis en una hendidura los restos quemados y derrumbados de su poblado.", 
-"Una nube oscura corona la montaña trasera. Seguís un viejo camino de piedra, aparentemente intacto, que serpentea por el terreno chamuscado y termina en un acantilado de cientos de metros de altura. Encontráis unas grandes puertas de piedra, cálidas al tacto y esculpidas en la ladera de la montaña. Una vez dentro, veis charcos de llamas líquidas iluminando la sala con un espeluznante brillo rojo. Los cadáveres carbonizados de los savvas están esparcidos por todas partes. La tierra da una violenta sacudida y varios demonios vuelven sus miradas hacia vosotros.",
-"Los savvas intentan convertir esta cámara trasera en su última defensa. Los cuerpos destrozados y achicharrados de muchos de ellos yacen en los alrededores. Un trono ocupa el centro de la cámara y, sobre él, el cuerpo de un majestuoso savvas sostiene un martillo y un casco. Chamuscadas en la pared se leen las siguientes palabras: 'Locura'. 'La bestia se despierta'. 'Es imposible controlar el poder de la montaña'. 'Devuélvelos y se dormirán de nuevo'  "],
-            conclusion: ["Atravesáis las puertas de piedra con el calor y las cenizas pisándoos los talones. El temblor de la montaña continúa creciendo mientras bajáis por el camino de piedra, ajora lleno de fisuras. El cielo se ha vuelto negro y grandes rocas caen por las laderas. Apenas conseguís escapar de regreso a Gloomhaven. La devastación del volcán se percibe incluso desde allí."],
-            recompensas: ["-1 de reputación", "-2 de prosperidad"],
-            logros: ["Ninguno"], 
-            nuevasUbicaciones: ["Ninguna"] 
-        },
+       
         // ID 65: MINA DE AZUFRE 
         { 
             id: 65, 
             nombre: "Mina de azufre", 
             estado: "pendiente", 
             fechaFallido: "21-11-2025",
-            map_pos: { row: 1, col: 0 },
+            map_pos: { row: 2, col: 1 },
             vieneDe: "Túmulo Negro (1)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos y saquear todas las piezas de tesoro",
@@ -569,6 +605,24 @@ const dataGloomhaven = {
             recompensas: ["Núcleo de energía (Objeto 132)"],
             logros: ["Tecnología antigua (Global)"], 
             nuevasUbicaciones: [] 
+        },
+         // ID 82: Montaña ardiente 
+        { 
+            id: 82, 
+            nombre: "Montaña ardiente", 
+            estado: "completado", 
+            fechaCompletado: "21-11-2025",
+            map_pos: { row: 3.1, col: 1 },
+            vieneDe: "Cripta de los Malditos (4)",
+            requisitos: "Ninguno",
+            objetivos: "Sacrificar un artefacto o escapar con todos los artefactos",
+            textoEscenario: ["Siguiendo el rastro de los inox, encontráis en una hendidura los restos quemados y derrumbados de su poblado.", 
+"Una nube oscura corona la montaña trasera. Seguís un viejo camino de piedra, aparentemente intacto, que serpentea por el terreno chamuscado y termina en un acantilado de cientos de metros de altura. Encontráis unas grandes puertas de piedra, cálidas al tacto y esculpidas en la ladera de la montaña. Una vez dentro, veis charcos de llamas líquidas iluminando la sala con un espeluznante brillo rojo. Los cadáveres carbonizados de los savvas están esparcidos por todas partes. La tierra da una violenta sacudida y varios demonios vuelven sus miradas hacia vosotros.",
+"Los savvas intentan convertir esta cámara trasera en su última defensa. Los cuerpos destrozados y achicharrados de muchos de ellos yacen en los alrededores. Un trono ocupa el centro de la cámara y, sobre él, el cuerpo de un majestuoso savvas sostiene un martillo y un casco. Chamuscadas en la pared se leen las siguientes palabras: 'Locura'. 'La bestia se despierta'. 'Es imposible controlar el poder de la montaña'. 'Devuélvelos y se dormirán de nuevo'  "],
+            conclusion: ["Atravesáis las puertas de piedra con el calor y las cenizas pisándoos los talones. El temblor de la montaña continúa creciendo mientras bajáis por el camino de piedra, ajora lleno de fisuras. El cielo se ha vuelto negro y grandes rocas caen por las laderas. Apenas conseguís escapar de regreso a Gloomhaven. La devastación del volcán se percibe incluso desde allí."],
+            recompensas: ["-1 de reputación", "-2 de prosperidad"],
+            logros: ["Ninguno"], 
+            nuevasUbicaciones: ["Ninguna"] 
         },
         // INSERCIÓN DEL ESCENARIO 93
         { 
@@ -621,6 +675,9 @@ const dataGloomhaven = {
         { origen: 14, destino: 19, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 31, tipo: 'alternativa', offset: 0 },
         { origen: 14, destino: 43, tipo: 'alternativa', offset: 0 }, 
+        { origen: 20, destino: 16, tipo: 'alternativa', offset: 0 },
+        { origen: 20, destino: 18, tipo: 'alternativa', offset: 0 },
+        { origen: 20, destino: 28, tipo: 'alternativa', offset: 0 },
         { origen: 19, destino: 27, tipo: 'alternativa', offset: 0 },
         { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
         { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
@@ -631,11 +688,11 @@ const dataGloomhaven = {
 // CONSTANTES DE COORDENADAS (NUEVAS)
 // ----------------------------------------------------
 // Espaciado horizontal entre el centro de los nodos (en px). Basado en los 300px originales.
-const COL_SPACING = 220; 
+const COL_SPACING = 230; 
 // Espacio vertical entre el centro de los nodos (en px). Basado en los 100px originales.
-const ROW_SPACING = 90; 
+const ROW_SPACING = 100; 
 // Margen inicial izquierdo. 100px + (col * 300) = 400px (para col 1).
-const INITIAL_LEFT_OFFSET = 30; 
+const INITIAL_LEFT_OFFSET = -200; 
 // Margen inicial superior. 50px + (row * 100) = 50px (para row 0).
 const INITIAL_TOP_OFFSET = 30; 
 
