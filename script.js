@@ -405,7 +405,7 @@ const dataGloomhaven = {
             recompensas: ["20 de oro para cada personaje", 
                 "+1 de prosperidad",
                 "+2 de reputación"],
-            logros: ["desconocido"],
+            logros: ["Ninguno"],
             nuevasUbicaciones: ["El paso de la montaña (16)", "Cloacas abandonadas (18)", "Cámara ritual ultraterrestre (28)"],
 
         },

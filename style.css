@@ -485,7 +485,7 @@ body {
   display: inline-block;
 }
 .marca-intento-fallido {
-    display: inline-block;       /* Necesario para que coja el padding y fondo */
+    display: inline-block;       /* Para que el fondo se ajuste al contenido */
     margin-top: 6px;
     font-size: 0.75em;
     color: #fff; /* Texto blanco para contraste */
