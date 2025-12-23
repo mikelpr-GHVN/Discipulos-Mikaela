@@ -5,7 +5,7 @@ const dataGloomhaven = {
     grupo: "Discípules de Mikaela",
     reputacion: 8, 
     prosperidadNivel: 3, // Nivel de prosperidad actual
-    prosperidadProgreso: 1, // Progreso hacia el siguiente nivel (0-6)
+    prosperidadProgreso: 2, // Progreso hacia el siguiente nivel (0-6)
     jugadores: ["Zaki", "Dani", "Siscu", "Jose", "Miquel"], 
     
     // Logros
@@ -24,7 +24,7 @@ const dataGloomhaven = {
         "el poder de la mejora",
         "la grieta neutralizada"
     ], 
-    objetosDisponibles: "1-21, 92, 101, 107, 123, 124 y 132", 
+    objetosDisponibles: "1-21, 92, 101, 107, 110, 115, 123, 124, 126 y 132", 
     personajes: [], 
 
     // Lista de Escenarios 
