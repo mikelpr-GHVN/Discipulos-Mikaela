@@ -261,7 +261,7 @@ const dataGloomhaven = {
             fechaCompletado: "28-07-2025",
             nombre: "Plano del Poder Elemental", 
             estado: "completado", 
-            map_pos: { row: 4, col: 3 }, 
+            map_pos: { row: 4, col: 2 }, 
             vieneDe: "Cripta Ruinosa (5)",
             requisitos: "La grieta neutralizada (Global) INCOMPLETO",
             objetivos: "Matar a todos los enemigos",
@@ -306,7 +306,7 @@ const dataGloomhaven = {
             id: 14, 
             nombre: "Hondonada Helada", 
             estado: "completado", 
-            map_pos: { row: 2.5, col: 4 }, 
+            map_pos: { row: 3, col: 4 }, 
             vieneDe: "Almacén de Gloomhaven (8), Cripta ruinosa (5)", 
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos", 
@@ -362,7 +362,7 @@ const dataGloomhaven = {
             fechaCompletado: "02-09-2025",
             nombre: "Cripta olvidada", 
             estado: "completado",
-            map_pos: { row: 4.2, col: 4 }, 
+            map_pos: { row: 4, col: 3 }, 
             vieneDe: "Cripta Ruinosa (5)",
             requisitos: "El poder de la mejora (Global) COMPLETO", 
             objetivos: "Matar a todos los enemigos.",
@@ -415,7 +415,7 @@ const dataGloomhaven = {
             fechaCompletado: "06-08-2025",
             nombre: "Trono Infernal", 
             estado: "completado", 
-            map_pos: { row: 5, col: 3 }, 
+            map_pos: { row: 5, col: 2 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "La Grieta neutralizada (Global) INCOMPLETO",
             objetivos: "Matar al demonio supremo",
@@ -440,7 +440,7 @@ const dataGloomhaven = {
             nombre: "Templo de los Elementos",
             estado: "pendiente",
             fechaFallido: "24-10-2025",
-            map_pos: { row: 4, col: 2 }, 
+            map_pos: { row: 4, col: 1 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "El recado de un demonio (Grupo) COMPLETO o Tras la pista (grupo) COMPLETO",
             objetivos: "Destruir todos los altares",
@@ -457,7 +457,7 @@ const dataGloomhaven = {
             id: 27, 
             nombre: "Grieta destructiva",
             estado: "completado",
-            map_pos: { row: 5.2, col: 4 },
+            map_pos: { row: 5, col: 3 },
             vieneDe: "Cripta olvidada (19)",
             requisitos: "Artefacto perdido (Global) INCOMPLETO e Incensario de Romperrocas (Grupo) COMPLETO",
             objetivos: "Proteger a Hail durante 10 rondas",
@@ -501,7 +501,7 @@ const dataGloomhaven = {
             id: 31, 
             nombre: "Plano de la noche", 
             estado: "bloqueado", 
-            map_pos: { row: 4, col: 5 },
+            map_pos: { row: 4, col: 4 },
             vieneDe: "Hondonada Helada (14)",
             requisitos: "El poder de la mejora (Global) y Artefacto recuperado (Global) COMPLETOS",
             objetivos: "Desconocido",
@@ -649,10 +649,14 @@ const dataGloomhaven = {
         },
 
     ],
+    // conexiones entre escenarios: escribir el origen y destino por ID de escenario, reduction es para reducir la longitud de la conexión (opcional), 
+    // y offsetY es para desplazar la conexión verticalmente (opcional)
+    //se pueden definir estos tipos de conexiones: 'principal', 'alternativa', 'bloqueada'. 
+    // Principal es la línea más gruesa, alternativa es una línea más delgada, bloqueada es una línea discontinua.
     conexiones: [
         { origen: 0, destino: 1, tipo: 'alternativa', offset: 0 }, 
         { origen: 1, destino: 2, tipo: 'alternativa', offset: 0 }, 
-        { origen: 1, destino: 65, tipo: 'alternativa', offset: 0 },
+        { origen: 1, destino: 65, tipo: 'alternativa', offset: 0, reduction: 5 }, // conexión reducida en 50px para evitar solapamiento
         { origen: 2, destino: 3, tipo: 'alternativa', offset: 0 }, 
         { origen: 2, destino: 4, tipo: 'alternativa', offset: 0 },  
         { origen: 3, destino: 8, tipo: 'alternativa', offset: 0 }, 
@@ -678,12 +682,11 @@ const dataGloomhaven = {
         { origen: 14, destino: 43, tipo: 'alternativa', offset: 0 }, 
         { origen: 20, destino: 16, tipo: 'alternativa', offset: 0 },
         { origen: 20, destino: 18, tipo: 'alternativa', offset: 0 },
-        { origen: 20, destino: 28, tipo: 'alternativa', offset: 0 },
+        { origen: 20, destino: 28, tipo: 'alternativa', offset: 0, reduction: 80, offsetY: 40 }, // conexión reducida en 50px para evitar solapamiento
         { origen: 19, destino: 27, tipo: 'alternativa', offset: 0 },
         { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
         { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
-    ]          
-    
+    ]           
 };
 // ----------------------------------------------------
 // CONSTANTES DE COORDENADAS (NUEVAS)
@@ -835,7 +838,7 @@ function crearDetalleEscenario(esc) {
 /** * Dibuja una línea simple entre los bordes de los elementos, aplicando un offset manual si es necesario.
  * Incluye lógica para acortar la línea y dejar espacio para la punta de flecha.
  */
-function drawArrow(source, target, tipo, container, customOffset = 0) {
+function drawArrow(source, target, tipo, container, customOffset = 0, customReduction = 0, customOffsetY = 0) { 
     // 1. Obtener coordenadas y dimensiones
     const sourceRect = source.getBoundingClientRect();
     const targetRect = target.getBoundingClientRect();
@@ -874,7 +877,11 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
             y2_offset += customOffset;
         }
     }
-    
+    // Aplicar desplazamiento vertical forzado
+    if (customOffsetY !== 0) {
+        y1_offset += customOffsetY;
+        y2_offset += customOffsetY;
+    }
     // 3. Recalcular la geometría de la línea (basada en el offset aplicado)
     const dx = x2_offset - x1_offset;
     const dy = y2_offset - y1_offset;
@@ -903,7 +910,7 @@ function drawArrow(source, target, tipo, container, customOffset = 0) {
     const EXTRA_REDUCTION_ORIGIN = 15; // Espacio extra en el origen del conector para evitar solapamiento
     
     // La distancia total se reduce: (Inicio) + (Destino) + (Espacio para la punta)
-    const reduction = (intersectionDistance + EXTRA_REDUCTION_ORIGIN) + intersectionDistance + ARROW_HEAD_SPACE; // <-- LÍNEA CLAVE MODIFICADA
+    const reduction = (intersectionDistance + EXTRA_REDUCTION_ORIGIN) + intersectionDistance + ARROW_HEAD_SPACE + customReduction; // <-- LÍNEA CLAVE MODIFICADA
     
     // La distancia final es la distancia entre centros menos la reducción total
     const finalDistance = Math.max(0, centerDistance - reduction); 
@@ -1037,7 +1044,7 @@ function actualizarBlackboard() {
         // left = Margen Inicial + Columna * Espaciado
         const left = INITIAL_LEFT_OFFSET + map_pos.col * COL_SPACING;
         // top = Margen Inicial + Fila * Espaciado
-        const top = INITIAL_TOP_OFFSET + map_pos.row * ROW_SPACING;
+        const top = INITIAL_TOP_OFFSET + map_pos.fila * ROW_SPACING;
         
         div.style.top = `${top}px`;
         div.style.left = `${left}px`;
@@ -1061,7 +1068,7 @@ dataGloomhaven.conexiones.forEach(conn => {
         const estadoClase = `estado-${targetEscenario.estado}`; 
         
         // 3. Llamar a drawArrow con la nueva clase
-        drawArrow(sourceDiv, targetDiv, estadoClase, contMapa, conn.offset || 0);
+        drawArrow(sourceDiv, targetDiv, estadoClase, contMapa, conn.offset || 0, conn.reduction || 0, conn.offsetY || 0);
 
         }
     });
@@ -1104,14 +1111,14 @@ dataGloomhaven.conexiones.forEach(conn => {
         const halfNodeWidth = divInicial.offsetWidth / 2;
         const halfNodeHeight = divInicial.offsetHeight / 2;
         
-        const { row, col } = escenarioInicial.map_pos;
+        const { fila, col } = escenarioInicial.map_pos;
 
         // A. Calcular la posición central del Escenario 0:
         // Posición Left (X) del centro del nodo
         const targetX = INITIAL_LEFT_OFFSET + col * COL_SPACING + halfNodeWidth; // <-- Usa valor dinámico
         
         // Posición Top (Y) del centro del nodo
-        const targetY = INITIAL_TOP_OFFSET + row * ROW_SPACING + halfNodeHeight; // <-- Usa valor dinámico
+        const targetY = INITIAL_TOP_OFFSET + fila * ROW_SPACING + halfNodeHeight; // <-- Usa valor dinámico
 
         // B. Determinar la posición de SCROLL necesaria para centrar el punto:
         const scrollX = targetX - (contViewport.clientWidth / 2);
