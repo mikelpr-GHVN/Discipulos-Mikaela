@@ -1044,7 +1044,7 @@ function actualizarBlackboard() {
         // left = Margen Inicial + Columna * Espaciado
         const left = INITIAL_LEFT_OFFSET + map_pos.col * COL_SPACING;
         // top = Margen Inicial + Fila * Espaciado
-        const top = INITIAL_TOP_OFFSET + map_pos.fila * ROW_SPACING;
+        const top = INITIAL_TOP_OFFSET + map_pos.row * ROW_SPACING;
         
         div.style.top = `${top}px`;
         div.style.left = `${left}px`;
@@ -1111,14 +1111,14 @@ dataGloomhaven.conexiones.forEach(conn => {
         const halfNodeWidth = divInicial.offsetWidth / 2;
         const halfNodeHeight = divInicial.offsetHeight / 2;
         
-        const { fila, col } = escenarioInicial.map_pos;
+        const { row, col } = escenarioInicial.map_pos;
 
         // A. Calcular la posición central del Escenario 0:
         // Posición Left (X) del centro del nodo
         const targetX = INITIAL_LEFT_OFFSET + col * COL_SPACING + halfNodeWidth; // <-- Usa valor dinámico
         
         // Posición Top (Y) del centro del nodo
-        const targetY = INITIAL_TOP_OFFSET + fila * ROW_SPACING + halfNodeHeight; // <-- Usa valor dinámico
+        const targetY = INITIAL_TOP_OFFSET + row * ROW_SPACING + halfNodeHeight; // <-- Usa valor dinámico
 
         // B. Determinar la posición de SCROLL necesaria para centrar el punto:
         const scrollX = targetX - (contViewport.clientWidth / 2);
