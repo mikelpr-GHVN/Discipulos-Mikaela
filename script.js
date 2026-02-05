@@ -15,7 +15,8 @@ const dataGloomhaven = {
         "mapa del tesoro", 
         "encargo siniestro",
         "el recado de un demonio",
-        "incensario de romperrocas"
+        "incensario de romperrocas",
+        "Una invitación"    
     ], 
     logrosGlobales: [
         "gobierno de la ciudad militarista", 
@@ -483,11 +484,33 @@ const dataGloomhaven = {
         { 
             id: 28, 
             nombre: "Cámara ritual ultraterrestre", 
-            estado: "pendiente", 
-            fechaProximapartida: "13-01-2026",
-            map_pos: { row: 3.5, col: 6 },
+            estado: "completado", 
+            fechaCompletado: "13-01-2026",
+            map_pos: { row: 3.2, col: 6 },
             vieneDe: "Santuario de la nigromante (20)",
-            requisitos: "desconocido",
+            requisitos: "Encargo siniestro (Grupo) COMPLETO",
+            objetivos: "Matar a todos los enemigos",
+            textoEscenario: ["Cuando entráis en la cripta, una cara familiar os saluda al pie de las escaleras, sonriendo de oreja a oreja.",
+"—Oh, habéis venido. De nuevo, quiero agradeceros vuestra ayuda en la eliminación de esa molesta nigromante. Venid, dejadme hacer las presentaciones.",
+"La figura encapuchada os guía por unas puertas de piedra a una enorme sala y señala una grieta negra y llameante en el aire.",
+"—Este —comienza, incapaz de ocultar su regocijo— es nuestro maestro: la Penumbra, que deseaba daros las gracias personalmente por asesinar a tantos de nuestros hermanos y por retrasar nuestros planes.",
+"A través de la grieta entra un grupo de horrendos y abultados cadáveres que se tambalean hacia vosotros.",
+"—¡Escoria insignificante! —os grita de repente la eufórica figura—. ¿Pensabais que podríais ganaros nuestro favor tan fácilmente? ¡Estáis aquí para morir! ¡Para uniros a nuestra causa como cadáveres, al igual que el resto de estos idiotas indignos!"],
+            conclusion: ["Agotados, dejáis caer vuestras armas. Por suerte, no parece que vayan a llegar más no muertos por la grieta, pero, aun así, su existencia y la presencia de la Penumbra es preocupante.",
+"—Lo habéis hecho bien —una voz tenue y fría que parece venir de la oscuridad frente a vosotros rompe el silencio—. Mis esbirros no son capaces de perdonar, pero yo sí. Venid, venid a mí. Entrad en mi reino. Abrazad lo inevitable.",
+"La grieta está ante vosotros. Podéis llegar hasta el final o podéis daros la vuelta y abandonar este lugar, ignorando la llamada de la Penumbra."],
+            recompensas: [],
+            logros: ["Una invitación"], 
+            nuevasUbicaciones: ["Santuario de la Penumbra (29)"] 
+        },
+        // ID 29: SANTUARIO DE LA PENUMBRA (NUEVO)
+        { 
+            id: 29, 
+            nombre: "Santuario de la Penumbra", 
+            estado: "pendiente", 
+            map_pos: { row: 4.7, col: 6 },
+            vieneDe: "Cámara ritual ultraterrestre (28)",
+            requisitos: "Una invitación (Grupo) COMPLETO",
             objetivos: "Desconocido",
             textoEscenario: ["Desconocido"],
             conclusion: ["Desconocido"],
@@ -495,7 +518,6 @@ const dataGloomhaven = {
             logros: ["desconocido"], 
             nuevasUbicaciones: ["Desconocido"] 
         },
-
         // ID 31: NUEVO ESCENARIO 
         { 
             id: 31, 
@@ -680,10 +702,11 @@ const dataGloomhaven = {
         { origen: 14, destino: 19, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 31, tipo: 'alternativa', offset: 0 },
         { origen: 14, destino: 43, tipo: 'alternativa', offset: 0 }, 
+        { origen: 19, destino: 27, tipo: 'alternativa', offset: 0 },
         { origen: 20, destino: 16, tipo: 'alternativa', offset: 0 },
         { origen: 20, destino: 18, tipo: 'alternativa', offset: 0 },
-        { origen: 20, destino: 28, tipo: 'alternativa', offset: 0, reduction: 80, offsetY: 40 }, // conexión reducida en 50px para evitar solapamiento
-        { origen: 19, destino: 27, tipo: 'alternativa', offset: 0 },
+        { origen: 20, destino: 28, tipo: 'alternativa', offset: 0, reduction: 30, offsetY: 20 }, // conexión reducida en 50px para evitar solapamiento
+        { origen: 28, destino: 29, tipo: 'alternativa', offset: 0, reduction: 40, offsetY: 40 }, // conexión reducida en 50px para evitar solapamiento
         { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
         { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
     ]           
