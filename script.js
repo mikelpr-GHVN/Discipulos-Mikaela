@@ -345,16 +345,23 @@ const dataGloomhaven = {
 { 
             id: 18, 
             nombre: "Cloacas abandonadas", 
-            estado: "pendiente", 
-            map_pos: { row: 2, col: 7 }, 
+            estado: "completado",
+            fechaCompletado: "11-02-2026",
+            map_pos: { row: 3, col: 5 }, 
             vieneDe: "Santuario de la nigromante (20)",
-            requisitos: "Desconocido", 
-            objetivos: "Desconocido",
-            textoEscenario: ["Desconocido"],
-            conclusion: ["Desconocido"],
-            recompensas: [],
-            logros: ["desconocido"],
-            nuevasUbicaciones: ["Desconocido"]
+            requisitos: "Ninguno", 
+            objetivos: "matar a todos los enemigos",
+            textoEscenario: ["En medio del Puente Silencioso, un guardia de la ciudad os señala una rejilla bajo el lado oeste.",
+"—Es la mejor entrada a ese agujero pestilente. Buena suerte.",
+"Descendéis un poco por los muros del puente y, finalmente, llegáis a una rejilla retorcida y rota por el paso de los años. Encendéis una antorcha y entráis por un camino estrecho y ligeramente inclinado, evitando la corriente de líquido marrón que corre en la dirección opuesta. Tras unos pocos minutos, el camino se divide en varios pasajes.",
+"Mientras miráis a vuestro alrededor para decidir qué camino tomar, el eco de unos silbidos llega hasta vosotros a través de los pasajes de piedra. Agarráis con fuerza a vuestras armas, esforzándoos por ver las formas reptantes que se os aproximan.",
+"---1---",
+"Recorriendo los pasajes, acabáis en una gran habitación abierta con un aljibe en el centro. Alrededor del aljibe hay un grupo de infestores mirando hacia vosotros y gruñéndoos. Ésta debe ser la causa del envenenamiento del agua."],
+            conclusion: ["Los infestores yacen muertos y su oscura sangre se mezcla con los charcos de agua del suelo. Investigáis un poco más, pero no lográis encontrar ningún tipo de veneno entre los cadáveres. ¿Es posible que estas alimañas no fueran las causantes y sólo estuvieran escondiéndose aquí, lejos de los ojos de la guardia? Al final de la sala, se aprecian unas grandes grietas en la pared que muestran un camino hacia las profundidades. (23)",
+"Y si tenéis alguna forma de respirar bajo el agua, (14) o (43) podríais incluso sumergiros en el aljibe y buscar la fuente del veneno. (26)"],
+            recompensas: ["ninguna"],
+            logros: ["ninguno"],
+        nuevasUbicaciones: ["Hondonada helada (14)", "Ruinas profundas (23)", "Antiguo aljibe (26)", "Nido de dracos (43)",]
 
 },
         // ID 19: NUEVO ESCENARIO
@@ -453,6 +460,37 @@ const dataGloomhaven = {
             logros: ["desconocido"], 
             nuevasUbicaciones: ["Desconocido"] 
         },
+        // ID 23: Ruinas profundas (NUEVO)
+        { 
+            id: 23, 
+            nombre: "Ruinas profundas", 
+            estado: "pendiente", 
+            map_pos: { row: 3, col: 6 },
+            vieneDe: "Cloacas abandonadas (18)",
+            requisitos: "Una invitación (Grupo) COMPLETO",
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
+        // ID 26: Antiguo aljibe (NUEVO)
+        { 
+            id: 26, 
+            nombre: "Antiguo aljibe", 
+            estado: "bloqueado",
+            map_pos: { row: 4, col: 6 },
+            vieneDe: "Cloacas abandonadas (18)", 
+            requisitos: "Respiración subacuática (Global) o A través de las ruinas (Grupo) COMPLETOS",  
+            objetivos: "Desconocido",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
+
         // ID 27: NUEVO ESCENARIO
         { 
             id: 27, 
@@ -486,7 +524,7 @@ const dataGloomhaven = {
             nombre: "Cámara ritual ultraterrestre", 
             estado: "completado", 
             fechaCompletado: "13-01-2026",
-            map_pos: { row: 3.2, col: 6 },
+            map_pos: { row: 2, col: 7 },
             vieneDe: "Santuario de la nigromante (20)",
             requisitos: "Encargo siniestro (Grupo) COMPLETO",
             objetivos: "Matar a todos los enemigos",
@@ -508,7 +546,7 @@ const dataGloomhaven = {
             id: 29, 
             nombre: "Santuario de la Penumbra", 
             estado: "pendiente", 
-            map_pos: { row: 4.7, col: 6 },
+            map_pos: { row: 3.2, col: 7 },
             vieneDe: "Cámara ritual ultraterrestre (28)",
             requisitos: "Una invitación (Grupo) COMPLETO",
             objetivos: "Desconocido",
@@ -538,7 +576,7 @@ const dataGloomhaven = {
             id: 43, 
             nombre: "Nido de dracos", 
             estado: "pendiente", 
-            map_pos: { row: 3, col: 5 },
+            map_pos: { row: 4.4, col: 5 },
             vieneDe: "Hondonada Helada (14)",
             requisitos: "El poder de la mejora (Global) COMPLETO",
             objetivos: "Desconocido",
@@ -671,7 +709,8 @@ const dataGloomhaven = {
         },
 
     ],
-    // conexiones entre escenarios: escribir el origen y destino por ID de escenario, reduction es para reducir la longitud de la conexión (opcional), 
+    // conexiones entre escenarios: escribir el origen y destino por ID de escenario, 
+    // reduction es para reducir la longitud de la conexión (opcional), 
     // y offsetY es para desplazar la conexión verticalmente (opcional)
     //se pueden definir estos tipos de conexiones: 'principal', 'alternativa', 'bloqueada'. 
     // Principal es la línea más gruesa, alternativa es una línea más delgada, bloqueada es una línea discontinua.
@@ -701,14 +740,18 @@ const dataGloomhaven = {
         { origen: 14, destino: 7, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 19, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 31, tipo: 'alternativa', offset: 0 },
-        { origen: 14, destino: 43, tipo: 'alternativa', offset: 0 }, 
+        { origen: 14, destino: 43, tipo: 'alternativa', offset: 0 },
+        { origen: 18, destino: 14, tipo: 'alternativa', offset: 0 },
+        { origen: 18, destino: 23, tipo: 'alternativa', offset: 0 },
+        { origen: 18, destino: 26, tipo: 'alternativa', offset: 0, reduction: 10},
+        { origen: 18, destino: 43, tipo: 'alternativa', offsetY: 30, reduction: 30}, // conexión reducida  para evitar solapamiento
         { origen: 19, destino: 27, tipo: 'alternativa', offset: 0 },
         { origen: 20, destino: 16, tipo: 'alternativa', offset: 0 },
         { origen: 20, destino: 18, tipo: 'alternativa', offset: 0 },
-        { origen: 20, destino: 28, tipo: 'alternativa', offset: 0, reduction: 30, offsetY: 20 }, // conexión reducida en 50px para evitar solapamiento
-        { origen: 28, destino: 29, tipo: 'alternativa', offset: 0, reduction: 40, offsetY: 40 }, // conexión reducida en 50px para evitar solapamiento
+        { origen: 20, destino: 28, tipo: 'alternativa', offset: 0, reduction: 10, }, // conexión reducida  para evitar solapamiento
+        { origen: 28, destino: 29, tipo: 'alternativa', offset: 0, reduction: 20, offsetY: 20 }, // conexión reducida para evitar solapamiento
         { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
-        { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
+        { origen: 67, destino: 93,  offset: 0 }, 
     ]           
 };
 // ----------------------------------------------------
