@@ -482,9 +482,9 @@ const dataGloomhaven = {
             nombre: "Antiguo aljibe", 
             estado: "bloqueado",
             map_pos: { row: 4, col: 6 },
-            vieneDe: "Cloacas abandonadas (18)", 
+            vieneDe: "Cloacas abandonadas (18), Nido de dracos (43)", 
             requisitos: "Respiración subacuática (Global) o A través de las ruinas (Grupo) COMPLETOS",  
-            objetivos: "Desconocido",
+            objetivos: "Limpiar todas las bombas de agua",
             textoEscenario: ["Desconocido"],
             conclusion: ["Desconocido"],
             recompensas: [],
@@ -572,20 +572,41 @@ const dataGloomhaven = {
             logros: ["desconocido"], 
             nuevasUbicaciones: ["Desconocido"] 
         },
-        // ID 43: NUEVO ESCENARIO 
+        // ID 37: NUEVO ESCENARIO 
         { 
-            id: 43, 
-            nombre: "Nido de dracos", 
+            id: 37, 
+            nombre: "Fosa Maldita", 
             estado: "pendiente", 
-            map_pos: { row: 4.4, col: 5 },
-            vieneDe: "Hondonada Helada (14)",
-            requisitos: "El poder de la mejora (Global) COMPLETO",
-            objetivos: "Desconocido",
+            map_pos: { row: 5, col: 6 },
+            vieneDe: "Nido de dracos (43)",
+            requisitos: "Respiración subacuática (Global) COMPLETO",
+            objetivos: "Todos los personajes deben escapar por la salida (a)",
             textoEscenario: ["Desconocido"],
             conclusion: ["Desconocido"],
             recompensas: [],
             logros: ["desconocido"], 
             nuevasUbicaciones: ["Desconocido"] 
+        },
+        // ID 43: NIDO DE DRACOS (NUEVO) 
+        { 
+            id: 43, 
+            nombre: "Nido de dracos", 
+            estado: "completado", 
+            fechaCompletado: "25-02-2026",
+            map_pos: { row: 4.4, col: 5 },
+            vieneDe: "Hondonada Helada (14)",
+            requisitos: "El poder de la mejora (Global) COMPLETO",
+            objetivos: "Matar a un número de dracos igual al número de personajes multiplicado por 4",
+            textoEscenario: ["—Oh, vaya, ¿creéis que puedo ayudaros a respirar bajo el agua? Qué adorables. —Hail os mira fijamente, irritada—. Quiero decir, ¿quién os pensáis que soy? No sabría ni por dónde empezar. —Hail se da la vuelta y se pasea de un lado a otro—. Necesitaréis escamas de draco, eso seguro..., algo para filtrar el aire bajo el agua. Y si consideramos las propiedades elementales del agua por separado... —Hail comienza a desvanecerse y desaparece mientras habla.", 
+                "Ya estáis acostumbrados a que se comporte así y esperáis pacientemente a que regrese, lo que lleva una hora." ,
+                "—De acuerdo, sí. Habéis conseguido intrigarme. Acepto vuestra propuesta. Traedme escamas de draco y veremos qué puedo hacer. Sé de un nido de dracos en la zona norte del Bosque de las Dagas. Os dibujaré un mapa.", 
+                "El mapa no es gran cosa, pero os lleva hasta la boca de una cueva en cuyo interior se oye un llamativo silbido. Hail necesita que consigáis tantas escamas como os sea posible, así que es hora de matar. "],
+            conclusion: ["Las oleadas de lagartos de escamas rojas parecen interminables, pero ya hay un gran número de cadáveres y os batís en ordenada retirada. Ya en la boca de la cueva, echáis a correr. Por suerte, los dracos no parecen tener intención de perseguiros. Entonces, comenzáis la ardua tarea de llevar las pieles hasta el Hueso Retorcido.", 
+                "Cuando llegáis, Hail os quita en silencio la masa de escamas y desaparece durante dos horas. Cuando vuelve, sostiene un puñado de pequeñas esferas azules.", 
+                "—Bien, todo lo que debéis hacer es colocaros una de estas esferas en la garganta cuando vayáis a sumergiros. Debería filtrar vuestras inhalaciones y exhalaciones bajo el agua. Será bastante doloroso y pasaréis un mal rato cuando ya estéis en tierra firme y os las saquéis. No os envidio en absoluto, pero debería funcionar. (26) (37) La verdad es que estoy muy contenta del resultado —dice Hail sonriendo de oreja a oreja—. Ahora, salid de mi casa."],
+            recompensas: [],
+            logros: ["Respiración subacuática (Global)"], 
+            nuevasUbicaciones: ["Antiguo aljibe (26)", "Fosa Maldita (37)"] 
         },
         //ID 57: NUEVO ESCENARIO
         { 
@@ -708,6 +729,21 @@ const dataGloomhaven = {
             logros: [], 
             nuevasUbicaciones: [] 
         },
+        // ID 94: NUEVO ESCENARIO 
+        { 
+            id: 94 , 
+            nombre: "Nido de infestores", 
+            estado: "pendiente", 
+            map_pos: { row: 6, col: 5 },
+            vieneDe: "Nido de dracos (43)",
+            requisitos: "Ninguno",
+            objetivos: "Matar a todos los enemigos y saquear la pieza de tesoro",
+            textoEscenario: ["Desconocido"],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
 
     ],
     // conexiones entre escenarios: escribir el origen y destino por ID de escenario, 
@@ -751,8 +787,11 @@ const dataGloomhaven = {
         { origen: 20, destino: 18, tipo: 'alternativa', offset: 0 },
         { origen: 20, destino: 28, tipo: 'alternativa', offset: 0, reduction: 10, }, // conexión reducida  para evitar solapamiento
         { origen: 28, destino: 29, tipo: 'alternativa', offset: 0, reduction: 20, offsetY: 20 }, // conexión reducida para evitar solapamiento
+        { origen: 43, destino: 26, tipo: 'alternativa', offset: 0 },
+        { origen: 43, destino: 37, tipo: 'alternativa', offset: 0 },
+        { origen: 43, destino: 94, tipo: 'alternativa', offset: 0, offsetY: 30, reduction: 30   }, // conexión reducida para evitar solapamiento
         { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
-        { origen: 67, destino: 93,  offset: 0 }, 
+        { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
     ]           
 };
 // ----------------------------------------------------
