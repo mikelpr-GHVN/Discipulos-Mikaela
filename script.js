@@ -16,7 +16,8 @@ const dataGloomhaven = {
         "encargo siniestro",
         "el recado de un demonio",
         "incensario de romperrocas",
-        "Una invitación"    
+        "Una invitación",
+        "A través del nido"    
     ], 
     logrosGlobales: [
         "gobierno de la ciudad militarista", 
@@ -733,18 +734,40 @@ const dataGloomhaven = {
         { 
             id: 94 , 
             nombre: "Nido de infestores", 
-            estado: "pendiente", 
-            map_pos: { row: 6, col: 5 },
+            estado: "completado", 
+            fechaCompletado: "20-04-2026",
+            map_pos: { row: 5.7, col: 5 },
             vieneDe: "Nido de dracos (43)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos y saquear la pieza de tesoro",
+            textoEscenario: ["No os resulta difícil encontrar el nido. Los infestores no son precisamente conocidos por su sutileza. De hecho, percibís el hedor a carne podrida y a animal húmedo mucho antes de divisar los rudimentarios agujeros y las pilas de matorrales que forman el hogar de la plaga de infestores.",
+"Examináis cuidadosamente la zona. Tal y como os describió ese hombre, hay un hoyo tras los nidos, pero es difícil ver qué hay en el fondo sin alertar a los infestores. Suponéis que tendréis que hacer lo que os sugirieron y matar a estas viles criaturas antes de examinar el tesoro con más detenimiento.",
+"Os dirigís al lado opuesto del nido y os preparáis para atacar.",
+"-------(1)-------",
+"Con los gritos de los infestores moribundos, os acercáis al último nido y encontráis a más criaturas enseñándoos los dientes.",
+"A la derecha del nido, veis una esfera negra en un rudimentario pedestal de piedra. El cristal tiene una profunda grieta que casi divide la esfera por la mitad. Y tenéis la sensación de haberla visto antes en algún lugar.",
+"E igualmente inquietante es lo fuera de lugar que se ve la esfera en este sucio entorno. Y, ¿por qué está ahí cuando el resto del tesoro está, supuestamente, en el hoyo?",
+"Dejáis las preguntas para después y os centráis en la tarea que tenéis entre manos: matar a los infestores."],
+            conclusion: ["Con los infestores y sus animales aliados yaciendo muertos a vuestros pies, cogéis la esfera rota. Cuando la visteis por primera vez, casi proyectaba un aura de malevolencia, pero, ahora, cuando la miráis de cerca, parece mucho más mundana. Sin querer romperla, la sostenéis contra el pecho y os dirigís al hoyo donde, en teoría, se encuentra el tesoro (95)"],
+            recompensas: [],
+            logros: ["A través del nido (grupo)"], 
+            nuevasUbicaciones: ["Cuenta pendiente (95)"] 
+        },
+// ID 95: MINA DE AZUFRE 
+        { 
+            id: 95, 
+            nombre: "Cuenta pendiente", 
+            estado: "pendiente", 
+            map_pos: { row: 7, col: 5 },
+            vieneDe: "Nido de infestores (94)",
+            requisitos: "A través del nido (Grupo) COMPLETO",
+            objetivos: ["Matar al lugarteniente supremo"] ,
             textoEscenario: ["Desconocido"],
             conclusion: ["Desconocido"],
             recompensas: [],
             logros: ["desconocido"], 
             nuevasUbicaciones: ["Desconocido"] 
         },
-
     ],
     // conexiones entre escenarios: escribir el origen y destino por ID de escenario, 
     // reduction es para reducir la longitud de la conexión (opcional), 
@@ -792,6 +815,7 @@ const dataGloomhaven = {
         { origen: 43, destino: 94, tipo: 'alternativa', offset: 0, offsetY: 30, reduction: 30   }, // conexión reducida para evitar solapamiento
         { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
         { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
+        { origen: 94, destino: 95, tipo: 'alternativa', offset: 0, reduction: 20, offsetY: 20 }, // conexión reducida para evitar solapamiento
     ]           
 };
 // ----------------------------------------------------
@@ -856,7 +880,7 @@ function crearDetalleEscenario(esc) {
         conexionesSalientes.forEach((conn, index) => {
             const destinoId = conn.destino;
             // Usa el texto del array nuevasUbicaciones, que debe coincidir con el orden de las conexiones
-            const ubicacionTexto = esc.nuevasUbicaciones[index] || `Escenario ${destinoId} (Aleatorio!!)`; 
+            const ubicacionTexto = esc.nuevasUbicaciones[index] || `Escenario ${destinoId} (Aleatorio!!)`; // Fallback por si no hay texto definido
             
             nuevasUbicacionesHtml += `
                 <button class="enlace-escenario-btn siguiente" onclick="simularClickEscenario(${destinoId})">
