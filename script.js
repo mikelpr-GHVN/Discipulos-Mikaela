@@ -17,7 +17,8 @@ const dataGloomhaven = {
         "el recado de un demonio",
         "incensario de romperrocas",
         "Una invitación",
-        "A través del nido"    
+        "A través del nido",
+        "Respiración subacuática",    
     ], 
     logrosGlobales: [
         "gobierno de la ciudad militarista", 
