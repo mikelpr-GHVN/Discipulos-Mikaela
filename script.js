@@ -468,6 +468,7 @@ const dataGloomhaven = {
             id: 23, 
             nombre: "Ruinas profundas", 
             estado: "pendiente", 
+            fechaFallido: "19-05-2026",
             map_pos: { row: 3, col: 6 },
             vieneDe: "Cloacas abandonadas (18)",
             requisitos: "Una invitación (Grupo) COMPLETO",
@@ -483,7 +484,7 @@ const dataGloomhaven = {
             id: 26, 
             nombre: "Antiguo aljibe", 
             estado: "bloqueado",
-            map_pos: { row: 4, col: 6 },
+            map_pos: { row: 4.1, col: 6 },
             vieneDe: "Cloacas abandonadas (18), Nido de dracos (43)", 
             requisitos: "Respiración subacuática (Global) o A través de las ruinas (Grupo) COMPLETOS",  
             objetivos: "Limpiar todas las bombas de agua",
@@ -737,7 +738,7 @@ const dataGloomhaven = {
             nombre: "Nido de infestores", 
             estado: "completado", 
             fechaCompletado: "20-04-2026",
-            map_pos: { row: 5.7, col: 5 },
+            map_pos: { row: 5.5, col: 5 },
             vieneDe: "Nido de dracos (43)",
             requisitos: "Ninguno",
             objetivos: "Matar a todos los enemigos y saquear la pieza de tesoro",
@@ -754,12 +755,13 @@ const dataGloomhaven = {
             logros: ["A través del nido (grupo)"], 
             nuevasUbicaciones: ["Cuenta pendiente (95)"] 
         },
-// ID 95: MINA DE AZUFRE 
+// ID 95: CUENTA PENDIENTE 
         { 
             id: 95, 
             nombre: "Cuenta pendiente", 
-            estado: "pendiente", 
-            map_pos: { row: 7, col: 5 },
+            estado: "completado", 
+            fechaCompletado: "16-06-2026",
+            map_pos: { row: 6.8, col: 5 },
             vieneDe: "Nido de infestores (94)",
             requisitos: "A través del nido (Grupo) COMPLETO",
             objetivos: ["Matar al lugarteniente supremo"] ,
@@ -813,7 +815,7 @@ const dataGloomhaven = {
         { origen: 28, destino: 29, tipo: 'alternativa', offset: 0, reduction: 20, offsetY: 20 }, // conexión reducida para evitar solapamiento
         { origen: 43, destino: 26, tipo: 'alternativa', offset: 0 },
         { origen: 43, destino: 37, tipo: 'alternativa', offset: 0 },
-        { origen: 43, destino: 94, tipo: 'alternativa', offset: 0, offsetY: 30, reduction: 30   }, // conexión reducida para evitar solapamiento
+        { origen: 43, destino: 94, tipo: 'alternativa', offset: 0, }, // conexión reducida para evitar solapamiento
         { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
         { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
         { origen: 94, destino: 95, tipo: 'alternativa', offset: 0, reduction: 20, offsetY: 20 }, // conexión reducida para evitar solapamiento
