@@ -28,11 +28,27 @@ const dataGloomhaven = {
         "la grieta neutralizada",
         "tecnología antigua 0/5"
     ], 
-    objetosDisponibles: "1-28, 72, 74, 87, 92, 101, 107, 110, 113, 115, 123, 124, 126 y 132", 
+    objetosDisponibles: "1-28, 72, 74, 87, 92, 101, 107, 110, 113, 115, 119, 123, 124, 126 y 132", 
     personajes: [], 
 
     // Lista de Escenarios 
     escenarios: [
+        // ID 100: LOS ANALES DE LA CIUDAD
+        { 
+            id: 100, 
+            nombre: "Los Anales de la Ciudad", 
+            estado: "inicial", 
+            map_pos: { row: -1  , col: 1 },
+            vieneDe: "Ninguno (Inicio de Campaña)",
+            requisitos: "Ninguno",
+            objetivos: "Ninguno",
+            textoEscenario: "Anales TXT",            
+            conclusion: "Éxito. Se ha recuperado el botín para Jekserah.",
+            recompensas: ["10 monedas de oro (inicial)"],
+            logros: ["Gobierno de la ciudad: Militarista (Global)"], 
+            nuevasUbicaciones: ["Túmulo Negro (1)"] 
+        }, 
+
         // ID 0: GLOOMHAVEN (Inicio de Campaña)
         { 
             id: 0, 
@@ -42,10 +58,8 @@ const dataGloomhaven = {
             vieneDe: "Ninguno (Inicio de Campaña)",
             requisitos: "Ninguno",
             objetivos: "Localizar a un ladrón y recuperar unos documentos robados por encargo de Jekserah.",
-            textoEscenario: [
-                "Todos necesitamos comer. Sea cual sea el motivo por el que habéis venido a Gloomhaven, por el que habéis llegado a los confines del mundo, este hecho no cambia. Un mercenario no puede luchar con el estómago vacío. Así que, cuando Jekserah, una Valrath ataviada con una capa roja y suficientes joyas de oro como para pagar la comida de una década, se acerca a vosotros en el León Durmiente y se ofrece a pagaros diez monedas de oro por localizar a un ladrón y recuperar algunas pertenencias robadas... Bueno, parece una excusa tan buena como cualquier otra para quitarse la borrachera de encima y empezar a saldar deudas. —Ese ladrón me ha robado unos documentos importantes —dice la comerciante de piel roja mientras mueve la cola con agitación—. No me importa lo que le hagáis, sólo que me traigáis lo que es mío.",
-                "Con la descripción de Jekserah, no resultó difícil sacudir a algunos matones callejeros y sonsacarles la localización del escondite de los ladrones. En Gloomhaven, todo mercenario que se precie debe saber cómo romper unos cuantos cráneos. **Vuestro objetivo es el Túmulo Negro. Suena a lugar encantador.**"
-            ], 
+            textoEscenario: ["Todos necesitamos comer. Sea cual sea el motivo por el que habéis venido a Gloomhaven, por el que habéis llegado a los confines del mundo, este hecho no cambia. Un mercenario no puede luchar con el estómago vacío. Así que, cuando Jekserah, una Valrath ataviada con una capa roja y suficientes joyas de oro como para pagar la comida de una década, se acerca a vosotros en el León Durmiente y se ofrece a pagaros diez monedas de oro por localizar a un ladrón y recuperar algunas pertenencias robadas... Bueno, parece una excusa tan buena como cualquier otra para quitarse la borrachera de encima y empezar a saldar deudas. —Ese ladrón me ha robado unos documentos importantes —dice la comerciante de piel roja mientras mueve la cola con agitación—. No me importa lo que le hagáis, sólo que me traigáis lo que es mío.",
+                "Con la descripción de Jekserah, no resultó difícil sacudir a algunos matones callejeros y sonsacarles la localización del escondite de los ladrones. En Gloomhaven, todo mercenario que se precie debe saber cómo romper unos cuantos cráneos. **Vuestro objetivo es el Túmulo Negro. Suena a lugar encantador.**"],
             conclusion: "Éxito. Se ha recuperado el botín para Jekserah.",
             recompensas: ["10 monedas de oro (inicial)"],
             logros: ["Gobierno de la ciudad: Militarista (Global)"], 
@@ -697,6 +711,27 @@ const dataGloomhaven = {
             logros: ["Tecnología antigua (Global)"], 
             nuevasUbicaciones: [] 
         },
+        // ID 72: ARBOLEDA REZUMANTE 
+        { 
+            id: 72, 
+            nombre: "Arboleda rezumante", 
+            estado: "pendiente", 
+            fechaFallido: "08-06-2026",
+            map_pos: { row: -1.3, col: 2 },
+            vieneDe: "Los anales de la ciudad",
+            requisitos: "Ninguno",
+            objetivos: "Destruir todos los árboles y matar a todos los cienos",
+            textoEscenario: ["Entrad. —El adinerado concejal Greymare os guía hasta su oficina y luego se sienta en su escritorio—. Dominic me comentó que está escribiendo un libro sobre la corrupción de los militares y que necesita mi apoyo para no terminar encadenado en la Fortaleza Fantasma. Es una petición complicada, pero puede que estéis de suerte, ya que tengo una tarea que igual complicación que vosotros estáis totalmente capacitados para llevar a cabo. Hasta hace poco, tenía una finca en el Soto Cadáver en la que cosechaba frutas y vegetales. Las buenas tierras de cultivo escasean por aquí y pensé que, si la finca estaba escondida y protegida, podría mantenerse por sí misma. Por desgracia, llevo una semana sin noticias de mis asistentes. He enviado a algunos hombres a investigar, pero tampoco han regresado —suspira Greymare—. Necesito a alguien capaz de llegar allí y averiguar qué está ocurriendo. También estaría bien que pudierais neutralizar la situación para que pueda recuperar mis tierras de cultivo. Hacedme ese favor y apoyaré vuestro pequeño libro.",
+"Aceptáis el trato y os dirigís al Soto Cadáver para localizar la finca de Greymare. A la espera de encontraros con infestores y similares, os sorprende un poco la escena que os encontráis al llegar: la finca está cubierta de un moho espeso y viscoso y varios esqueletos totalmente momios se encuentran alrededor de la propiedad. Como si ese lugar no llevara deshabitado, sino años.",
+"Siguiendo el sendero del denso moho, os encontráis con un bosque de árboles frutales. Aquí, el lodo es más espeso y cuando lo pincháis con vuestras armas, reacciona y se mueve. De repente, el árbol de caoba toma vida con hostilidad.",
+" -- Reglas especiales:--",
+"Al final de cada ronda, un árbol invoca 1 Cieno siguiendo el orden árbol ⓐ árbol Ⓑ árbol Ⓒ y de vuelta al árbol ⓐ. Este Cieno es normal si el grupo está compuesto por 2 personajes, normal cada ronda impar y élite cada ronda par si está compuesto por 3 personajes, o bien élite siempre si está compuesto por 4 personajes. Si el árbol al que le correspondería invocar el Cieno en una determinada ronda ha sido destruido, no se invoca ningún Cieno en esa ronda.",
+"Cada árbol tiene P×(3+N) puntos de vida."],
+            conclusion: ["Desconocido"],
+            recompensas: [],
+            logros: ["desconocido"], 
+            nuevasUbicaciones: ["Desconocido"] 
+        },
          // ID 82: Montaña ardiente 
         { 
             id: 82, 
@@ -833,6 +868,7 @@ const dataGloomhaven = {
         { origen: 57, destino: 58, tipo: 'alternativa', offset: 0 },
         { origen: 67, destino: 93, tipo: 'alternativa', offset: 0 }, 
         { origen: 94, destino: 95, tipo: 'alternativa', offset: 0, reduction: 20, offsetY: 20 }, // conexión reducida para evitar solapamiento
+        {origen: 100, destino: 72, tipo: 'alternativa', offset: 0}
     ]           
 };
 // ----------------------------------------------------
@@ -845,7 +881,7 @@ const ROW_SPACING = 105;
 // Margen inicial izquierdo. 100px + (col * 300) = 400px (para col 1).
 const INITIAL_LEFT_OFFSET = -200; 
 // Margen inicial superior. 50px + (row * 100) = 50px (para row 0).
-const INITIAL_TOP_OFFSET = 30; 
+const INITIAL_TOP_OFFSET = 130; 
 
 // ----------------------------------------------------
 // FUNCIONES DE PLANTILLA Y CÁLCULO
@@ -917,6 +953,7 @@ function crearDetalleEscenario(esc) {
     // **CAMBIO CLAVE: Utilizamos filter() en lugar de find()**
     const conexionesAnteriores = dataGloomhaven.conexiones.filter(c => c.destino === esc.id);
     
+    // Si hay escenarios anteriores, generamos botones para cada uno; sólo el escenario 0 y mayor que 99 no muestra número de escenario en el botón.
     if (conexionesAnteriores.length > 0) {
         let botonesHtml = '';
         conexionesAnteriores.forEach(conn => {
@@ -924,7 +961,7 @@ function crearDetalleEscenario(esc) {
             if (origenEsc) {
                 botonesHtml += `
                     <button class="enlace-escenario-btn anterior" onclick="simularClickEscenario(${conn.origen})">
-                        ${origenEsc.id === 0 ? origenEsc.nombre : `${String(origenEsc.id).padStart(0, '0')}: ${origenEsc.nombre}`}
+                        ${origenEsc.id === 0 || origenEsc.id > 99 ? origenEsc.nombre : `${String(origenEsc.id).padStart(0, '0')}: ${origenEsc.nombre}`}
                     </button>
                 `;
             }
@@ -1166,8 +1203,8 @@ function actualizarBlackboard() {
         div.id = `escenario-${esc.id}`; 
         div.dataset.mision = esc.id; 
         
-        // Muestra el ID para los escenarios > 0: **001**Nombre
-        div.innerHTML = esc.id === 0 ? esc.nombre : `<strong>${String(esc.id).padStart(0, '0')}</strong>${esc.nombre}`;
+        // Oculta el ID para los escenarios = 0 y >99
+        div.innerHTML = esc.id === 0 || esc.id > 99 ? esc.nombre : `<strong>${String(esc.id).padStart(0, '0')}</strong>${esc.nombre}`;
         
         // Añadir marca de próxima partida si existe
             if (esc.fechaProximapartida) {
