@@ -3,9 +3,9 @@
 const dataGloomhaven = {
     // Datos Principales
     grupo: "Discípules de Mikaela",
-    reputacion: 8, 
-    prosperidadNivel: 3, // Nivel de prosperidad actual
-    prosperidadProgreso: 5, // Progreso hacia el siguiente nivel (0-6)
+    reputacion: 10, 
+    prosperidadNivel: 4, // Nivel de prosperidad actual
+    prosperidadProgreso: 1, // Progreso hacia el siguiente nivel (0-6)
     jugadores: ["Zaki", "Dani", "Siscu", "Jose", "Miquel"], 
     
     // Logros
@@ -18,7 +18,8 @@ const dataGloomhaven = {
         "incensario de romperrocas",
         "Una invitación",
         "A través del nido",
-        "Respiración subacuática",    
+        "Respiración subacuática",
+        "El filo de la oscuridad",    
     ], 
     logrosGlobales: [
         "gobierno de la ciudad militarista", 
@@ -26,7 +27,8 @@ const dataGloomhaven = {
         "tecnología antigua",
         "el poder de la mejora",
         "la grieta neutralizada",
-        "tecnología antigua 0/5"
+        "tecnología antigua 0/5",
+        "respiración subacuática",
     ], 
     objetosDisponibles: "1-28, 72, 74, 87, 92, 101, 107, 110, 113, 115, 119, 123, 124, 126 y 132", 
     personajes: [], 
@@ -568,16 +570,22 @@ const dataGloomhaven = {
         { 
             id: 29, 
             nombre: "Santuario de la Penumbra", 
-            estado: "pendiente", 
+            estado: "completado", 
+            fechaCompletado: "08-07-2026",
             map_pos: { row: 3.2, col: 7 },
             vieneDe: "Cámara ritual ultraterrestre (28)",
             requisitos: "Una invitación (Grupo) COMPLETO",
-            objetivos: "Desconocido",
-            textoEscenario: ["Desconocido"],
-            conclusion: ["Desconocido"],
-            recompensas: [],
-            logros: ["desconocido"], 
-            nuevasUbicaciones: ["Desconocido"] 
+            objetivos: "Matar a todos los enemigos",
+            textoEscenario: ["Entráis en la grieta oscura de las profundidades del santuario de la secta. Tras un dolor atroz e imágenes parpadeantes de demonios con garras y cadáveres desollados, termináis en un lugar muy parecido al que acabáis de dejar atrás. Veis una enorme sala de piedra ante vosotros.",
+            "—De nuevo engañados —la voz tenue vuelve a vosotros—. Es realmente asombroso que criaturas tan estúpidas como vosotros me hayan causado tantos problemas. Da igual, os pudriréis aquí, totalmente aislados de vuestro hogar. —Y en un instante de pavor, os giráis para ver cómo la grieta que os trajo a este lugar se contrae y se cierra—. Ni siquiera tendréis una última oportunidad para luchar. Simplemente os consumiréis. Moriréis sin gloria en un lugar extraño, no tenéis escapatoria. Ahora, os dejo para siempre. Adiós"],
+            conclusion: ["Golpeáis las paredes con desesperación en un intento de poder escapar de este exilio. Os cansáis. Vuestra visión se oscurece.",
+                "Cuando volvéis a tomar aliento, os encontráis tumbados en la hierba fuera de la guarida de la secta.",
+                "—Sabed que os he perdonado —vuelve a hablar la tenue voz—. Vuestra persistencia me intriga. Os invito a enfrentaros a mí. Será más entretenido que la última vez que traje penumbras a este mundo.",
+                "Os incorporáis de golpe y os apresuráis a volver a la cripta. Los cuerpos muertos de los sectarios cubren el suelo.",
+                "—Ya no estoy aquí. Estos recipientes han cumplido su propósito. Mis raíces son ahora profundas y pronto volveréis a enfrentaros a mi infinito poder. Espero con ansia a que ese día llegue"],
+            recompensas: ["15 XP para cada personaje"],
+            logros: ["El filo de la oscuridad (Global)"], 
+            nuevasUbicaciones: ["Ninguna"] 
         },
         // ID 31: NUEVO ESCENARIO 
         { 
@@ -1179,7 +1187,7 @@ function actualizarBlackboard() {
     const modPrecios = calcularModificador(dataGloomhaven.reputacion);
     const colorMod = modPrecios < 0 ? 'green' : (modPrecios > 0 ? 'red' : 'white');
     // denominador del progreso de prosperidad es variable en función del nivel actual
-    document.getElementById('prosperidad').textContent = `${dataGloomhaven.prosperidadNivel} + ${dataGloomhaven.prosperidadProgreso} / 6`;
+    document.getElementById('prosperidad').textContent = `${dataGloomhaven.prosperidadNivel} + ${dataGloomhaven.prosperidadProgreso} / 7`;
     
     document.getElementById('reputacion-val').textContent = (dataGloomhaven.reputacion >= 0 ? '+' : '') + dataGloomhaven.reputacion;
     document.getElementById('reputacion-mod').innerHTML = `Modificador de precios: <span style="color: ${colorMod};">${modPrecios}</span>`;
