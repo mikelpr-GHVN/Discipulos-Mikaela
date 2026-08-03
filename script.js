@@ -571,7 +571,7 @@ const dataGloomhaven = {
             id: 29, 
             nombre: "Santuario de la Penumbra", 
             estado: "completado", 
-            fechaCompletado: "08-07-2026",
+            fechaCompletado: "07-07-2026",
             map_pos: { row: 3.2, col: 7 },
             vieneDe: "Cámara ritual ultraterrestre (28)",
             requisitos: "Una invitación (Grupo) COMPLETO",
