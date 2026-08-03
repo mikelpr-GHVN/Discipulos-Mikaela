@@ -504,7 +504,7 @@ const dataGloomhaven = {
         { 
             id: 26, 
             nombre: "Antiguo aljibe", 
-            estado: "bloqueado",
+            estado: "pendiente",
             map_pos: { row: 4.1, col: 6 },
             vieneDe: "Cloacas abandonadas (18), Nido de dracos (43)", 
             requisitos: "Respiración subacuática (Global) o A través de las ruinas (Grupo) COMPLETOS",  
