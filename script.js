@@ -29,6 +29,7 @@ const dataGloomhaven = {
         "la grieta neutralizada",
         "tecnología antigua 0/5",
         "respiración subacuática",
+        "el filo de la oscuridad",
     ], 
     objetosDisponibles: "1-28, 72, 74, 87, 92, 101, 107, 110, 113, 115, 119, 123, 124, 126 y 132", 
     personajes: [], 
