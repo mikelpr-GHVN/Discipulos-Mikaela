@@ -3,9 +3,9 @@
 const dataGloomhaven = {
     // Datos Principales
     grupo: "Discípules de Mikaela",
-    reputacion: 10, 
-    prosperidadNivel: 4, // Nivel de prosperidad actual
-    prosperidadProgreso: 1, // Progreso hacia el siguiente nivel (0-6)
+    reputacion: 11, 
+    prosperidadNivel: 5, // Nivel de prosperidad actual
+    prosperidadProgreso: 5, // Progreso hacia el siguiente nivel (0-6)
     jugadores: ["Zaki", "Dani", "Siscu", "Jose", "Miquel"], 
     
     // Logros
@@ -281,12 +281,13 @@ const dataGloomhaven = {
             id: 10, 
             fechaCompletado: "28-07-2025",
             nombre: "Plano del Poder Elemental", 
-            estado: "completado", 
+            estado: "bloqueado", 
             map_pos: { row: 4, col: 2 }, 
             vieneDe: "Cripta Ruinosa (5)",
             requisitos: "La grieta neutralizada (Global) INCOMPLETO",
             objetivos: "Matar a todos los enemigos",
-            textoEscenario: [
+            textoEscenario: ["----------------JUGADO APARENTEMENTE POR ERROR 28/7/26. Al neutralizar la grieta (27) no era posible seguir----------------",
+                "-",
                 "Vuestra visión cambia y el entorno se difumina. Unos horribles lamentos os perforan los oídos. Sentís como si se os estiraran las extremidades, como si el universo intentara despedazaros.",
                 "Y entonces se detiene. Abrís los ojos y veis que vuestros pies se encuentran sobre tierra firme, pero a vuestro alrededor se arremolinan extrañas energías elementales: fuego mezclándose con hielo con un poder torrencial.",
                 "Recuperáis el aliento, miráis hacia atrás y os aliviáis al ver un vacío de oscuridad muy parecido a aquel que os trajo a este lugar.",
@@ -442,12 +443,13 @@ const dataGloomhaven = {
             id: 21, 
             fechaCompletado: "06-08-2025",
             nombre: "Trono Infernal", 
-            estado: "completado", 
+            estado: "bloqueado", 
             map_pos: { row: 5, col: 2 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "La Grieta neutralizada (Global) INCOMPLETO",
             objetivos: "Matar al demonio supremo",
-            textoEscenario: [
+            textoEscenario: ["----------------JUGADO APARENTEMENTE POR ERROR 06/8/26. Al neutralizar la grieta (27) no era posible seguir----------------",
+                "-",
                 "Antes de que podáis echar mano a vuestras armas, el demonio se percata de vuestras intenciones.",
 "— ¡Idiotas! — Su voz os provoca un dolor desgarrador en la cabeza y os tambaleáis de dolor— ¡¿Os atrevéis a atacarme en mi propio territorio?! ¡Acabáis de cometer un gran error!",
 "Con un estallido de llamas, su enorme forma se desvanece en la oscuridad.",
@@ -468,7 +470,7 @@ const dataGloomhaven = {
             nombre: "Templo de los Elementos",
             estado: "pendiente",
             fechaFallido: "24-10-2025",
-            map_pos: { row: 4, col: 1 }, 
+            map_pos: { row: 4, col: 7 }, 
             vieneDe: "Plano del Poder Elemental (10)",
             requisitos: "El recado de un demonio (Grupo) COMPLETO o Tras la pista (grupo) COMPLETO",
             objetivos: "Destruir todos los altares",
@@ -505,22 +507,38 @@ const dataGloomhaven = {
         { 
             id: 26, 
             nombre: "Antiguo aljibe", 
-            estado: "pendiente",
+            estado: "completado",
+            fechaCompletado: "04-08-2026",
             map_pos: { row: 4.1, col: 6 },
             vieneDe: "Cloacas abandonadas (18), Nido de dracos (43)", 
             requisitos: "Respiración subacuática (Global) o A través de las ruinas (Grupo) COMPLETOS",  
             objetivos: "Limpiar todas las bombas de agua",
-            textoEscenario: ["Desconocido"],
-            conclusion: ["Desconocido"],
-            recompensas: [],
-            logros: ["desconocido"], 
-            nuevasUbicaciones: ["Desconocido"] 
+            textoEscenario: ["El agua se oscurece hasta quedar tan negra como el cielo nublado al caer la noche. Ni siquiera veis vuestras manos braceando ante vuestras caras, pero seguís adelante. No pasa mucho tiempo hasta que divisáis una luz en la distancia. Os cuesta vuestras últimas fuerzas, pero, finalmente, os acercáis a la luz y salís a la superficie. Emergéis en un charco de agua fétida, pero estáis agradecidos de poder respirar de nuevo.",
+"Sin embargo, poco os dura el alivio. La sala está repleta de no muertos y de amenazantes masas verdes de lodo. Saltáis fuera del agua, intentando recuperar el aliento, y preparáis vuestras armas para una nueva batalla.",
+"/Reglas especiales/ - Añade 3 cartas de Maldición al mazo de modificadores de ataque de cada personaje como efecto del escenario.",
+"----1----",
+"Siguiendo los signos de podredumbre, os encontráis en la sala final de la cámara, con la esperanza de acabar pronto con vuestros adversarios. Pero el horror invade vuestras mentes al ver la escena que tiene lugar ante vosotros.",
+"Hay cuatro tuberías verticales al final de la habitación, que parecen ser los conductos que bombean el agua de la ciudad. Pero, pegadas a las tuberías, unas masas negras retorcidas envenenan el agua que corre a través de ellas. Cuando os acercáis, parte de la masa negra chorrea de las tuberías y confluye tomando la forma de pequeños duendes bulbosos con unas bocas repletas de dientes.",
+"Y tampoco es que os alegréis de ver la horda de demonios y no muertos que los acompañan.",
+"/Reglas especiales/ - En este escenario hay tantas bombas de agua como personajes en el grupo, y hay que limpiarlas para completarlo. Cualquier personaje adyacente a una bomba de agua puede renunciar a una acción inferior (descartando 1 carta) para limpiarla.",
+"Si el grupo lo componen 2 personajes, las bombas están en los hexágonos de agua a; si lo componen 3, en los hexágonos de agua a y b; y si son 4, en los hexágonos de agua a, b y c.",
+"Al final de cada ronda, se invoca 1 Duende negro normal en cada bomba que no se haya limpiado."],
+            conclusion: ["Para cuando la contienda termina, las paredes y el suelo están empapados de lodo negro. Sin embargo, nada palpita, lo que es una buena señal. Ahora que habéis eliminado la presencia oscura, los suelos podrían limpiarse con una simple mopa.",
+            "Os acercáis a la pared trasera y, perplejos, limpiáis con el dedo algo de mugre. La mayor parte sale con facilidad, pero siguen quedando unas rayas negras persistentes. Con curiosidad, con la manga de vuestras ropas, empezáis a limpiar la mancha más enérgicamente, revelando algún tipo de lenguaje rúnico. Tras limpiar bastante, descubrís que las letras están por toda la pared.",
+"Las letras son irreconocibles, así que las copiáis y volvéis a la ciudad para llevar los escritos a un experto en lenguas de la universidad.",
+"—Forma parte de un ritual —dice un quatryl con gafas mientras mira fijamente la rudimentaria escritura—. No estoy del todo familiarizado con los detalles, pero parece ser un ritual para welspar..., que significa errar, corromper. Creo que tal corrupción requeriría el uso de un conducto. —El quatryl observa la escritura con más atención—. ¡Ah, aquí! Habla de un artefacto ubicado en el Templo de los Elementos.",
+"El quatryl se dirige con rapidez a una estantería llena de libros.",
+"—¡Ah! Interesante. Sabía que había visto esto antes en alguna parte —dice mientras desaparece tras una gran pila de tomos—. ¡Sí! El Templo de los Elementos. —Su cabeza se asoma por encima de los libros—. El Templo de los Elementos, del que se dice que alberga la Vasija de los Elementos, un artefacto muy antiguo y poderoso capaz de dar forma a los residuos elementales que nos rodean. El libro dice que el templo no se encuentra lejos de aquí, en algún lugar cerca de la bifurcación del río Beso de la Sierpe. Si queréis llegar al fondo de esto, yo empezaría por ahí. (22)"],
+            recompensas: ["10 de oro para cada personaje", "+1 de reputación", "+2 de prosperidad"],
+            logros: ["Tras la pista (Grupo)"], 
+            nuevasUbicaciones: ["Templo de los Elementos (22)"] 
         },
 
         // ID 27: NUEVO ESCENARIO
         { 
             id: 27, 
             nombre: "Grieta destructiva",
+            fechaCompletado: "09-10-2025",
             estado: "completado",
             map_pos: { row: 5, col: 3 },
             vieneDe: "Cripta olvidada (19)",
@@ -573,7 +591,7 @@ const dataGloomhaven = {
             nombre: "Santuario de la Penumbra", 
             estado: "completado", 
             fechaCompletado: "07-07-2026",
-            map_pos: { row: 3.2, col: 7 },
+            map_pos: { row: 1, col: 7 },
             vieneDe: "Cámara ritual ultraterrestre (28)",
             requisitos: "Una invitación (Grupo) COMPLETO",
             objetivos: "Matar a todos los enemigos",
@@ -608,7 +626,7 @@ const dataGloomhaven = {
             id: 37, 
             nombre: "Fosa Maldita", 
             estado: "pendiente", 
-            map_pos: { row: 5, col: 6 },
+            map_pos: { row: 5.2, col: 6 },
             vieneDe: "Nido de dracos (43)",
             requisitos: "Respiración subacuática (Global) COMPLETO",
             objetivos: "Todos los personajes deben escapar por la salida (a)",
@@ -857,7 +875,7 @@ const dataGloomhaven = {
         { origen: 8, destino: 14, tipo: 'alternativa', offset: 0 }, 
         { origen: 8, destino: 67, tipo: 'alternativa', offset: 0 }, 
         { origen: 10, destino: 21, tipo: 'alternativa', offset: 0 }, 
-        { origen: 10, destino: 22, tipo: 'alternativa', offset: 0 },
+       // { origen: 10, destino: 22, tipo: 'bloqueada', offset: 0 },
         { origen: 14, destino: 7, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 19, tipo: 'alternativa', offset: 0 }, 
         { origen: 14, destino: 31, tipo: 'alternativa', offset: 0 },
@@ -870,7 +888,8 @@ const dataGloomhaven = {
         { origen: 20, destino: 16, tipo: 'alternativa', offset: 0 },
         { origen: 20, destino: 18, tipo: 'alternativa', offset: 0 },
         { origen: 20, destino: 28, tipo: 'alternativa', offset: 0, reduction: 10, }, // conexión reducida  para evitar solapamiento
-        { origen: 28, destino: 29, tipo: 'alternativa', offset: 0, reduction: 20, offsetY: 20 }, // conexión reducida para evitar solapamiento
+        { origen: 26, destino: 22, tipo: 'alternativa', offset: 0 },
+        { origen: 28, destino: 29, tipo: 'alternativa', offset: 0, reduction: 0, offsetY: 0 }, // conexión reducida para evitar solapamiento
         { origen: 43, destino: 26, tipo: 'alternativa', offset: 0 },
         { origen: 43, destino: 37, tipo: 'alternativa', offset: 0 },
         { origen: 43, destino: 94, tipo: 'alternativa', offset: 0, }, // conexión reducida para evitar solapamiento
